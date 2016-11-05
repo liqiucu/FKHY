@@ -4,42 +4,93 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 我的 ASP.NET 应用程序</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    <title>@ViewBag.Title - 孚咖韩语</title>
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/public.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.event.drag-1.5.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.SuperSlide.2.1.1.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("应用程序名称", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div>
+        <header>
+            <div class="nav">
+                <div class="nav_top">
+                    <div class="logo fl"><a href="#"><img src="~/images/logo.png" /></a></div>
+                    <ul class="fl">
+                        <li><a href="/Home/Index">首页</a></li>
+                        <li><a href="/Team/Index">师资团队</a></li>
+                        <li><a href="/Cource/Index">课程体系</a></li>
+                        <li><a href="/Overseas/Index">韩国留学</a></li>
+                        <li><a href="/OpenClass/Index">公开课</a></li>
+                        <li><a href="/BBS/Index">学员社区</a></li>
+                    </ul>
+                    <div class="newfile fr">
+                        <div class="ewm">
+                            <div class="sjewm" onmouseover="seover();" onmouseout="seout();">
+                                <img src="~/images/weixin.png" data-bd-imgshare-binded="1">
+                                <div class="dewm" id="lishe" style="display: none;"><img src="~/images/ewm.png" data-bd-imgshare-binded="1"></div>
+                            </div>
+                        </div>
+                        <span><a href="#"><img src="~/images/weibo.png" /></a></span>
+                        @if (ViewBag.UserId != null)
+                        {
+                            <div class="user_login">
+                                <span onclick="show_menu();$('#close_btn').addClass('hid');" id="show_more" class="fiels"><img src="~/images/yh-t2-nav.png" />&nbsp;<p>Ryan</p></span>
+                                <span onclick="setTab('one',8,14)"><img src="~/images/email.png" /><i>1</i></span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="user fl">
+                               <a href="login.html">登录    &nbsp;|&nbsp;  Login</a>
+                            </div>
+                        }
+                       
+                        <div class="goods_nav hid" id="menu">
+                            <div class="Triangle">
+                                <h2></h2>
+                            </div>
+                            <ul>
+                                <li id="one1" onclick="setTab('one',1,14)"><a><span class="menu1"></span><i>个人设置</i></a></li>
+                                <li id="one13" onclick="setTab('one',13,14)"><a><span class="menu2"></span><i>密码修改</i></a></li>
+                                <li style="margin-bottom: 10px;"><a href="flow.php"><span class="menu3"></span><i>退出</i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("主页", "Index", "Home")</li>
-                    <li>@Html.ActionLink("关于", "About", "Home")</li>
-                    <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+        </header>
+        <script type="text/javascript">
+            function seover() {
+                var divlist = document.getElementById("lishe");
+                divlist.style.display = "block";
+            }
+            function seout() {
+                var divlist = document.getElementById("lishe");
+                divlist.style.display = "none";
+            }
+        </script>
+    </div>
+    @RenderBody()
+    <footer>
+        <div class="footer">
+            <div class="tel">
+                <p>
+                    TEL<span class="td">400-0788-508</span>
+                    <span>Address&nbsp;上海市杨浦区长阳路1616号互联网大厦</span>
+                </p>
+                <div class="foot">
+                    <span>Copyright@2016F-Korean lnc 保留所有权利。</span>
+                    <ul>
+                        <li><a href="/StaticContent/About">关于疯咖</a></li>
+                        <li><a href="/StaticContent/Clause">使用条款</a></li>
+                        <li><a href="/StaticContent/Refund">退款说明</a></li>
+                        <li><a href="/StaticContent/Contact">联系我们</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 应用程序</p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    </footer>
 </body>
 </html>

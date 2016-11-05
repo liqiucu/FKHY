@@ -1,0 +1,467 @@
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+/*PC mac*/
+.pc_mc{
+	width:790px;
+	height:590px;
+	position: relative;
+	margin:auto;
+}
+.pc_mc .pc_a{
+	position: absolute;
+	width:300px;
+	height:200px;
+	top:50%;
+	left:50%;
+	margin-left:-150px;
+	margin-top:-100px;
+	text-align:center;
+}
+.pc_mc .pc_a .fl img{
+	margin:40px 0 22px 0;
+}
+.pc_mc .pc_a img{
+	margin:20px 0;
+}
+.pc_mc .pc_a a{
+	background: #ddd;
+	display:block;
+	width:80px;
+	height:30px;
+	line-height:30px;
+	letter-spacing: 2px;
+	margin: 0 auto;
+	border-radius: 5px;
+	font-size: 18px;
+}
+.pc_mc .pc_a div{
+	width:100px;
+	overflow:hidden;
+}
+
+
+
+
+/*查看自己课程*/
+
+.pc_ac{
+	width:790px;
+	overflow:hidden;
+	margin:0 auto;
+}
+.pc_ac .content{
+	width:48%;
+	float: left;
+	height:auto;
+	margin-left:1%;
+	margin-bottom: 10px;
+	position:relative;
+	height: 160px;
+}
+.pc_ac .content img{
+	width: 100%;
+	height:100%;
+}
+.pc_ac .content .s_content{
+    color: #fff;
+    font-size: 16px;
+    padding: 10px;
+    position: absolute;
+    top: 10px;
+    width: 95%;
+    height:115px;
+}
+.pc_ac .yiqian{
+    padding:10px;
+    overflow:hidden;
+}
+.pc_ac .title {
+    padding-top: 56px;
+
+}
+.pc_ac .content .s_content .s_content_title{
+   
+    font-size: 18px;
+}
+.pc_ac .content .s_content p{font-size: 12px;}
+.pc_ac .content .s_content .wytk a{
+    color: #fff;
+    padding: 3px 10px;
+    background: #f9c900;
+    position: relative;
+    top: 5px;
+}
+.pc_ac .page{
+	width: 490px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.pc_ac .page ul li{
+	float:left;
+	background: #ddd;
+	margin-right:10px;
+	padding:3px;
+}
+.pc_ac .page ul li img{
+	vertical-align: middle;
+}
+.pc_ac .page dl dt img{
+	vertical-align: middle;
+}
+.pc_ac .page dl dt form{
+	border:solid 1px #ddd;
+	background:#ddd;
+	height:25px;
+}
+.pc_ac .page dl dt input{
+	background:#ddd;
+	float:left;
+	border:0;
+	height:25px;
+	width:100px;
+}
+.pc_ac .page dl dt .button{
+	background:url(../images/ssh.png) no-repeat;
+	width:14px;
+	height:14px;
+	margin: 7px;
+}
+
+.pc_ac .page dl dt{
+	float:left;
+	margin-right:10px;
+}
+
+.pc_ac .page dl dt p{
+	line-height:30px;
+}
+
+/*我的VIP*/
+.qbj{
+			width: 790px;
+			overflow: hidden;
+		}
+		.qbj .ktvip{
+			background: rgb(250,250,250);
+			width: 798px;
+			height: auto;
+    		padding-bottom: 2px;
+		}
+		.ktvip_top img{
+			width: 400px;
+		    margin-left: 30px;
+		    margin-top: 10px;
+		    float: left;
+		}
+		.ri{
+			    float: left;
+			    margin-top: 180px;
+			    font-size: 16px;
+		}
+		.ktvip_center{
+			margin-top: 20px;
+			width: 100%;
+			overflow: hidden;
+		}
+		.ktvip_center img{
+			width: 100%;
+		}
+		.ktvip_bottom{
+			text-align: center
+		}
+		.ljkt{
+			display: inline-block;
+		    padding: 8px 40px;
+		    background: rgb(250,201,0);
+		    font-size: 18px;
+		}
+.ktvip_bottom div{
+	padding:20px 0;
+}
+
+/*优惠卷*/
+.qbj{
+			width: 790px;
+			overflow: hidden;
+		}
+		.fkyhq{
+			
+			background: rgb(250,250,250);
+		    width: 798px;
+		    height: auto;
+		    padding-bottom: 2px;
+		}
+		.yhqxx{
+		    width: 100%;
+		    overflow: hidden;
+		    text-align: center;
+		    color: #fff;
+		    font-size: 16px;
+		    margin: auto;
+		    padding-top: 50px;
+		}
+		.yhqxx div{
+			float: left;
+    		margin-right: 1.7px;
+    		width:24.8%;
+    		background: rgb(113,113,113);
+    		line-height: 30px;
+		}
+		.yhqxx div.bm{float:right; margin-right: 0px;}
+		/*.je{
+			background: rgb(113,113,113);
+    		padding: 7px 50px;
+		}
+		.zt{
+			background: rgb(113,113,113);
+    		padding: 7px 70px;
+		}
+		.yxq{
+			background: rgb(113,113,113);
+    		padding: 7px 70px;
+		}
+		.bm{
+			background: rgb(113,113,113);
+    		padding: 7px 50px;
+		}*/
+		.ts,.fkyhq_bottom{
+			width: 80%;
+		    overflow: hidden;
+		    margin:auto;
+		    margin-top: 20%;
+		}
+		.fkyhq_bottom{
+			width: 100%;
+		    overflow: hidden;
+		    margin:auto;
+		    margin-top: 20%;
+		}
+		.mind_ob{
+		    width: 100%;
+		    overflow: hidden;
+		    text-align: center;
+		    color: #fff;
+		    font-size: 16px;
+		    margin: auto;
+		    color: rgb(113,113,113);
+    		border-top:solid 1px rgb(113,113,113);
+		}
+		.mind_ob div{
+			float: left;
+    		margin: 0 0.5px;
+    		width:24.8%;
+    		line-height:45px;
+    		padding:15px 0;
+    		overflow: hidden;
+		}
+		.mind_ob div p{
+			line-height:13px;
+		}
+
+/*评论*/	
+.con_pin{
+	width: 100%;
+	border-top: solid 1px #ddd;
+}	
+		
+.con_pin ul li{
+	border-bottom: solid 1px #ddd;
+	height: 70px;
+	overflow: hidden;
+	padding:10px 10px;
+}		
+		
+.con_pin ul li .fl{
+	width:90%;
+}	
+.con_pin ul li .fl b{font-size:16px; line-height:25px; font-weight: 500;}	
+.con_pin ul li .fl p{text-align: right;}	
+.con_pin ul li .fr{
+	height:70px;
+	line-height:70px;
+}		
+.con_pin ul li .fr img{
+	vertical-align: middle;
+	cursor:pointer;
+}		
+		
+/*修改密码*/		
+		.qbj{
+			width: 790px;
+			overflow: hidden;
+			margin:auto;
+		}
+		.qbj .change_psw{
+			background: rgb(250,250,250);
+			width: 798px;
+			height: 780px;
+			height: auto;
+    		padding-bottom: 20px;
+    		text-align: center;
+    		padding-top: 50px;
+    		font-size: 20px;
+		}
+		.qbj .change_psw input{
+		    border: none;
+		    background: rgb(201,201,201);
+		    width: 454px;
+		    height: 44px;
+		    margin: 10px;
+		}
+		.qbj .change_psw span{
+			text-align: left;
+		}
+		#pswbtn{
+		   width: 160px;
+		   height: 35px;
+		   border:none;
+		    background: rgb(73,185,189);
+		    font-family: "microsoft yahei";
+		    border: none;
+		    color: #fff;
+		    font-size: 16px;
+		    letter-spacing: 2px;
+		    line-height: 35px;
+		    margin-top: 70px;
+		}
+		
+.pc-tab-content div .page{
+	width: 490px;
+    overflow: hidden;
+    margin: 0 auto;
+    padding-top:30px;
+}
+.pc-tab-content div  .page ul li{
+	float:left;
+	background: #ddd;
+	margin-right:10px;
+	padding: 3px;
+}
+.pc-tab-content div  .page ul li img{
+	vertical-align: middle;
+}
+.pc-tab-content div  .page dl dt img{
+	vertical-align: middle;
+}
+.pc-tab-content div  .page dl dt form{
+	border:solid 1px #ddd;
+	background:#ddd;
+	height:27px;
+}
+.pc-tab-content div  .page dl dt input{
+	background:#ddd;
+	float:left;
+	border:0;
+	height:27px;
+	width:100px;
+}
+.pc-tab-content div  .page dl dt .button{
+	background:url(../images/ssh.png) no-repeat;
+	width:14px;
+	height:14px;
+	margin: 8px;
+}
+
+.pc-tab-content div  .page dl dt{
+	float:left;
+	margin-right:10px;
+}
+
+.pc-tab-content div  .page dl dt p{
+	line-height:30px;
+}	
+
+/*课时*/
+.qbj{
+		width: 790px;
+		overflow: hidden;
+	}
+	.gkk_title{
+		font-size: 20px;
+		padding-left: 15px;
+		margin-bottom: 15px;
+		margin-top: 15px;
+	}
+	.gkk{
+		width: 100%;
+		overflow: hidden;
+	}
+	
+	.gkk li{
+	    list-style: none;
+	    width: 28.5%;
+	    float: left;
+	    padding: 0 18px;
+	}
+	.gkk li img{
+	    width: 100%;
+	    height: 159px;
+	}
+	.gkk_content p{
+	    line-height: 20px;
+	    font-size: 14px;
+	    font-weight: 600;
+	}
+	.gkk_s{
+		width: 100%;
+		overflow: hidden;
+		border-bottom: 1px solid #ddd;
+		padding-bottom: 10px;
+	}
+
+
+
+
+	.wz_title{
+		font-size: 20px;
+		padding-left: 15px;
+	}
+	.wz{
+		width: 100%;
+		overflow: hidden;
+		margin-top: 15px;
+	}
+	.wz li{
+		list-style: none;
+	    width: 21.8%;
+	    float: left;
+	    padding: 0 12px;
+	}
+	.wz li img{
+	    width: 100%;
+	    height: 275px;
+	}
+	.wz_content p{
+	    font-size: 14px;
+	    color: #fff;
+	    font-size: 12px;
+	    padding-left: 5px;
+	    padding-right:5px;
+	    margin: 0;
+	}
+	.wz_s{
+		width: 100%;
+		overflow: hidden;
+		border-bottom: 1px solid #ddd;
+		padding-bottom: 10px;
+		margin-top: 15px;
+	}
+	.wz_content{
+	    width: 100%;
+	    overflow: hidden;
+	    position: relative;
+	    top: -107px;
+	    background: rgba(0, 0, 0, 0.34);
+	    height: 103px;
+	}
+	.wz_content .tt{
+		font-size: 16px;
+		margin-top: 1px;
+	}	
+		
+		
+		

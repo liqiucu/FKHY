@@ -1,0 +1,151 @@
+﻿
+@{
+    ViewBag.Title = "韩国留学";
+}
+<link href="~/css/style.css" rel="stylesheet" type="text/css" />
+<link href="~/css/public.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="~/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.event.drag-1.5.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.touchSlider.js"></script>
+<script type="text/javascript" src="~/js/TouchSlide.1.1.js"></script>
+<script type="text/javascript" src="~/js/touchslider.dev.js"></script>
+
+<script type="text/javascript">
+                function queding(){
+                  var hglx_form = document.getElementById("hglx_form");
+                  hglx_form.style.display = "block";
+                  var uder = document.getElementById("uder");
+                  uder.style.display = "none";
+                }
+</script> 
+
+<div class="hglx">
+    <div class="img">
+        <img src="~/images/bj21.jpg" />
+    </div>
+    <h1>疯咖适用于留学的韩语</h1>
+    <div class="hglx_ky">
+        <div class="hglx_fk">
+            <img src="~/images/pn1.png" />
+            <p class="rsp">基础提升</p>
+            <p>通过学习管理系统，<br />通过各项基础教学，<br />更快掌握 </p>
+        </div>
+        <div class="hglx_fk">
+            <img src="~/images/pn2.png" />
+            <p class="rsp">加强技能</p>
+            <p>针对不同学校、专业，<br />由具有专业背景的外教<br />互动授课，<span>即学即用</span></p>
+        </div>
+        <div class="hglx_fk">
+            <img src="~/images/pn3.png" />
+            <p class="rsp">基础提升</p>
+            <p>在线实时教学，<br />学院<span>随时随地</span><br />都能上课 </p>
+        </div>
+        <div class="hglx_fk">
+            <img src="~/images/pn4.png" />
+            <p class="rsp">基础提升</p>
+            <p>提供学员所报课程专业性<br />归纳总结专属助教定期督导，<br /><span>激励</span>学员保持学习动力 </p>
+        </div>
+    </div>
+    <div class="hglx_apd">
+        <div class="hglx_cof">
+            <img src="~/images/bj54.jpg" class="fl" />
+            <div class="fr">
+                <h1>因材施教</h1>
+                <p>根据学员需求、学员的不同专业方向、<br />兴趣、目标、水平等，量身定制学习计划</p>
+                <h1>专业外教</h1>
+                <p>韩国本土教师，1对1和3-6人以下互动教学，<br />及时纠正问题，效果显著</p>
+            </div>
+        </div>
+        <div class="hglx_cof">
+            <img src="~/images/bj55.jpg" class="fr" />
+            <div class="fl" id="uder">
+                <h1>随时随地</h1>
+                <p>24小时授课、打破空间限制，<br />不会因为聚会、旅行、补课受影响，全方位保障学习效率<br /></p>
+                <h1>课后复习</h1>
+                <p>上课内容全程随心录制，充分保证课后复习条件，<br />保证记忆周期循环利用</p>
+                <p onClick="queding()" class="opd">立即定制留学服务</p>
+
+            </div>
+            <div class="hglx_form" id="hglx_form">
+                <form action="tjcg.html" method="post" name="lxForm" id="lxForm" onsubmit="return lxLogin();" enctype="multipart/form-data">
+                    <input maxlength="20" type="text" id="nickname1" name="lx_name" class="lx_name" placeholder="您的姓名：">
+                    <input maxlength="20" type="text" id="nickname2" name="lx_iphone" class="lx_iphone" placeholder="您的手机：">
+                    <input maxlength="20" type="text" id="nickname3" name="lx_yx" class="lx_yx" placeholder="您的邮箱：">
+                    <input maxlength="20" type="submit" class="lx_tj" value="提交信息">
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="hglx_yw">
+        <div class="hglx_and">
+            <h2>对疯咖有疑问？</h2>
+            <h2>答案在这里</h2>
+            <div class="hglx_fl fl">
+                <div id="focus" class="focus">
+                    <div class="hd">
+                        <ul>
+                            <li style="display:none;"></li>
+                            <li class="preNext next"></li>
+                            <li class="preNext pre"></li>
+                        </ul>
+                    </div>
+                    <div class="bd">
+                        <ul>
+                            <li>
+                                <div class="list">
+                                    <p>
+                                        疯咖学习一个半月，收获还是蛮多的，外教老师很亲切，很耐心，
+                                        及时修正我的发音错误和语法错误。鼓励我清楚地说出每句话，感觉口语能力有一定的提高了。另外，疯咖学习韩语不受时间和地点的限制，随时预约外教，很方便。
+                                    </p>
+                                    <h6>陶先生  华东师范大学</h6>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="list">
+                                    <p>
+                                        1疯咖学习一个半月，收获还是蛮多的，外教老师很亲切，很耐心，
+                                        及时修正我的发音错误和语法错误。鼓励我清楚地说出每句话，感觉口语能力有一定的提高了。另外，疯咖学习韩语不受时间和地点的限制，随时预约外教，很方便。
+                                    </p>
+                                    <h6>陶先生  华东师范大学</h6>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="list">
+                                    <p>
+                                        2疯咖学习一个半月，收获还是蛮多的，外教老师很亲切，很耐心，
+                                        及时修正我的发音错误和语法错误。鼓励我清楚地说出每句话，感觉口语能力有一定的提高了。另外，疯咖学习韩语不受时间和地点的限制，随时预约外教，很方便。
+                                    </p>
+                                    <h6>陶先生  华东师范大学</h6>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                                TouchSlide({
+                                  flexible : true,
+                                  slideCell:"#focus",
+                                  prevCell :".pre",
+                                  nextCell :".next",
+                                  mainCell:".bd ul",
+                                  effect:"left",
+                                  interTime:5000,
+                                  delayTime:500,
+                                  pnLoop:true,
+								  autoPlay:true,
+                                  effect:"leftLoop",
+                                  autoPage:true, //自动分页
+                                  switchLoad:"_src" //切换加载，真实图片路径为"_src"
+                                });
+                </script>
+            </div>
+            <div class="hglx_fr fr">
+                <img src="~/images/yq.png" />
+                <img src="~/images/yq.png" />
+                <img src="~/images/yq.png" />
+                <img src="~/images/yq.png" />
+            </div>
+        </div>
+    </div>
+</div>

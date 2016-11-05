@@ -1,31 +1,321 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "孚咖首页";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div id="slideBox" class="slideBox">
+    <div class="hd">
+        <ul><li></li><li></li><li></li></ul>
+    </div>
+    <div class="bd">
+        <ul>
+            <li style="cursor:pointer"><a href="/StaticContent/Benefit" target="_blank"><img src="~/images/banner1.jpg" /></a></li>
+            <li style="cursor:pointer"><a href="/StaticContent/Benefit" target="_blank"><img src="~/images/banner1.jpg" /></a></li>
+        </ul>
+    </div>
+
+    <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+    <a class="prev" href="javascript:void(0)"></a>
+    <a class="next" href="javascript:void(0)"></a>
+
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<script type="text/javascript">
+    jQuery(".slideBox").slide({ mainCell: ".bd ul", autoPlay: true, delayTime: 1000 });
+</script>
+
+
+<div class="content">
+    <div class="con_tv">
+        <div class="con_fl fl">
+            <h1>Online学习</h1>
+            <h2>满载活力，满足你的一天</h2>
+            <p>进百位专业口语外教</p>
+            <p>网路真人在线</p>
+            <p>24小时全韩语环境</p>
+        </div>
+        <div class="con_fr fr">
+            <div class="tvb">
+                <div class="rbc-showbd" style="height:100%;">
+                    <iframe height=100% width=100% src='http://player.youku.com/embed/XMTYwNDg5ODU3Mg==' frameborder=0 'allowfullscreen'></iframe>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+</div>
+<!--申请框-->
+<div class="cont1">
+    <div class="con_input">
+        <div class="con_gai">
+            <h1>与来自韩国近百名外教</h1>
+            <h1>面对面实时互动学习</h1>
+            <form action="" method="post" name="qyrzForm" id="qyrzForm" enctype="multipart/form-data">
+                <input maxlength="20" type="text" id="nickname1" name="zcyx" class="zcyx" placeholder="注册邮箱">
+                <input maxlength="20" type="text" id="nickname2" name="iphone" class="iphone" placeholder="手机号">
+                <input maxlength="20" type="text" id="nickname3" name="password" class="password" placeholder="登陆密码">
+                <input maxlength="20" type="button" class="rbc-sq" style="cursor:pointer" value="申请免费外教课" onclick="oder()">
+            </form>
+
+        </div>
+        <div class="app">
+            <div class="sqsuss">
+                <img src="~/images/tg-g.png">
+                <p class="p1">申请成功</p>
+                <p class="p2">您的专属顾问将会在30分钟内联系您</p>
+            </div>
+        </div>
     </div>
 </div>
+
+<!--设计课程-->
+<div class="cont2">
+    <div class="wnel">
+        <div class="tit">
+            <h1>疯咖</h1>
+            <h2>为你们而来</h2>
+        </div>
+        <div class="wnel_ont">
+            <div class="wnel_fl fl">
+                <img src="~/images/bj45.jpg" />
+                <h1>全韩语环境</h1>
+                <p>不为了考级而学，只为了你真的会讲，疯咖韩语专注于韩语口语的教学，学习一门语言最重要的是语言环境，学会永远不如会说重要</p>
+            </div>
+            <div class="wnel_fl fl">
+                <img src="~/images/bj46.jpg" />
+                <h1>独家韩语教材</h1>
+                <p>疯咖韩语的独创教材，不仅是真实情景，好像身处韩国文化中，更从日常生活用语、商务用语到韩国的实时新闻讨论、全面提升你的韩语口语能力。</p>
+            </div>
+            <div class="wnel_fl fl">
+                <img src="~/images/bj47.jpg" />
+                <h1>VIP公开课</h1>
+                <p>疯咖韩语有大量的VIP公开课供大家学习，让你足不出户也能游历韩国，疯咖准备好了，你还不快来吗？</p>
+            </div>
+            <div class="wnel_fl fr" style="margin-right:0px">
+                <img src="~/images/bj48.jpg" />
+                <h1>1对1全外教模式</h1>
+                <p>全外教3~6人小班，更有1对1的外教教学模式，全韩语的学习环境，锻炼学生的听力能力，鼓励学生开口讲韩语。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--一目了然-->
+<div class="cont3">
+    <div class="cont3_yiqian">
+        <div class="ink_phoBok">
+            <div id="ifocus">
+                <div id="ifocus_pic" class="pics">
+                    <div class="ifocus_t1">
+                        <h1>看他们，</h1>
+                        <h1>一目了然。</h1>
+                    </div>
+                    <div id="ifocus_tx" class="tFocusText">
+                        <ul>
+                            <li class="normal" id="article1" style="display: block;">
+                                <div class="ifocus_t2">
+                                    <p style="font-size: 34px;">JACK1</p>
+                                    <p class="rg">09 01 2016</p>
+                                    <p class="dshd">"시간, 장소, 제가 당신의 결정은 모든 한국어 외교 임 선택합니다.수강생 가용 어떤 시간, 어떤 장소, 선택 좋아하는 한국어 선생님 진행 - 학습, - 관리 체제 통해, 사용 가능한 쉽게 외국어 수업 흐름 과 진행 을 가장 큰 효과를 수강생 을 공부 하여금 미친 듯이 공부, 공부 비용 효율이 있다."</p>
+                                </div>
+                            </li>
+                            <li class="normal" id="article2">
+
+                                <div class="ifocus_t2">
+                                    <p style="font-size: 34px;">JACK2</p>
+                                    <p class="rg">09 01 2016</p>
+                                    <p class="dshd">"시간, 장소, 제가 당신의 결정은 모든 한국어 외교 임 선택합니다.수강생 가용 어떤 시간, 어떤 장소, 선택 좋아하는 한국어 선생님 진행 - 학습, - 관리 체제 통해, 사용 가능한 쉽게 외국어 수업 흐름 과 진행 을 가장 큰 효과를 수강생 을 공부 하여금 미친 듯이 공부, 공부 비용 효율이 있다."</p>
+                                </div>
+                            </li>
+                            <li class="normal" id="article3">
+
+                                <div class="ifocus_t2">
+                                    <p style="font-size: 34px;">JACK3</p>
+                                    <p class="rg">09 01 2016</p>
+                                    <p class="dshd">"시간, 장소, 제가 당신의 결정은 모든 한국어 외교 임 선택합니다.수강생 가용 어떤 시간, 어떤 장소, 선택 좋아하는 한국어 선생님 진행 - 학습, - 관리 체제 통해, 사용 가능한 쉽게 외국어 수업 흐름 과 진행 을 가장 큰 효과를 수강생 을 공부 하여금 미친 듯이 공부, 공부 비용 효율이 있다."</p>
+                                </div>
+                            </li>
+                            <li class="normal" id="article4">
+
+                                <div class="ifocus_t2">
+                                    <p style="font-size: 34px;">JACK4</p>
+                                    <p class="rg">09 01 2016</p>
+                                    <p class="dshd">"시간, 장소, 제가 당신의 결정은 모든 한국어 외교 임 선택합니다.수강생 가용 어떤 시간, 어떤 장소, 선택 좋아하는 한국어 선생님 진행 - 학습, - 관리 체제 통해, 사용 가능한 쉽게 외국어 수업 흐름 과 진행 을 가장 큰 효과를 수강생 을 공부 하여금 미친 듯이 공부, 공부 비용 효율이 있다."</p>
+                                </div>
+                            </li>
+                            <li class="normal" id="article5">
+
+                                <div class="ifocus_t2">
+                                    <p style="font-size: 34px;">JACK5</p>
+                                    <p class="rg">09 01 2016</p>
+                                    <p class="dshd">시간, 장소, 제가 당신의 결정은 모든 한국어 외교 임 선택합니다.수강생 가용 어떤 시간, 어떤 장소, 선택 좋아하는 한국어 선생님 진행 - 학습, - 관리 체제 통해, 사용 가능한 쉽게 외국어 수업 흐름 과 진행 을 가장 큰 효과를 수강생 을 공부 하여금 미친 듯이 공부, 공부 비용 효율이 있다.""</p>
+                                </div>
+                            </li>
+                            <li class="normal" id="article6">
+
+                                <div class="ifocus_t2">
+                                    <p style="font-size: 34px;">JACK6</p>
+                                    <p class="rg">09 01 2016</p>
+                                    <p class="dshd">"시간, 장소, 제가 당신의 결정은 모든 한국어 외교 임 선택합니다.수강생 가용 어떤 시간, 어떤 장소, 선택 좋아하는 한국어 선생님 진행 - 학습, - 관리 체제 통해, 사용 가능한 쉽게 외국어 수업 흐름 과 진행 을 가장 큰 효과를 수강생 을 공부 하여금 미친 듯이 공부, 공부 비용 효율이 있다."</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="tFocusBtn">
+                    <span class="tFocus-nextBtn" onclick="next(0);"></span>
+                    <div id="ifocus_btn">
+                        <ul class="btns">
+                            <li class="img1" fc="1" onclick="move_img(1,$(this))"><img src="~/images/bj49.png" /></li>
+                            <li class="img2" fc="2" onclick="move_img(2,$(this))"><img src="~/images/bj51.png" /></li>
+                            <li class="img3" fc="3" onclick="move_img(3,$(this))"><img src="~/images/bj53.jpg" /></li>
+                            <li class="img4" fc="4" onclick="move_img(4,$(this))"><img src="~/images/bj54.jpg" /></li>
+                            <li class="img5" fc="5" onclick="move_img(5,$(this))"><img src="~/images/bj55.jpg" /></li>
+                            <li class="img6" fc="6" onclick="move_img(6,$(this))"><img src="~/images/bj56.jpg" /></li>
+                        </ul>
+                    </div>
+                    <span class="tFocus-prevBtn" onclick="up(0);"></span>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+<script type="text/javascript">
+    function oder() {
+
+        $(".app").show().delay(3000).hide(300);
+        $("#nickname1").val("");
+        $("#nickname2").val("");
+        $("#nickname3").val("");
+
+    }
+
+    $(".btns li:eq(0)").css('position', 'relative');
+    $(".btns li:eq(0)").css('right', '200px');
+    $(".btns li:eq(0)").css('margin', '3px 0 15px 0');
+    $(".btns li:eq(0)").css('box-shadow', '10px 10px 5px #888888');
+    $('.btns li').css("transition", ".8s");
+    // $(".btns li:eq(0)").css('height','170px');
+    //new tFocus('ifocus',{changeStyle:'opac',timer:3000});
+    var html = $(".btns").html() + $(".btns").html();
+    $(".btns").html(html);
+    var len = $(".btns li").length;
+    var ul_height = len * 156;
+    $(".btns").css('top', (-ul_height / 2 + 156) + 'px');
+    $(".btns").css("height", ul_height + "px");
+    function move_img(id, obj) {
+        $("#ifocus_tx ul li").hide(500);
+        $("#article" + id).show(500);
+        //获取当前索引
+        var index_num = obj.index();
+        if ((index_num - len / 2) >= 0) {
+            index_num = index_num - len / 2;
+        }
+
+        $(".btns li").css('position', 'relative');
+        $(".btns li").css('right', '0px');
+        $(".btns li").css('height', '146px');
+        $(".btns li").css('margin', '4.5px 0');
+        $(".btns li").css('box-shadow', 'none');
+        $(".btns li:eq(" + index_num + ")").css('position', 'relative');
+        $(".btns li:eq(" + index_num + ")").css('right', '200px');
+        $(".btns li:eq(" + index_num + ")").css('margin', '3px 0 15px 0');
+        $(".btns li:eq(" + index_num + ")").css('box-shadow', '10px 10px 5px #888888');
+        $(".btns li:eq(" + (index_num + len / 2) + ")").css('position', 'relative');
+        $(".btns li:eq(" + (index_num + len / 2) + ")").css('right', '200px');
+        $(".btns li:eq(" + (index_num + len / 2) + ")").css('margin', '3px 0 15px 0');
+        $(".btns li:eq(" + (index_num + len / 2) + ")").css('box-shadow', '10px 10px 5px #888888');
+
+        //移动图片位置
+        var next_tops = 0
+        if (index_num == 0) {
+            next_tops = -ul_height / 2 + 156;
+        } else {
+            next_tops = (-ul_height / 2 + 156) - 156 * index_num;
+        }
+        if (next_tops < (-ul_height / 2 + 156)) {
+            next_tops = next_tops + ul_height / 2;
+        }
+        $('.btns').css("transition", ".8s");
+        $(".btns").css('top', next_tops + 'px');
+        $(".tFocus-prevBtn").attr("onclick", "up(" + index_num + ");");
+        $(".tFocus-nextBtn").attr("onclick", "next(" + index_num + ");");
+    }
+    function up(id) {
+        if ($('.btns').position().top % 156 == 0) {
+            var up_top = $(".btns").position().top + 156;
+            $('.btns').css("transition", ".8s");
+            $(".btns").css('top', up_top + 'px');
+            if (up_top > 0) {
+                next_top = -ul_height / 2 + 156;
+                $('.btns').css("transition", "0s");
+                $(".btns").css('top', next_top + 'px');
+            }
+            if ((id - 1) < 0) {
+                id = len / 2 - 1;
+            } else {
+                id = id - 1;
+            }
+            var fc = $(".btns li:eq(" + id + ")").attr('fc');
+
+            //获取下一个id
+            $("#ifocus_tx ul li").hide(500);
+            $("#article" + fc).show(500);
+            $(".btns li").css('position', 'relative');
+            $(".btns li").css('right', '0px');
+            $(".btns li").css('height', '146px');
+            $(".btns li").css('margin', '4.5px 0');
+            $(".btns li").css('box-shadow', 'none');
+            $(".btns li:eq(" + id + ")").css('position', 'relative');
+            $(".btns li:eq(" + id + ")").css('right', '200px');
+            $(".btns li:eq(" + id + ")").css('margin', '3px 0 15px 0');
+            $(".btns li:eq(" + id + ")").css('box-shadow', '10px 10px 5px #888888');
+            $(".btns li:eq(" + (id + len / 2) + ")").css('position', 'relative');
+            $(".btns li:eq(" + (id + len / 2) + ")").css('right', '200px');
+            $(".btns li:eq(" + (id + len / 2) + ")").css('margin', '3px 0 15px 0');
+            $(".btns li:eq(" + (id + len / 2) + ")").css('box-shadow', '10px 10px 5px #888888');
+            $(".tFocus-prevBtn").attr("onclick", "up(" + id + ");");
+            $(".tFocus-nextBtn").attr("onclick", "next(" + id + ");");
+        }
+    }
+    function next(id) {
+        if ($('.btns').position().top % 156 == 0) {
+            var next_top = $(".btns").position().top - 156;
+            $('.btns').css("transition", ".8s");
+            $(".btns").css('top', next_top + 'px');
+            if (next_top < -ul_height / 2) {
+                up_top = -156;
+                $('.btns').css("transition", "0s");
+                $(".btns").css('top', up_top + 'px');
+            }
+            if ((id + 1) > (len / 2 - 1)) {
+                id = 0;
+            } else {
+                id = id + 1;
+            }
+            var fc = $(".btns li:eq(" + id + ")").attr('fc');
+
+            //获取下一个id
+            $("#ifocus_tx ul li").hide(500);
+            $("#article" + (id + 1)).show(500);
+            $(".btns li").css('position', 'relative');
+            $(".btns li").css('right', '0px');
+            $(".btns li").css('height', '146px');
+            $(".btns li").css('margin', '4.5px 0');
+            $(".btns li").css('box-shadow', 'none');
+            $(".btns li:eq(" + id + ")").css('position', 'relative');
+            $(".btns li:eq(" + id + ")").css('right', '200px');
+            $(".btns li:eq(" + id + ")").css('margin', '3px 0 15px 0');
+            $(".btns li:eq(" + id + ")").css('box-shadow', '10px 10px 5px #888888');
+            $(".btns li:eq(" + (id + len / 2) + ")").css('position', 'relative');
+            $(".btns li:eq(" + (id + len / 2) + ")").css('right', '200px');
+            $(".btns li:eq(" + (id + len / 2) + ")").css('margin', '3px 0 15px 0');
+            $(".btns li:eq(" + (id + len / 2) + ")").css('box-shadow', '10px 10px 5px #888888');
+            $(".tFocus-prevBtn").attr("onclick", "up(" + id + ");");
+            $(".tFocus-nextBtn").attr("onclick", "next(" + id + ");");
+        }
+    }
+
+</script>

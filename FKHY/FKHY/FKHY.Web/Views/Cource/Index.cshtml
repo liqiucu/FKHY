@@ -1,0 +1,553 @@
+﻿
+@{
+    ViewBag.Title = "课程体系";
+}
+<link href="~/css/style.css" rel="stylesheet" type="text/css" />
+<link href="~/css/public.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="~/js/jquery-1.7.1.min.js"></script>
+<link href="~/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/css/ion.rangeSlider.css" rel="stylesheet">
+<link href="~/css/style1.css" rel="stylesheet">
+<link href="~/css/ion.rangeSlider.skinHTML5.css" rel="stylesheet">
+<script src="~/js/jquery.js"></script>
+<script src="~/js/ion.rangeSlider.js"></script>
+
+<div class="kcjs">
+    <div class="kcks">
+        <h3>疯咖中的多彩</h3>
+        <h1>还有什么需要选择的？</h1>
+        <h3>三种授课方式，根据不同学习风格与需求自由选择</h3>
+    </div>
+    <div class="kcjs_a">
+        <article class="row mt-lg">
+            <div class="col-md-4 col-xs-4 cos1">
+                <div class="flip-container">
+                    <div class="flipper">
+                        <div class="front">
+                            现在，各种学员时刻准备就绪，<br>
+                            与你一起学习，并扩展你的兴趣。
+                            <div class="mt-lg mt-lg2">
+                                <img src="~/images/top-jt.png">
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div>
+                                <h4>精选小班课</h4>
+                                <p>系统匹配与你英语程度、职业、兴趣相仿的同学一起上课。人数上限为6人。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-4 cos2">
+                <div class="flip-container">
+                    <div class="flipper">
+                        <div class="front">
+                            现在，我们对你私人订制<br>
+                            你想要的，我们满足你。
+                            <div class="mt-lg  mt-lg2">
+                                <img src="~/images/top-jt.png">
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div>
+                                <h4>1对1课程</h4>
+                                <p>根据你的学习需求，进行针对性的课程设计和细致的个性化指导，和外籍顾问一对一互动。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-4 cos3">
+                <div class="flip-container">
+                    <div class="flipper">
+                        <div class="front">
+                            现在，我们感应到你的靠近，<br>
+                            并唤醒你的兴趣，<br>
+                            让你获得更加精彩纷呈的体验。
+                            <div class="mt-lg  mt-lg2">
+                                <img src="~/images/top-jt.png">
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div>
+                                <h4>VIP大讲堂</h4>
+                                <p>外籍顾问为大家带来最新鲜有趣的话题，你可以在短时间内掌握大量全面、实用的热门资讯。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+    <div class="kcjs_b">
+        <div id="skrollr-body" class="vp-formBanner vp-courseStructure" data-find="_4">
+            <!-- form -->
+            <!-- form end -->
+            <section class="section-chart">
+                <div class="container ">
+                    <h2 class="text-center">
+                        不同阶段，满足你所需
+                        <p><small>设定当前起始水平和期望水平，获得课程规划建议</small></p>
+                    </h2>
+
+
+                    <div class="dashboard-chart mt-md prel">
+
+                        <div class="level-group mt-sm">
+
+                            <div class="course-step3"></div>
+                            <ul class="list-unstyled">
+                                <li class="level1 level-bg1">
+                                    <i>Lv1</i>
+                                    <div class="info animated bounceIn ipad-vert-lv1" style="display: none;">
+                                        您能识别字母和入门级单词，可以简单打招呼、表达意向，并作简短的自我介绍。
+                                        <span><img src="~/images/arrowup-deep-org.png"> </span>
+                                    </div>
+                                </li>
+                                <li class="level2 level-bg1">
+                                    <i>Lv2</i>
+                                    <div class="info animated bounceIn">
+                                        您已掌握了词汇发音技巧，可以简单描述日常事物、区分可数及不可数名词，并能用肯定、否定句回应问题。
+                                        <span><img src="~/images/arrowup-deep-org.png"> </span>
+                                    </div>
+                                </li>
+                                <li class="level3 level-bg1">
+                                    <i>Lv3</i>
+                                    <div class="info animated bounceIn">
+                                        您建立了名词的单复数概念和基础的时态概念，能用简单的句子互动，开始尝试表述自己的喜好。
+                                        <span><img src="~/images/arrowup-deep-org.png"> </span>
+                                    </div>
+                                </li>
+                                <li class="level4 level-bg1">
+                                    <i>Lv4</i>
+                                    <div class="info animated bounceIn" style="display: none;">
+                                        拥有了一定的日常词汇量的您，终于能初步表达感受，并习得更多的时态和副词用法，可以做浅层的沟通。
+                                        <span><img src="~/images/arrowup-deep-org.png"> </span>
+                                    </div>
+                                </li>
+                                <li class="level5 level-bg2">
+                                    <i>Lv5</i>
+                                    <div class="info animated bounceIn" style="display: none;">
+                                        您已可以清楚地表达心中想法，更熟练地区分时态，学会使用量词，并开启了转述能力，可以开始和老外攀谈了。
+                                        <span><img src="~/images/arrowup-deep-org.png"> </span>
+                                    </div>
+                                </li>
+                                <li class="level6 level-bg2">
+                                    <i>Lv6</i>
+                                    <div class="info animated bounceIn">
+                                        运用动词、短语来谈论自己的生活对您来说已是小菜一碟，累积的词汇和俗语也足以看懂普通文章。
+                                        <span><img src="~/images/arrowup-deep-org.png"> </span>
+                                    </div>
+                                </li>
+                                <li class="level7 level-bg2">
+                                    <i>Lv7</i>
+                                    <div class="info animated bounceIn">
+                                        词汇和语法的储备已足够令您游刃有余地阅读和讨论各种职场工作话题，并能区分不同话风和语气。
+                                        <span><img src="~/images/arrowup-deep-org.png"> </span>
+                                    </div>
+                                </li>
+                                <li class="level8 level-bg2">
+                                    <i>Lv8</i>
+                                    <div class="info animated bounceIn" style="display: none;">
+                                        您具备了辩论及引证事例论述观点的能力，能够根据场合精准地遣词，懂得恰当地表达情绪和意见。
+                                        <span><img src="~/images/arrowup-deep-org.png"> </span>
+                                    </div>
+                                </li>
+                                <li class="level9 level-bg3">
+                                    <i>Lv9</i>
+                                    <div class="info animated bounceIn">
+                                        拥有了一定英语文化积淀的您，现在可以和英语母语者轻松交流，且能用英语思维进行各种写作。
+                                        <span><img src="~/images/arrowup-deep-org.png"> </span>
+                                    </div>
+                                </li>
+                                <li class="level10 level-bg3">
+                                    <i>Lv10</i>
+                                    <div class="info animated bounceIn" style="display: none;">
+                                        您的词汇量丰富到足以在同义词间轻松切换，掌握了各种英语梗，可以自如讨论各种抽象概念。
+                                        <span><img src="~/images/arrowup-deep-org.png"> </span>
+                                    </div>
+                                </li>
+                                <li class="level11 level-bg3">
+                                    <i>Lv11</i>
+                                    <div class="info animated bounceIn">
+                                        此时的您已完美掌握各种语法和表述，可以深入谈论想法以及应对各种熟悉或不熟悉领域的话题。
+                                        <span><img src="~/images/arrowup-deep-org.png"> </span>
+                                    </div>
+                                </li>
+                                <li class="level12 level-bg3">
+                                    <i>Lv12</i>
+                                    <div class="info animated bounceIn" style="display: none;">
+                                        您的表达已炉火纯青，能hold住各种专业的学术性话题，并像一个当地人那样全面融入英语环境。
+                                        <span><img src="~/images/arrowup-deep-org.png"> </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="p-range">
+                            <input id="range_44" class="irs-hidden-input" readonly>
+                        </div>
+
+                        <div id="oneX"></div>
+
+                        <div class="clearfix text-left dashboard-info dashboard-info-height">
+
+                            <div class="pull-left prel dashboard-text">
+                                <div class="clearfix forminfo" id="formInfo">
+                                    <div class="pull-left formtext">
+                                        <!--Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+                                        id est laborum.Lorem ipsu　m dolor sit amet, consectetur adipisicing elit.-->
+                                        <div class="forminfo-big-extra">在母语环境中通过大量的开口练习，来纠正我们的发音及措辞，让英语完全融入到生活。英语，可以成为你的第二母语。建议你先做一个英语程度测试，根据测试结果制定一套适合你个人的学习方案（免费）。</div>
+                                    </div>
+                                    <div class="formbtn pull-left mt-sm">
+                                        <button class="btn btn-block btn-danger-clear" id="showForm" type="button" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;link&#39;, &#39;click&#39;, &#39;CourseStructure_SolutionBtn&#39;);">了解详细个人方案</button>
+                                    </div>
+                                </div>
+
+
+                                <form action="tjcg2.html" class="clearfix hide form-course" method="post" name="kcjsForm" id="commentFormPage" onsubmit="return kcjsLogin();" enctype="multipart/form-data">
+
+
+                                    <input type="hidden" id="hdn_score" name="hdn_score" value="demo">
+                                    <input type="hidden" id="hdn_phone_nationcode" name="hdn_phone_nationcode" value="+86">
+                                    <input type="hidden" name="txt_phone_nationcode" value="+86">
+
+                                    <div class="pull-left course-form1 clearfix">
+
+                                        <div class="col-md-6 col-xs-6 padding-sm">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="您的姓名" name="txt_cname" minlength="2" required aria-required="true">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-xs-6 padding-sm">
+                                            <div class="form-group no-margins">
+                                                <input type="tel" class="form-control" placeholder="您的手机" name="txt_cphone" minlength="11" required aria-required="true">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-xs-6 padding-sm">
+                                            <div class="form-group no-margins">
+                                                <input class="form-control" type="email" name="txt_email_addr" required placeholder="您的邮箱" aria-required="true">
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="pull-left course-btn">
+                                        <div class="mt-sm text-center">
+                                            <button class="btn btn-block btn-danger-clear" type="submit">开启你的私人定制</button>
+                                            <div class="mt-sm" style="display:none;"><span id="closeForm">返回查看建议</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+
+            <script>
+                                                var rangeSlider1 = " ";
+                                                var rangeSlider2 = " ";
+
+                                    $(document).ready(function () {
+
+                                        $("#show-step3").click(function () {
+                                            var x = $("#show-step3").is(':checked');
+                                            if (x) {
+                                                $('.level-group').addClass('step3-hover');
+                                                $(this).next().css("color", "#f75c5c")
+                                            } else {
+                                                $('.level-group').removeClass('step3-hover');
+                                                $(this).next().css("color", "#666")
+                                            }
+                                        })
+
+
+                                        $('.study-time span').click(function () {
+                                            $('.study-time span').removeClass('active');
+                                            $(this).addClass('active');
+                                        });
+
+                                        var $range = $("#range_44"),
+                                            $result = $("#result_44");
+
+
+
+                                        $range.ionRangeSlider({
+                                            type: "double",
+                                            values: [
+                                                "one", "two", "three",
+                                                "four", "five", "six",
+                                                "seven", "eight", "nine", "ten", "eleven", "twelve"
+                                            ],
+                                            min: 1,
+                                            max: 12,
+                                            from: 0,
+                                            to: 12,
+                                            step: 1,
+                                            min_interval: 1,
+                                            /*  onStart: track,
+                                              onChange: track,
+                                              onUpdate: track,
+                                              onFinish: track,*/
+                                            onFinish: function (obj) {        // function-callback, is called once, after slider finished it's work
+                                                //console.log(obj);
+                                                if (obj.from_value == "one") {
+                                                    $('.level1>.info').fadeIn();
+                                                    $('.level1>.info').fadeOut(2000);
+
+                                                }
+                                                if (obj.to_value == "one") {
+                                                    $('.level1>.info').show();
+                                                    $('.level1>.info').fadeOut(2000);
+
+                                                }
+
+                                                if (obj.from_value == "two") {
+                                                    $('.level2>.info').show();
+                                                    $('.level2>.info').fadeOut(2000);
+
+                                                }
+                                                if (obj.to_value == "two") {
+                                                    $('.level2>.info').show();
+                                                    $('.level2>.info').fadeOut(2000);
+
+                                                }
+
+                                                if (obj.from_value == "three") {
+                                                    $('.level3>.info').show();
+                                                    $('.level3>.info').fadeOut(2000);
+
+                                                }
+                                                if (obj.to_value == "three") {
+                                                    $('.level3>.info').show();
+                                                    $('.level3>.info').fadeOut(2000);
+
+                                                }
+
+                                                if (obj.from_value == "four") {
+                                                    $('.level4>.info').show();
+                                                    $('.level4>.info').fadeOut(2000);
+
+                                                }
+                                                if (obj.to_value == "four") {
+                                                    $('.level4>.info').show();
+                                                    $('.level4>.info').fadeOut(2000);
+
+                                                }
+
+                                                if (obj.from_value == "five") {
+                                                    $('.level5>.info').show();
+                                                    $('.level5>.info').fadeOut(2000);
+
+                                                }
+                                                if (obj.to_value == "five") {
+                                                    $('.level5>.info').show();
+                                                    $('.level5>.info').fadeOut(2000);
+
+                                                }
+
+                                                if (obj.from_value == "six") {
+                                                    $('.level6>.info').show();
+                                                    $('.level6>.info').fadeOut(2000);
+
+                                                }
+                                                if (obj.to_value == "six") {
+                                                    $('.level6>.info').show();
+                                                    $('.level6>.info').fadeOut(2000);
+
+                                                }
+
+                                                if (obj.from_value == "seven") {
+                                                    $('.level7>.info').show();
+                                                    $('.level7>.info').fadeOut(2000);
+
+                                                }
+                                                if (obj.to_value == "seven") {
+                                                    $('.level7>.info').show();
+                                                    $('.level7>.info').fadeOut(2000);
+
+                                                }
+
+                                                if (obj.from_value == "eight") {
+                                                    $('.level8>.info').show();
+                                                    $('.level8>.info').fadeOut(2000);
+
+                                                }
+                                                if (obj.to_value == "eight") {
+                                                    $('.level8>.info').show();
+                                                    $('.level8>.info').fadeOut(2000);
+
+                                                }
+
+                                                if (obj.from_value == "nine") {
+                                                    $('.level9>.info').show();
+                                                    $('.level9>.info').fadeOut(2000);
+
+                                                }
+                                                if (obj.to_value == "nine") {
+                                                    $('.level9>.info').show();
+                                                    $('.level9>.info').fadeOut(2000);
+
+                                                }
+
+                                                if (obj.from_value == "ten") {
+                                                    $('.level10>.info').show();
+                                                    $('.level10>.info').fadeOut(2000);
+
+                                                }
+                                                if (obj.to_value == "ten") {
+                                                    $('.level10>.info').show();
+                                                    $('.level10>.info').fadeOut(2000);
+
+                                                }
+
+                                                if (obj.from_value == "eleven") {
+                                                    $('.level11>.info').show();
+                                                    $('.level11>.info').fadeOut(2000);
+
+                                                }
+                                                if (obj.to_value == "eleven") {
+                                                    $('.level11>.info').show();
+                                                    $('.level11>.info').fadeOut(2000);
+
+                                                }
+
+                                                if (obj.from_value == "twelve") {
+                                                    $('.level12>.info').show();
+                                                    $('.level12>.info').fadeOut(2000);
+
+                                                }
+                                                if (obj.to_value == "twelve") {
+                                                    $('.level12>.info').fadeIn();
+                                                    $('.level12>.info').fadeOut(2000);
+
+                                                }
+
+                                                var from_val = parseInt(obj.from / 4) + 1
+                                                //console.log(from_val)
+                                                var to_val = parseInt(obj.to / 4) + 1
+                                                //console.log(to_val)
+                                                var total = from_val * to_val;
+                                                //console.log(total);
+                                                if (total == 1) {
+                                                    $('.forminfo-big-extra').html('刚开始进入一个纯英语的环境会有些陌生。虽然基础相对薄弱，但是课堂上单向视频的设置让你不担心说错，与你英语程度相仿的同学让你放心融入其中。现在开始，养成开口说英语的习惯，应付简单的日常交流。')
+                                                } else if (total == 2) {
+                                                    $('.forminfo-big-extra').html('大量开口对话，在说错、纠正、练习中逐步成长，摆脱对中文思考的依赖，加深对英语的认知，让英语表达变成一种条件反射。平均下来，每提升一个级别大约需要30-50堂课的练习量，我们就从这个方案开始学起。')
+                                                } else if (total == 3) {
+                                                    $('.forminfo-big-extra').html('在母语环境中通过大量的开口练习，来纠正我们的发音及措辞，让英语完全融入到生活。英语，可以成为你的第二母语。建议你先做一个英语程度测试，根据测试结果制定一套适合你个人的学习方案（免费）。')
+                                                }
+                                                else if (total == 4) {
+                                                    $('.forminfo-big-extra').html('在持续稳定的纯英语环境中，逐步建立准确的英语逻辑，并自然而然地适应英语思维。如果希望达到更好的程度，你只需要沉浸于母语环境，并增加课程练习的频率。坚持一段时间，你就可以达成目标。')
+                                                }
+                                                else if (total == 6) {
+                                                    $('.forminfo-big-extra').html('我们会安排不同文化、专业背景的纯外教授课，让老师来发现并纠正你现有的细节错误。选择一个超值课程，不久之后，可以明显地感受到变化，你不单可以将英语作为第二母语，更重要的是你重新认识了这个世界。')
+                                                }
+                                                else if (total == 9) {
+                                                    $('.forminfo-big-extra').html('拥有一个母语环境，让你在更加自如地运用英语的同时，也了解到地球另一边的历史人文，完全变成了半个老外。这个变化离不开你的努力，更离不开你的选择。好的学习方案将引领你变成更好的自己。')
+                                                }
+                                            }
+                                        });
+
+                                        $('.level-group>ul>li').hover(function () {
+                                            $(this).children('.info').fadeIn();
+                                        }, function () {
+                                            $(this).children('.info').fadeOut()
+                                        })
+                                        $('#showForm').click(function () {
+                                            $("#commentFormPage").removeClass('hide').addClass('fadeIn animated');
+                                            $('#formInfo').hide()
+                                        })
+                                        $('#closeForm').click(function () {
+                                            $("#commentFormPage").addClass('hide').removeClass('fadeIn animated');
+                                            $('#formInfo').show()
+                                        })
+                                        $.validator.setDefaults({
+                                            submitHandler: function () {
+                                                $("#commentFormPage").removeClass('fadeIn animated').addClass('hide');
+                                                $('#formInfo').show()
+                                            }
+                                        });
+
+                                    });
+            </script>
+
+            <!-- Gridsum tracking code begin. -->
+
+        </div>
+    </div>
+    <div class="kcjs_d">
+        <h1>众多出色课程</h1>
+        <h3>助你充分发挥你的精彩</h3>
+        <div class="oupd fl">
+            <div class="kcjs_ye kcjs_bj">
+                <div class="kcjs_asp">
+                    <img src="~/images/bj34.png" />
+                    <h4>韩语考级</h4>
+                    <p>考级韩语教材是疯咖教材开发组基于TOPIK能力考试内容体现开发的教材</p>
+                    <p>
+                        内容包含基本问候语、基本剧情、基本词汇、
+                        熟练听说读写、自由的运用韩语等内容，
+                        和外教老师在场景中直接参与讨论，
+                        口语不知不觉中得以提高！
+                    </p>
+                </div>
+            </div>
+            <div class="kcjs_ye kcjs_no" style="margin-top:50px;">
+                <div class="kcjs_asp">
+                    <img src="~/images/bj37.png" />
+                    <h4>兴趣爱好</h4>
+                    <p>提升看韩剧、韩综的水平，<br />不用看字幕也能看懂韩语。<br />针对因兴趣而学韩语的学院专门定制</p>
+                    <p>内容包含基本剧情、基本词汇、自由运用韩语等内容，<br />与外教老师聊感兴趣的话题中学习韩语！</p>
+                </div>
+            </div>
+            <div class="kcjs_ye kcjs_no" style="margin-top:45px">
+                <div class="kcjs_asp">
+                    <h4 style="font-size:38px;">众多出彩内置课程</h4>
+                    <h4 style="font-size:38px;">如今为你所用</h4>
+                </div>
+            </div>
+        </div>
+        <div class="oupd fr">
+            <div class="kcjs_ye kcjs_no">
+                <div class="kcjs_asp">
+                    <img src="~/images/bj35.png" />
+                    <h4>商务韩语</h4>
+                    <p>商务韩语又称为应用韩语，系致力于<br />培养熟练掌握韩语听说读写译等基本技能，通晓韩国<br />经济和文化、掌握国际商务领域多元化专业技能。</p>
+                    <p>内容包含经贸韩国语、韩国语商务函电写作、<br />韩语办公自动化实务、商务礼仪实务、<br />韩国经贸报刊文选、中韩文化比较等。</p>
+                </div>
+            </div>
+            <div class="kcjs_ye kcjs_bj">
+                <div class="kcjs_asp">
+                    <img src="~/images/bj36.png" />
+                    <h4>留学</h4>
+                    <p>
+                        针对于想去韩国留学的学院专门制定的教材
+                        可以让学院快速融入韩国文化中
+                    </p>
+                    <p>
+                        内容包含日常韩语。韩国文化，韩国日常礼仪和社交常用语及正宗的韩语发音
+                    </p>
+                </div>
+            </div>
+
+            <div class="kcjs_ye ">
+                <div class="kcjs_asp">
+                    <img src="~/images/bj371.jpg" style="margin-bottom:20px">
+                    <h4>旅行</h4>
+                    <p>针对想去韩国旅行，购物的短期速成制定教学方式</p>
+                    <p>内容包含旅行中常用语，<br />及旅行中会遇到的问题和购物时所必备的语句。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

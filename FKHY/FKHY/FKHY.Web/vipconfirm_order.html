@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>确认订单信息</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="author" content="Administrator">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/fstyle.css">
+        <link rel="stylesheet" type="text/css" href="css/public.css">
+	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+</head>
+<body>
+     <script type="text/javascript" src="js/head.js"></script>
+     
+	<div class="yiqian">
+		<div class="confirm_strip">
+			<div class="confirm_strip_one">
+				<span class="left_strip"></span>
+				<span class="num_circular">1</span>
+				<span class="right_strip"></span>
+				<p>确认订单信息</p>
+			</div>
+			<div class="confirm_strip_two">
+				<span class="left_strip"></span>
+				<span class="num_circular">2</span>
+				<span class="right_strip"></span>
+				<p>成功提交信息</p>
+			</div>
+		</div>
+		<div class="confirm_content">
+			<div class="confirm_content_left">
+				<img src="images/2.jpg" style="width:391px;height: 261px;">
+			</div>
+			<div class="confirm_content_right" style="margin-top: 40px;">
+				<p>疯咖VIP尊享特权</p>
+				<p>1.尊享疯咖公开课</p>
+				<p>2.赠送课时优惠券</p>
+				<p>3.线下活动免费参加</p>
+				<p>4.VIP学霸荣耀标识</p>
+				<p>5.疯咖独家定制专属生日礼物</p>
+			</div>
+		</div>
+
+		<div class="payment_platform">
+			<div class="pp_title">
+				支付平台
+			</div>
+			<div class="pp_content">
+				<div class="zfb">
+					<span class="zfbd"></span>
+					<img src="images/zfb.jpg">
+				</div>
+				<div class="wx">
+					<span class="wxd"></span>
+					<img src="images/wxzf.jpg">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="sub_order">
+		<div>
+			<span class="yf">应付金额:</span>
+			<span class="price">2720.00</span>
+			<a href="viporder_suss.html"><span class="sub_bu">提交订单</span></a>
+		</div>
+	</div>
+	<script type="text/javascript">
+	$(".zfb").click(function(){
+		$(".zfbd").css("background","#f9ca00");
+		$(".wxd").css("background","none");
+	})
+	$(".wx").click(function(){
+		$(".wxd").css("background","#f9ca00");
+		$(".zfbd").css("background","none");
+	})
+	</script>
+       
+          </div>
+</body>
+</html>

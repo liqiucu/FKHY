@@ -1,0 +1,247 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* ===============
+ * 重新定义Html元素
+ * =============== */
+@font-face { 
+
+font-family: 'dqht'; 
+
+src: url('../font/dqht.otf'); 
+
+src: local('dqht Regular'), 
+
+local('dqht'), 
+
+url('../font/dqht.otf') format('truetype'); 
+
+} 
+body{font-family: dqht;}
+@font-face { 
+
+font-family: 'sth'; 
+
+src: url('font/sth.otf'); 
+
+src: local('sth Regular'), 
+
+local('sth'), 
+
+url('font/sth.otf') format('truetype');
+ }
+
+ body {
+	color: #666666;
+	margin: 0;
+	padding: 0;
+   
+}
+
+html, body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, fieldset, input {
+	padding: 0;
+	margin: 0;
+	font-size:14px;
+	
+}
+h1, h2, h3, h4, h5, h6, pre, code, address, caption, cite, code, em, strong, table, th, td {
+	font-size: 1em;
+	font-style: normal;
+	font-weight: normal;
+}
+
+strong {
+	font-weight: bold;
+}
+ul, ol {
+	list-style: none outside none;
+}
+fieldset, img {
+	border: medium none;
+}
+caption, th {
+	text-align: left;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.kcjs .kcks h1{font-family: sth;}
+a {
+	color: #555;
+	outline: medium none;
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+a:hover {
+	color: #E4393C;
+	text-decoration: none;
+}
+i, cite, em {
+	font-style: normal;
+}
+.fl{float:left;}
+.fr{float:right;}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+　　color: #595757 !important;
+　　}
+　　input:-moz-placeholder, textarea:-moz-placeholder {
+　　color:#595757 !important;
+　　}
+　　input::-moz-placeholder, textarea::-moz-placeholder {
+　　color:#595757 !important;
+　　}
+　　input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+　　color:#595757 !important;
+　　}
+/* ==========================
+ * 为旧版本浏览器格式化Html5元素
+ * ========================== */
+article, aside, dialog, footer, header, section, footer, nav, figure, menu {
+	display: block;
+}
+
+/*头部*/
+.nav{width:100%; background:#343331; min-width: 1050px;height: 60px;  }
+.nav .nav_top{max-width: 1050px;min-width: 1050px; height: 60px; margin: 0 auto; width:100%; position: relative;}
+
+.nav .nav_top ul{width:55%;height: 60px;}
+.nav .nav_top ul li{float:left;    padding: 0 3.4%;}
+.nav .nav_top ul li a{display:block; line-height:60px; color: white;font-size: 16px; text-align: center;}
+.nav .nav_top ul li a:hover{color:#f9c801;}
+.nav .nav_top .logo{width:17%; margin:11px 20px 0 0;}
+.nav .nav_top .newfile .ewm {
+    width: auto;
+    float: left;
+    margin-left: 0px;
+    margin-top: 0px;
+	padding-top:15px;
+    position: relative;
+    margin-right:7%;
+}
+
+.nav .nav_top .newfile .ewm:hover{
+	background: rgba(238, 238, 238, 0.44);
+}
+.nav .nav_top .newfile .ewm:hover .dewm{
+	background: rgba(238, 238, 238, 0.44);
+}
+.nav .nav_top .newfile .ewm .dewm {
+    display: none;
+    float: left;
+    z-index: 9;
+    position: absolute;
+    left: 0px;
+    margin-top: 0px;
+    z-index: 99999999;
+}
+.nav .nav_top .newfile span{
+	float: left;
+	margin-right:7%;
+}
+.nav .nav_top .newfile .user{
+	border:solid 1px white;
+	border-radius:5px;
+	padding:5px;
+	color: white;
+}
+.nav .nav_top .newfile .ewm{margin-top:0px !important;}
+.nav .nav_top .newfile .ewm,.nav .nav_top .newfile span,.nav .nav_top .newfile .user{margin-top:15px;}
+.nav .nav_top .newfile .user a{
+	color: white;
+    padding: 3px;
+}
+.nav .nav_top .newfile .user a:hover{text-decoration: none;}
+.nav .nav_top .newfile .user_login{
+	float:left;
+	height:60px;
+    overflow:hidden;	
+	color: white;
+	width:54%;
+}
+.newfile{
+	cursor: pointer;
+	width:22%;
+}
+.nav .nav_top .newfile .user_login span{
+	float: left;
+	overflow: hidden;
+	line-height:35px;
+	margin-right:7%;
+}
+
+.nav .nav_top .newfile .user_login span.fiels{
+	margin-top:0px;
+}
+.nav .nav_top .newfile .user_login span.fiels p{float:right; line-height:63px;}
+.nav .nav_top .newfile .user_login span.fiels img{
+	margin-top:10px;
+}
+
+.nav .nav_top .hid{ display:none;}
+.nav .nav_top .show{ display:block;}
+.nav .nav_top .goods_nav{ width:11%; border-radius:5px; float:right; right:103px; overflow:hidden; position:absolute;margin-top:50px; z-index:9999999}
+.nav .nav_top .Triangle{ width:100%; height:20px; }
+.nav .nav_top .Triangle h2{ 
+width: 0;height: 0;border-style: solid;border-color: transparent transparent rgba(255, 255, 255, 0.62) transparent;border-width: 10px;transition: 0.6s;float:right;
+ margin-right:13px;}
+.nav .nav_top .goods_nav ul{ width:100%; height:auto; overflow:hidden;background-color:rgba(255, 255, 255, 0.62);border-radius:2px;}
+.nav .nav_top .goods_nav li{ width: 80%;
+    height: 40px;
+    border-bottom: 1px solid #9b9998;
+    cursor:pointer;
+    margin: 0 7%;}
+.nav .nav_top .nl5{ background:#2D2D2D}
+.nav .nav_top .goods_nav li a{ display:block; width:100%; height:40px;}
+.nav .nav_top .goods_nav li span{display: block;width:14px;height:25px; float:left; margin-top:9px; margin-left:5px; margin-right:5px;}
+.nav .nav_top .goods_nav li i{ font-style:normal; color:#343331; font-size:14px; display:block; float:left; line-height:40px;}
+.nav .nav_top .menu1{ background:url(../images/shez.png) no-repeat 0 center;}
+.nav .nav_top .menu2{ background:url(../images/mima.png) no-repeat 0 center;}
+.nav .nav_top .menu3{ background:url(../images/tuic.png) no-repeat 0 center;}
+
+.nav .nav_top .newfile .user_login span i{
+	    width: 15px;
+    height: 15px;
+    background: red;
+    border-radius: 50%;
+    display: block;
+    float: right;
+    font-size: 10px;
+    text-align: center;
+    line-height: 15px;
+    position: absolute;
+    right: 10px;
+    top:13px;
+}
+
+
+/*头部结束*/
+
+/*尾部*/
+footer .footer{width:100%; min-width:1000px;    margin-top: 40px;}
+footer .tel{width:100%; max-width:1000px; margin:0 auto; line-height:30px; height:61px; }
+footer .tel span.td{color:#2ABFF6; margin-right:20px; margin-left:5px;}
+footer .tel div.foot{
+	border-top:solid 1px #ddd;
+	background: url("../images/btun-logo.jpg") no-repeat right center;
+	height:30px;
+}
+footer .tel div.foot span{float: left;}
+footer .tel div.foot ul{
+	float:left;
+	margin-left:20px;
+}
+footer .tel div.foot ul li{
+	float: left;
+}
+footer .tel div.foot ul li a{
+	padding:0 10px;
+	line-height:30px;
+	border-right:solid 1px #555;
+	
+}
+footer .tel div.foot ul li a:nth-last-child(4) {border-right:0px;}
+/*尾部结束*/
