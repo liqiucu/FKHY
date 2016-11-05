@@ -57,7 +57,7 @@ namespace FKHY.Web
             {
                 if (Session == null || Session["UserName"] == null)
                 {
-                    //string UserName = ZhiNangTuan.Framework.BusinessLogic.UserLogic.GetUserName(UserId, UserTypeId.Value);
+                    //string UserName = FKHY.Framework.BusinessLogic.UserLogic.GetUserName(UserId, UserTypeId.Value);
                     //if (!string.IsNullOrEmpty(UserName))
                     //    Session["UserName"] = UserName;
                     return "";

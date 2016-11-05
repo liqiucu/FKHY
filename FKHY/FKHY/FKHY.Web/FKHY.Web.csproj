@@ -469,12 +469,14 @@
     <Content Include="Views\StaticContent\Contact.cshtml" />
     <Content Include="Views\StaticContent\Benefit.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Pay\Index.cshtml" />
+    <Content Include="Views\Pay\Paid.cshtml" />
+    <Content Include="Views\Pay\Return_Url.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="css\" />
     <Folder Include="font\" />
-    <Folder Include="Views\Pay\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
