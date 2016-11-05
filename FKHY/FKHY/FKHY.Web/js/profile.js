@@ -12,28 +12,28 @@ $(function(){
 		 $(".js-menu ul li ").eq($(this).index()).removeClass('br-cur').siblings().addClass('br-cur');
 	})
 	$(".wx").click(function(){//自习课程选择效果
-		$(".wx").find("img").attr('src','./images/wx.png');
+		$(".wx").find("img").attr('src','/images/wx.png');
 		$(".wx").css({color:"#B5B5B6"})
 		$(".wx").find("span").css({color:"#B5B5B6"})
 		$(".yx").find("span").css({color:"#000"})
-		$(this).find("img").attr('src','./images/xx.png');
+		$(this).find("img").attr('src','/images/xx.png');
 		$(this).css({color:"#000"})
 		$(this).find("span").css({color:"#F8C900"})
-		$(".yx").find("img").attr('src','./images/yx.png');
+		$(".yx").find("img").attr('src','/images/yx.png');
 	})
 	$(".yx").click(function(){//自习课程选择效果
 		$(".wx").css({color:"#B5B5B6"})
 		$(".wx").find("span").css({color:"#B5B5B6"})
 		$(".yx").find("span").css({color:"#000"})
-		$(".yx").find("img").attr('src','./images/yx.png');
-		$(this).find("img").attr('src','./images/xx.png');
+		$(".yx").find("img").attr('src','/images/yx.png');
+		$(this).find("img").attr('src','/images/xx.png');
 		$(this).find("span").css({color:"#F8C900"})
-		$(".wx").find("img").attr('src','./images/wx.png');
+		$(".wx").find("img").attr('src','/images/wx.png');
 	})
 	$(".bkyx").click(function(){//备课教室选择效果
 		$(".bkyx").find("span").css({color:"#000"})
-		$(".bkyx").find("img").attr('src','./images/yx.png');
-		$(this).find("img").attr('src','./images/bk.png');
+		$(".bkyx").find("img").attr('src','/images/yx.png');
+		$(this).find("img").attr('src','/images/bk.png');
 		$(this).find("span").css({color:"#46B7BC"})
 		
 	})

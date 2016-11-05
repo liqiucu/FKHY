@@ -389,7 +389,6 @@
     <Content Include="images\搜索.png" />
     <Content Include="images\登陆那阁框子.png" />
     <Content Include="images\网页banner3.jpg" />
-    <Content Include="jszx.html" />
     <Content Include="js\calendar.js" />
     <Content Include="js\calendar_min.js" />
     <Content Include="js\calendar_min2.js" />
@@ -419,7 +418,6 @@
     <Content Include="js\public.js" />
     <Content Include="js\TouchSlide.1.1.js" />
     <Content Include="js\touchslider.dev.js" />
-    <Content Include="login.html" />
     <Content Include="open_class2.html" />
     <Content Include="open_class3.html" />
     <Content Include="order_suss.html" />
