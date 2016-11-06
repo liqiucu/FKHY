@@ -14,6 +14,13 @@ namespace FKHY.Models.DBModels
     
     public partial class Teacher
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Teacher()
+        {
+            this.ClassCources = new HashSet<ClassCource>();
+            this.TeacherDailies = new HashSet<TeacherDaily>();
+        }
+    
         public int TeacherId { get; set; }
         public string TeacherName { get; set; }
         public string Image { get; set; }
@@ -27,5 +34,10 @@ namespace FKHY.Models.DBModels
         public string Contact { get; set; }
         public System.DateTime DataChange_LastTime { get; set; }
         public System.DateTime Data_CreateTime { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClassCource> ClassCources { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TeacherDaily> TeacherDailies { get; set; }
     }
 }

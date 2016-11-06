@@ -23,6 +23,36 @@
         <AssociationConnector Association="FKHY.Models.FK_CashFlow_Trade" ManuallyRouted="false" />
         <AssociationConnector Association="FKHY.Models.FK_Trade_TradeType" ManuallyRouted="false" />
         <AssociationConnector Association="FKHY.Models.FK_TradeType_TradeTypeGroup" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FKHY.Models.BB" Width="1.5" PointX="10.875" PointY="13.625" />
+        <EntityTypeShape EntityType="FKHY.Models.BBSDetail" Width="1.5" PointX="13.125" PointY="13.125" />
+        <EntityTypeShape EntityType="FKHY.Models.ClassCource" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="FKHY.Models.ContactU" Width="1.5" PointX="2.75" PointY="15.625" />
+        <EntityTypeShape EntityType="FKHY.Models.CourcePkg" Width="1.5" PointX="10.125" PointY="16.625" />
+        <EntityTypeShape EntityType="FKHY.Models.CourcePkgDetail" Width="1.5" PointX="12.375" PointY="17.125" />
+        <EntityTypeShape EntityType="FKHY.Models.Course" Width="1.5" PointX="0.75" PointY="17.75" />
+        <EntityTypeShape EntityType="FKHY.Models.Document" Width="1.5" PointX="3" PointY="19.875" />
+        <EntityTypeShape EntityType="FKHY.Models.Fav" Width="1.5" PointX="15.375" PointY="5.625" />
+        <EntityTypeShape EntityType="FKHY.Models.HomeBanner" Width="1.5" PointX="4.75" PointY="15.625" />
+        <EntityTypeShape EntityType="FKHY.Models.HomeMedia" Width="1.5" PointX="6.75" PointY="15.625" />
+        <EntityTypeShape EntityType="FKHY.Models.HomeNew" Width="1.5" PointX="15.75" PointY="9.625" />
+        <EntityTypeShape EntityType="FKHY.Models.Message" Width="1.5" PointX="15.75" PointY="12.625" />
+        <EntityTypeShape EntityType="FKHY.Models.Order" Width="1.5" PointX="12.375" PointY="5.25" />
+        <EntityTypeShape EntityType="FKHY.Models.PublicCource" Width="1.5" PointX="13.125" PointY="9.75" />
+        <EntityTypeShape EntityType="FKHY.Models.StudentClassCource" Width="1.5" PointX="17.625" PointY="4.875" />
+        <EntityTypeShape EntityType="FKHY.Models.TeacherDaily" Width="1.5" PointX="10.375" PointY="19.875" />
+        <AssociationConnector Association="FKHY.Models.FK_BBSDetail_BBS" />
+        <AssociationConnector Association="FKHY.Models.FK_Fav_BBSDetail" />
+        <AssociationConnector Association="FKHY.Models.FK_ClassCource_Teacher" />
+        <AssociationConnector Association="FKHY.Models.FK_StudentClassCource_ClassCource" />
+        <AssociationConnector Association="FKHY.Models.FK_CourcePkgDetail_CourcePkg" />
+        <AssociationConnector Association="FKHY.Models.FK_Order_CourcePkg" />
+        <AssociationConnector Association="FKHY.Models.FK_CourcePkgDetail_Course" />
+        <AssociationConnector Association="FKHY.Models.FK_Document_Course" />
+        <AssociationConnector Association="FKHY.Models.FK_Fav_PublicCource" />
+        <AssociationConnector Association="FKHY.Models.FK_Fav_Student" />
+        <AssociationConnector Association="FKHY.Models.FK_Order_Student" />
+        <AssociationConnector Association="FKHY.Models.FK_StudentClassCource_Order" />
+        <AssociationConnector Association="FKHY.Models.FK_TeacherDaily_Teacher" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

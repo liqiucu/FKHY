@@ -1,5 +1,6 @@
 ﻿using FKHY.Common;
 using FKHY.Models.DBModels;
+using FKHY.Web.Common;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -23,7 +24,7 @@ namespace FKHY.BizLogic.Login
             CookieHelper.DeleteAuthCookie();
             using (DataAccess db = new DataAccess())
             {
-                //db.WebLogons.Where(r => r.UserId == userId && r.UserTypeId == userTypeId).ToList().ForEach(r => db.WebLogons.Remove(r));
+                db.WebLogons.Where(r => r.UserId == userId && r.UserTypeId == userTypeId).ToList().ForEach(r => db.WebLogons.Remove(r));
                 db.SaveChanges();
             }
         }
@@ -59,34 +60,24 @@ namespace FKHY.BizLogic.Login
             }
         }
 
-        public static dynamic Logon(string loginName, string password, bool? rememberPassword, int? userTypeId)
+        public static dynamic Logon(string loginName, string password, bool rememberPassword, int userTypeId)
         {
             loginName = loginName.Trim();
             dynamic returdynamic = new ExpandoObject();
             using (DataAccess db = new DataAccess())
             {
-                if (userTypeId == null)
+                if (userTypeId == Constants.学生)
                 {
-                    userTypeId = Constants.UserType.企业;
-                }
-                if (userTypeId == Constants.UserType.企业)
-                {
-                    var user = db.Companies.SingleOrDefault(r => r.Mobile == loginName || r.Email == loginName);
+                    var user = db.Students.SingleOrDefault(r => r.Phone == loginName);
+
                     if (user != null)
                     {
                         string salt = user.Salt;
                         string hashedPswd = user.Password;
-                        if (Helper.MD5(password) == hashedPswd)
-                        //判断是否登录合法站点。
+                        if (FKHYCommon.MD5(password) == hashedPswd)//判断是否登录合法站点。
                         {
-                            var userLogons = db.WebLogons.Where(r => r.UserId == user.CompanyId && r.UserTypeId == userTypeId).OrderByDescending(r => r.DateLogon).FirstOrDefault();
-                            if (userLogons != null)
-                            {
-                                user.LastLogonDate = userLogons.DateLogon;
-                                db.SaveChanges();
-                            }
                             //用户手动登陆后,必须从新赋予COOKIE和TOKEN
-                            RefreshLogon(user.CompanyId, Constants.UserType.企业, rememberPassword ?? false);
+                            RefreshLogon(user.UserId, Constants.学生, rememberPassword);
                             returdynamic.status = 0;
                             return returdynamic;
                         }
@@ -96,29 +87,19 @@ namespace FKHY.BizLogic.Login
                             return returdynamic;
                         }
                     }
-                    else
-                    {
-                        userTypeId = Constants.UserType.服务商;
-                    }
                 }
-                if (userTypeId == Constants.UserType.服务商)
+                else
                 {
-                    var user = db.ServiceProviders.SingleOrDefault(r => r.Mobile == loginName || r.Email == loginName);
+                    var user = db.Teachers.SingleOrDefault(r => r.Phone == loginName);
                     if (user != null)
                     {
                         string salt = user.Salt;
                         string hashedPswd = user.Password;
-                        if (Helper.MD5(password) == hashedPswd)
-                        //判断是否登录合法站点。
+                        if (FKHYCommon.MD5(password) == hashedPswd)//判断是否登录合法站点。
                         {
-                            var userLogons = db.WebLogons.Where(r => r.UserId == user.ServiceProviderId && r.UserTypeId == userTypeId).OrderByDescending(r => r.DateLogon).FirstOrDefault();
-                            if (userLogons != null)
-                            {
-                                user.LastLogonDate = userLogons.DateLogon;
-                                db.SaveChanges();
-                            }
+                            var userLogons = db.WebLogons.Where(r => r.UserId == user.TeacherId && r.UserTypeId == userTypeId).OrderByDescending(r => r.DateLogon).FirstOrDefault();
                             //用户手动登陆后,必须从新赋予COOKIE和TOKEN
-                            RefreshLogon(user.ServiceProviderId, Constants.UserType.服务商, rememberPassword ?? false);
+                            RefreshLogon(user.TeacherId, Constants.老师, rememberPassword);
                             returdynamic.status = 0;
                             return returdynamic;
                         }
@@ -134,61 +115,30 @@ namespace FKHY.BizLogic.Login
             return returdynamic;
         }
 
-        public static string GetUserName(long? userId, int userTypeId)
+        public static Student GetStudent(long userId)
         {
-            if (userId.HasValue && userTypeId == Constants.UserType.企业)
+            if (userId> 0)
             {
-                using (WebDataAccess db = new WebDataAccess())
+                using (DataAccess db = new DataAccess())
                 {
-                    var c = db.Companies.Single(r => r.CompanyId == userId);
-                    return string.IsNullOrEmpty(c.FullName) ? (string.IsNullOrEmpty(c.Email) ? c.Mobile : c.Email) : c.FullName;
+                    var c = db.Students.Single(r => r.UserId == userId);
+                    return c;
                 }
             }
-            else if (userId.HasValue && userTypeId == Constants.UserType.服务商)
-            {
-                using (WebDataAccess db = new WebDataAccess())
-                {
-                    var c = db.ServiceProviders.Single(r => r.ServiceProviderId == userId);
-                    return string.IsNullOrEmpty(c.FullName) ? (string.IsNullOrEmpty(c.Email) ? c.Mobile : c.Email) : c.FullName;
-                }
-            }
-            return string.Empty;
+            return null;
         }
-        public static int GetVerified(long? userId, int userTypeId)
+
+        public static Teacher GetTeacher(long teacherId)
         {
-            if (userId.HasValue && userTypeId == Constants.UserType.企业)
+            if (teacherId > 0)
             {
-                using (WebDataAccess db = new WebDataAccess())
+                using (DataAccess db = new DataAccess())
                 {
-                    var c = db.Companies.Single(r => r.CompanyId == userId);
-
-                    if (c.VerifyStatusId == null)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return c.VerifyStatusId.Value;
-                    }
+                    var c = db.Teachers.Single(r => r.TeacherId == teacherId);
+                    return c;
                 }
             }
-            else if (userId.HasValue && userTypeId == Constants.UserType.服务商)
-            {
-                using (WebDataAccess db = new WebDataAccess())
-                {
-                    var c = db.ServiceProviders.Single(r => r.ServiceProviderId == userId);
-
-                    if (c.VerifyStatusId == null)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return c.VerifyStatusId.Value;
-                    }
-                }
-            }
-            return 0;
+            return null;
         }
     }
 }

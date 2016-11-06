@@ -58,10 +58,34 @@
     <Compile Include="DBModels\Bank.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBModels\BB.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModels\BBSDetail.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBModels\CashFlow.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="DBModels\CashFlowStatu.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModels\ClassCource.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModels\ContactU.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModels\CourcePkg.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModels\CourcePkgDetail.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModels\Course.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModels\Document.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="DBModels\Entities.Context.cs">
@@ -79,7 +103,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Entities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DBModels\Fav.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModels\HomeBanner.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModels\HomeMedia.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModels\HomeNew.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModels\Message.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModels\Order.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBModels\PaymentType.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModels\PublicCource.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="DBModels\sp_text_Result.cs">
@@ -88,7 +133,13 @@
     <Compile Include="DBModels\Student.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBModels\StudentClassCource.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBModels\Teacher.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModels\TeacherDaily.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="DBModels\Trade.cs">

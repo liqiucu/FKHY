@@ -1,12 +1,15 @@
 ﻿using FKHY.Common;
-using FKHY.Web.Convert;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
+using System.Data.OleDb;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Script.Serialization;
 
@@ -161,5 +164,129 @@ namespace FKHY.Web.Common
             return jss.Serialize(obj);
         }
         #endregion
+
+        public static string FromByteArrayToString(byte[] array)
+        {
+            StringBuilder output = new StringBuilder("");
+            for (int i = 0; i < array.Length; i++)
+            {
+                output.Append(array[i].ToString("X2"));
+            }
+            return output.ToString();
+        }
+
+        //加密方法
+        public static string GenerateHashWithSalt(string password, string salt)
+        {
+            // merge password and salt together
+            string sHashWithSalt = password + salt;
+            // convert this merged value to a byte array
+            byte[] saltedHashBytes = Encoding.UTF8.GetBytes(sHashWithSalt);
+            // use hash algorithm to compute the hash
+            System.Security.Cryptography.HashAlgorithm algorithm = new System.Security.Cryptography.SHA256Managed();
+            // convert merged bytes to a hash as byte array
+            byte[] hash = algorithm.ComputeHash(saltedHashBytes);
+            // return the has as a base 64 encoded string
+            
+            return Convert.ToBase64String(hash);
+        }
+
+        public static int GenerateRandomNumber(int min, int max)
+        {
+            byte[] data = new byte[8];
+            RNGCryptoServiceProvider Rand = new RNGCryptoServiceProvider();
+            uint scale = uint.MaxValue;
+            while (scale == uint.MaxValue)
+            {
+                // Get four random bytes.
+                byte[] four_bytes = new byte[4];
+                Rand.GetBytes(four_bytes);
+
+                // Convert that into an uint.
+                scale = BitConverter.ToUInt32(four_bytes, 0);
+            }
+
+            // Add min to the scaled difference between max and min.
+            return (int)(min + (max - min) * (scale / (double)uint.MaxValue));
+        }
+
+        public static string GenerateToken()
+        {
+            return Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+        }
+        public static string JsonString(object obj)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Serialize(obj);
+        }
+
+        public static DataSet ExcelToDataSet(string fileName)
+        {
+            string connectionString = string.Format("provider=Microsoft.Jet.OLEDB.4.0; data source={0};Extended Properties=Excel 8.0;", fileName);
+            if (fileName.ToLower().IndexOf(".xlsx") > 0)
+            {
+                connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + fileName + ";Extended Properties=\"Excel 12.0;HDR=Yes;IMEX=2\"";
+            }
+            DataSet data = new DataSet();
+
+            foreach (var sheetName in GetExcelSheetNames(connectionString))
+            {
+                using (OleDbConnection con = new OleDbConnection(connectionString))
+                {
+                    var dataTable = new DataTable();
+                    string query = string.Format("SELECT * FROM [{0}]", sheetName);
+                    con.Open();
+                    OleDbDataAdapter adapter = new OleDbDataAdapter(query, con);
+                    adapter.Fill(dataTable);
+                    data.Tables.Add(dataTable);
+                }
+            }
+
+            return data;
+        }
+        static string[] GetExcelSheetNames(string connectionString)
+        {
+            OleDbConnection con = null;
+            DataTable dt = null;
+            con = new OleDbConnection(connectionString);
+            con.Open();
+            dt = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+
+            if (dt == null)
+            {
+                return null;
+            }
+
+            String[] excelSheetNames = new String[dt.Rows.Count];
+            int i = 0;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                excelSheetNames[i] = row["TABLE_NAME"].ToString();
+                i++;
+            }
+
+            return excelSheetNames;
+        }
+        public static string MD5(string strText)
+        {
+            // return System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(strText, "MD5");
+            //new
+            System.Security.Cryptography.MD5 md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+
+            //获取密文字节数组
+            byte[] bytResult = md5.ComputeHash(System.Text.Encoding.UTF8.GetBytes(strText));
+
+            //转换成字符串，并取9到25位
+            //string strResult = BitConverter.ToString(bytResult, 4, 8); 
+            //转换成字符串，32位
+
+            string strResult = BitConverter.ToString(bytResult);
+
+            //BitConverter转换出来的字符串会在每个字符中间产生一个分隔符，需要去除掉
+            strResult = strResult.Replace("-", "");
+
+            return strResult.ToLower();
+        }
     }
 }

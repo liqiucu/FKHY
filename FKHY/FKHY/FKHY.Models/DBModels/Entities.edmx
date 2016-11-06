@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FKHY.Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FKHY.Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AliPayIPN">
           <Key>
             <PropertyRef Name="PaymentId" />
@@ -54,6 +54,26 @@
           <Property Name="Sequence" Type="int" Nullable="false" />
           <Property Name="DateCreated" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="BBS">
+          <Key>
+            <PropertyRef Name="BBSId" />
+          </Key>
+          <Property Name="BBSId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BBSIndex" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BBSDetail">
+          <Key>
+            <PropertyRef Name="BBSDetailId" />
+          </Key>
+          <Property Name="BBSDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BBSId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Author" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Create_Time" Type="datetime" Nullable="false" />
+          <Property Name="Datachenge_LastTime" Type="datetime" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="4000" Nullable="false" />
+        </EntityType>
         <EntityType Name="CashFlow">
           <Key>
             <PropertyRef Name="CashFlowId" />
@@ -85,6 +105,134 @@
           <Property Name="Description" Type="nvarchar" MaxLength="50" />
           <Property Name="DateCreated" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="ClassCource">
+          <Key>
+            <PropertyRef Name="ClassCourceId" />
+          </Key>
+          <Property Name="ClassCourceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeacherId" Type="int" Nullable="false" />
+          <Property Name="ClassId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Create_Time" Type="datetime" Nullable="false" />
+          <Property Name="Start_Time" Type="datetime" Nullable="false" />
+          <Property Name="End_Time" Type="datetime" Nullable="false" />
+          <Property Name="TeacherPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TeacherClassId" Type="nvarchar" MaxLength="50" />
+          <Property Name="TeacherJoinTime" Type="datetime" />
+          <Property Name="TeacherClassUrl" Type="nvarchar" MaxLength="50" />
+          <Property Name="File_Ids" Type="nvarchar" MaxLength="500" />
+          <Property Name="TeacherPlayBackAddress" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ContactUs">
+          <Key>
+            <PropertyRef Name="ContactUsId" />
+          </Key>
+          <Property Name="ContactUsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CourcePkg">
+          <Key>
+            <PropertyRef Name="CourcePkgId" />
+          </Key>
+          <Property Name="CourcePkgId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PkgName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PerCost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TotalCost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Range" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CourcePkgDetail">
+          <Key>
+            <PropertyRef Name="CourcePkgDetailId" />
+          </Key>
+          <Property Name="CourcePkgDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourcePkgId" Type="int" Nullable="false" />
+          <Property Name="CourceId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourceId" />
+          </Key>
+          <Property Name="CourceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourceName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourceType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="DocumentId" />
+          </Key>
+          <Property Name="DocumentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DocumentIndex" Type="int" Nullable="false" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="WebCreate_Time" Type="datetime" />
+          <Property Name="Url" Type="nvarchar" MaxLength="200" />
+          <Property Name="File_Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThirdCreate_Time" Type="datetime" />
+          <Property Name="CourceId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fav">
+          <Key>
+            <PropertyRef Name="FavId" />
+          </Key>
+          <Property Name="FavId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PublicCourceId" Type="int" />
+          <Property Name="BBSDetailId" Type="int" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HomeBanner">
+          <Key>
+            <PropertyRef Name="HomeBannerId" />
+          </Key>
+          <Property Name="HomeBannerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HomeMedia">
+          <Key>
+            <PropertyRef Name="HomeMediaId" />
+          </Key>
+          <Property Name="HomeMediaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VedeoUrl" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HomeNews">
+          <Key>
+            <PropertyRef Name="HomeNewsId" />
+          </Key>
+          <Property Name="HomeNewsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cotent" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Create_Time" Type="datetime" Nullable="false" />
+          <Property Name="DataChange_LastTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Content" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Create_Time" Type="datetime" Nullable="false" />
+          <Property Name="SenderId" Type="int" Nullable="false" />
+          <Property Name="SenderUserType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourcePkgId" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="Pay_Time" Type="datetime" />
+          <Property Name="Expired_Time" Type="datetime" />
+          <Property Name="Create_Time" Type="datetime" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="PaymentType">
           <Key>
             <PropertyRef Name="TypeId" />
@@ -95,6 +243,19 @@
           <Property Name="AccessToken" Type="nvarchar" MaxLength="255" />
           <Property Name="DateExpired" Type="datetime" />
           <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PublicCource">
+          <Key>
+            <PropertyRef Name="PublicCourceId" />
+          </Key>
+          <Property Name="PublicCourceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="TeacherName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TeacherImg" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Create_Time" Type="datetime" Nullable="false" />
+          <Property Name="VedeoUrl" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CoverImage" Type="nvarchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -117,6 +278,23 @@
           <Property Name="DataChange_LastTime" Type="datetime" Nullable="false" />
           <Property Name="Data_CreateTime" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="StudentClassCource">
+          <Key>
+            <PropertyRef Name="StudentClassCourceId" />
+          </Key>
+          <Property Name="StudentClassCourceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassCourceId" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="StudentClassId" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentJoin_Time" Type="datetime" />
+          <Property Name="StudentClassAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="StudentPlayBackAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="TeacherComment" Type="nvarchar" MaxLength="500" />
+          <Property Name="StudentComment" Type="nvarchar" MaxLength="500" />
+          <Property Name="TeacherComment_Time" Type="datetime" />
+          <Property Name="StudentCommentDate" Type="datetime" />
+          <Property Name="IsShowHome" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Teacher">
           <Key>
             <PropertyRef Name="TeacherId" />
@@ -134,6 +312,22 @@
           <Property Name="Contact" Type="nvarchar" MaxLength="50" />
           <Property Name="DataChange_LastTime" Type="datetime" Nullable="false" />
           <Property Name="Data_CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeacherDaily">
+          <Key>
+            <PropertyRef Name="TeacherDailyId" />
+          </Key>
+          <Property Name="TeacherDailyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YearMonth" Type="date" Nullable="false" />
+          <Property Name="AM_Start" Type="time" Precision="7" Nullable="false" />
+          <Property Name="AM_End" Type="time" Precision="7" Nullable="false" />
+          <Property Name="PM_Start" Type="time" Precision="7" Nullable="false" />
+          <Property Name="PM_End" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Weekend_Start" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Weekend_End" Type="time" Precision="7" Nullable="false" />
+          <Property Name="TeacherId" Type="int" Nullable="false" />
+          <Property Name="DataChange_LastTime" Type="datetime" Nullable="false" />
+          <Property Name="DataCreate_Time" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Trade">
           <Key>
@@ -217,6 +411,18 @@
           <Property Name="IPAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DateLogon" Type="datetime" Nullable="false" />
         </EntityType>
+        <Association Name="FK_BBSDetail_BBS">
+          <End Role="BBS" Type="Self.BBS" Multiplicity="1" />
+          <End Role="BBSDetail" Type="Self.BBSDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BBS">
+              <PropertyRef Name="BBSId" />
+            </Principal>
+            <Dependent Role="BBSDetail">
+              <PropertyRef Name="BBSId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CashFlow_CashFlowStatus">
           <End Role="CashFlowStatus" Type="Self.CashFlowStatus" Multiplicity="0..1" />
           <End Role="CashFlow" Type="Self.CashFlow" Multiplicity="*" />
@@ -238,6 +444,150 @@
             </Principal>
             <Dependent Role="CashFlow">
               <PropertyRef Name="TradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassCource_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="ClassCource" Type="Self.ClassCource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="ClassCource">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourcePkgDetail_CourcePkg">
+          <End Role="CourcePkg" Type="Self.CourcePkg" Multiplicity="1" />
+          <End Role="CourcePkgDetail" Type="Self.CourcePkgDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourcePkg">
+              <PropertyRef Name="CourcePkgId" />
+            </Principal>
+            <Dependent Role="CourcePkgDetail">
+              <PropertyRef Name="CourcePkgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourcePkgDetail_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="CourcePkgDetail" Type="Self.CourcePkgDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourceId" />
+            </Principal>
+            <Dependent Role="CourcePkgDetail">
+              <PropertyRef Name="CourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Document_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="Document" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourceId" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="CourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fav_BBSDetail">
+          <End Role="BBSDetail" Type="Self.BBSDetail" Multiplicity="0..1" />
+          <End Role="Fav" Type="Self.Fav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BBSDetail">
+              <PropertyRef Name="BBSDetailId" />
+            </Principal>
+            <Dependent Role="Fav">
+              <PropertyRef Name="BBSDetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fav_PublicCource">
+          <End Role="PublicCource" Type="Self.PublicCource" Multiplicity="0..1" />
+          <End Role="Fav" Type="Self.Fav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PublicCource">
+              <PropertyRef Name="PublicCourceId" />
+            </Principal>
+            <Dependent Role="Fav">
+              <PropertyRef Name="PublicCourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fav_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Fav" Type="Self.Fav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Fav">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_CourcePkg">
+          <End Role="CourcePkg" Type="Self.CourcePkg" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourcePkg">
+              <PropertyRef Name="CourcePkgId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CourcePkgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentClassCource_ClassCource">
+          <End Role="ClassCource" Type="Self.ClassCource" Multiplicity="1" />
+          <End Role="StudentClassCource" Type="Self.StudentClassCource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassCource">
+              <PropertyRef Name="ClassCourceId" />
+            </Principal>
+            <Dependent Role="StudentClassCource">
+              <PropertyRef Name="ClassCourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentClassCource_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="StudentClassCource" Type="Self.StudentClassCource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="StudentClassCource">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeacherDaily_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="TeacherDaily" Type="Self.TeacherDaily" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="TeacherDaily">
+              <PropertyRef Name="TeacherId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -380,11 +730,28 @@
         <EntityContainer Name="FKHYModelsStoreContainer">
           <EntitySet Name="AliPayIPN" EntityType="Self.AliPayIPN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BBS" EntityType="Self.BBS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BBSDetail" EntityType="Self.BBSDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CashFlow" EntityType="Self.CashFlow" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CashFlowStatus" EntityType="Self.CashFlowStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassCource" EntityType="Self.ClassCource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactUs" EntityType="Self.ContactUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourcePkg" EntityType="Self.CourcePkg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourcePkgDetail" EntityType="Self.CourcePkgDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fav" EntityType="Self.Fav" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HomeBanner" EntityType="Self.HomeBanner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HomeMedia" EntityType="Self.HomeMedia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HomeNews" EntityType="Self.HomeNews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentType" EntityType="Self.PaymentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PublicCource" EntityType="Self.PublicCource" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentClassCource" EntityType="Self.StudentClassCource" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeacherDaily" EntityType="Self.TeacherDaily" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trade" EntityType="Self.Trade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TradeType" EntityType="Self.TradeType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TradeTypeGroup" EntityType="Self.TradeTypeGroup" Schema="dbo" store:Type="Tables" />
@@ -392,6 +759,10 @@
           <EntitySet Name="UserBalance" EntityType="Self.UserBalance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WebLogon" EntityType="Self.WebLogon" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BBSDetail_BBS" Association="Self.FK_BBSDetail_BBS">
+            <End Role="BBS" EntitySet="BBS" />
+            <End Role="BBSDetail" EntitySet="BBSDetail" />
+          </AssociationSet>
           <AssociationSet Name="FK_CashFlow_CashFlowStatus" Association="Self.FK_CashFlow_CashFlowStatus">
             <End Role="CashFlowStatus" EntitySet="CashFlowStatus" />
             <End Role="CashFlow" EntitySet="CashFlow" />
@@ -399,6 +770,54 @@
           <AssociationSet Name="FK_CashFlow_Trade" Association="Self.FK_CashFlow_Trade">
             <End Role="Trade" EntitySet="Trade" />
             <End Role="CashFlow" EntitySet="CashFlow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassCource_Teacher" Association="Self.FK_ClassCource_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="ClassCource" EntitySet="ClassCource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourcePkgDetail_CourcePkg" Association="Self.FK_CourcePkgDetail_CourcePkg">
+            <End Role="CourcePkg" EntitySet="CourcePkg" />
+            <End Role="CourcePkgDetail" EntitySet="CourcePkgDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourcePkgDetail_Course" Association="Self.FK_CourcePkgDetail_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CourcePkgDetail" EntitySet="CourcePkgDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Document_Course" Association="Self.FK_Document_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Document" EntitySet="Document" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fav_BBSDetail" Association="Self.FK_Fav_BBSDetail">
+            <End Role="BBSDetail" EntitySet="BBSDetail" />
+            <End Role="Fav" EntitySet="Fav" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fav_PublicCource" Association="Self.FK_Fav_PublicCource">
+            <End Role="PublicCource" EntitySet="PublicCource" />
+            <End Role="Fav" EntitySet="Fav" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fav_Student" Association="Self.FK_Fav_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Fav" EntitySet="Fav" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_CourcePkg" Association="Self.FK_Order_CourcePkg">
+            <End Role="CourcePkg" EntitySet="CourcePkg" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Student" Association="Self.FK_Order_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentClassCource_ClassCource" Association="Self.FK_StudentClassCource_ClassCource">
+            <End Role="ClassCource" EntitySet="ClassCource" />
+            <End Role="StudentClassCource" EntitySet="StudentClassCource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentClassCource_Order" Association="Self.FK_StudentClassCource_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="StudentClassCource" EntitySet="StudentClassCource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherDaily_Teacher" Association="Self.FK_TeacherDaily_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="TeacherDaily" EntitySet="TeacherDaily" />
           </AssociationSet>
           <AssociationSet Name="FK_Trade_TradeType" Association="Self.FK_Trade_TradeType">
             <End Role="TradeType" EntitySet="TradeType" />
@@ -409,8 +828,7 @@
             <End Role="TradeType" EntitySet="TradeType" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FKHY.Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -528,6 +946,8 @@
           <Property Name="CodeSendTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DataChange_LastTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Data_CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Favs" Relationship="FKHY.Models.FK_Fav_Student" FromRole="Student" ToRole="Fav" />
+          <NavigationProperty Name="Orders" Relationship="FKHY.Models.FK_Order_Student" FromRole="Student" ToRole="Order" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -546,6 +966,8 @@
           <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DataChange_LastTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Data_CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ClassCources" Relationship="FKHY.Models.FK_ClassCource_Teacher" FromRole="Teacher" ToRole="ClassCource" />
+          <NavigationProperty Name="TeacherDailies" Relationship="FKHY.Models.FK_TeacherDaily_Teacher" FromRole="Teacher" ToRole="TeacherDaily" />
         </EntityType>
         <EntityType Name="Trade">
           <Key>
@@ -714,11 +1136,11 @@
             <End Role="TradeType" EntitySet="TradeTypes" />
           </AssociationSet>
           <FunctionImport Name="alipay_trade_confirmed">
-            <Parameter Name="TradeId" Mode="In" Type="Int64" />
+          <Parameter Name="TradeId" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="sp_clear" />
           <FunctionImport Name="sp_text" ReturnType="Collection(FKHY.Models.sp_text_Result)">
-            <Parameter Name="text" Mode="In" Type="String" />
+          <Parameter Name="text" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="txn_bind_bank_account">
             <Parameter Name="UserId" Mode="In" Type="Int64" />
@@ -783,7 +1205,7 @@
             <Parameter Name="TradeId" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="txn_trade_pay_user">
-            <Parameter Name="TradeId" Mode="In" Type="Int64" />
+          <Parameter Name="TradeId" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="txn_trade_payment_received" ReturnType="Collection(Int32)">
             <Parameter Name="TradeId" Mode="In" Type="Int64" />
@@ -806,7 +1228,7 @@
             <Parameter Name="Note" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="txn_trade_payment_unfreeze">
-            <Parameter Name="CashFlowId" Mode="In" Type="Int64" />
+          <Parameter Name="CashFlowId" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="txn_trade_third_party">
             <Parameter Name="UserId" Mode="In" Type="Int64" />
@@ -825,6 +1247,75 @@
             <Parameter Name="Note" Mode="In" Type="String" />
             <Parameter Name="PaymentTypeId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="BBS" EntityType="FKHY.Models.BB" />
+          <EntitySet Name="BBSDetails" EntityType="FKHY.Models.BBSDetail" />
+          <EntitySet Name="ClassCources" EntityType="FKHY.Models.ClassCource" />
+          <EntitySet Name="ContactUs" EntityType="FKHY.Models.ContactU" />
+          <EntitySet Name="CourcePkgs" EntityType="FKHY.Models.CourcePkg" />
+          <EntitySet Name="CourcePkgDetails" EntityType="FKHY.Models.CourcePkgDetail" />
+          <EntitySet Name="Courses" EntityType="FKHY.Models.Course" />
+          <EntitySet Name="Documents" EntityType="FKHY.Models.Document" />
+          <EntitySet Name="Favs" EntityType="FKHY.Models.Fav" />
+          <EntitySet Name="HomeBanners" EntityType="FKHY.Models.HomeBanner" />
+          <EntitySet Name="HomeMedias" EntityType="FKHY.Models.HomeMedia" />
+          <EntitySet Name="HomeNews" EntityType="FKHY.Models.HomeNew" />
+          <EntitySet Name="Messages" EntityType="FKHY.Models.Message" />
+          <EntitySet Name="Orders" EntityType="FKHY.Models.Order" />
+          <EntitySet Name="PublicCources" EntityType="FKHY.Models.PublicCource" />
+          <EntitySet Name="StudentClassCources" EntityType="FKHY.Models.StudentClassCource" />
+          <EntitySet Name="TeacherDailies" EntityType="FKHY.Models.TeacherDaily" />
+          <AssociationSet Name="FK_BBSDetail_BBS" Association="FKHY.Models.FK_BBSDetail_BBS">
+            <End Role="BB" EntitySet="BBS" />
+            <End Role="BBSDetail" EntitySet="BBSDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fav_BBSDetail" Association="FKHY.Models.FK_Fav_BBSDetail">
+            <End Role="BBSDetail" EntitySet="BBSDetails" />
+            <End Role="Fav" EntitySet="Favs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassCource_Teacher" Association="FKHY.Models.FK_ClassCource_Teacher">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="ClassCource" EntitySet="ClassCources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentClassCource_ClassCource" Association="FKHY.Models.FK_StudentClassCource_ClassCource">
+            <End Role="ClassCource" EntitySet="ClassCources" />
+            <End Role="StudentClassCource" EntitySet="StudentClassCources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourcePkgDetail_CourcePkg" Association="FKHY.Models.FK_CourcePkgDetail_CourcePkg">
+            <End Role="CourcePkg" EntitySet="CourcePkgs" />
+            <End Role="CourcePkgDetail" EntitySet="CourcePkgDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_CourcePkg" Association="FKHY.Models.FK_Order_CourcePkg">
+            <End Role="CourcePkg" EntitySet="CourcePkgs" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourcePkgDetail_Course" Association="FKHY.Models.FK_CourcePkgDetail_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="CourcePkgDetail" EntitySet="CourcePkgDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Document_Course" Association="FKHY.Models.FK_Document_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Document" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fav_PublicCource" Association="FKHY.Models.FK_Fav_PublicCource">
+            <End Role="PublicCource" EntitySet="PublicCources" />
+            <End Role="Fav" EntitySet="Favs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fav_Student" Association="FKHY.Models.FK_Fav_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Fav" EntitySet="Favs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Student" Association="FKHY.Models.FK_Order_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentClassCource_Order" Association="FKHY.Models.FK_StudentClassCource_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="StudentClassCource" EntitySet="StudentClassCources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherDaily_Teacher" Association="FKHY.Models.FK_TeacherDaily_Teacher">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="TeacherDaily" EntitySet="TeacherDailies" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_text_Result">
           <Property Type="String" Name="Object_Name" Nullable="false" MaxLength="128" />
@@ -851,6 +1342,378 @@
           <Property Type="String" Name="Body" Nullable="false" MaxLength="50" />
           <Property Type="Decimal" Name="TopupAmount" Nullable="true" Precision="19" />
         </ComplexType>
+        <EntityType Name="BB">
+          <Key>
+            <PropertyRef Name="BBSId" />
+          </Key>
+          <Property Name="BBSId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BBSIndex" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BBSDetails" Relationship="FKHY.Models.FK_BBSDetail_BBS" FromRole="BB" ToRole="BBSDetail" />
+        </EntityType>
+        <EntityType Name="BBSDetail">
+          <Key>
+            <PropertyRef Name="BBSDetailId" />
+          </Key>
+          <Property Name="BBSDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BBSId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Author" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Datachenge_LastTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BB" Relationship="FKHY.Models.FK_BBSDetail_BBS" FromRole="BBSDetail" ToRole="BB" />
+          <NavigationProperty Name="Favs" Relationship="FKHY.Models.FK_Fav_BBSDetail" FromRole="BBSDetail" ToRole="Fav" />
+        </EntityType>
+        <EntityType Name="ClassCource">
+          <Key>
+            <PropertyRef Name="ClassCourceId" />
+          </Key>
+          <Property Name="ClassCourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeacherId" Type="Int32" Nullable="false" />
+          <Property Name="ClassId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Start_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="End_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TeacherPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TeacherClassId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TeacherJoinTime" Type="DateTime" Precision="3" />
+          <Property Name="TeacherClassUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="File_Ids" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TeacherPlayBackAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Teacher" Relationship="FKHY.Models.FK_ClassCource_Teacher" FromRole="ClassCource" ToRole="Teacher" />
+          <NavigationProperty Name="StudentClassCources" Relationship="FKHY.Models.FK_StudentClassCource_ClassCource" FromRole="ClassCource" ToRole="StudentClassCource" />
+        </EntityType>
+        <EntityType Name="ContactU">
+          <Key>
+            <PropertyRef Name="ContactUsId" />
+          </Key>
+          <Property Name="ContactUsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CourcePkg">
+          <Key>
+            <PropertyRef Name="CourcePkgId" />
+          </Key>
+          <Property Name="CourcePkgId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PkgName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PerCost" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="TotalCost" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Range" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CourcePkgDetails" Relationship="FKHY.Models.FK_CourcePkgDetail_CourcePkg" FromRole="CourcePkg" ToRole="CourcePkgDetail" />
+          <NavigationProperty Name="Orders" Relationship="FKHY.Models.FK_Order_CourcePkg" FromRole="CourcePkg" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="CourcePkgDetail">
+          <Key>
+            <PropertyRef Name="CourcePkgDetailId" />
+          </Key>
+          <Property Name="CourcePkgDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourcePkgId" Type="Int32" Nullable="false" />
+          <Property Name="CourceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CourcePkg" Relationship="FKHY.Models.FK_CourcePkgDetail_CourcePkg" FromRole="CourcePkgDetail" ToRole="CourcePkg" />
+          <NavigationProperty Name="Course" Relationship="FKHY.Models.FK_CourcePkgDetail_Course" FromRole="CourcePkgDetail" ToRole="Course" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourceId" />
+          </Key>
+          <Property Name="CourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourceName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourceType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CourcePkgDetails" Relationship="FKHY.Models.FK_CourcePkgDetail_Course" FromRole="Course" ToRole="CourcePkgDetail" />
+          <NavigationProperty Name="Documents" Relationship="FKHY.Models.FK_Document_Course" FromRole="Course" ToRole="Document" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="DocumentId" />
+          </Key>
+          <Property Name="DocumentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DocumentIndex" Type="Int32" Nullable="false" />
+          <Property Name="FileType" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="WebCreate_Time" Type="DateTime" Precision="3" />
+          <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="File_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThirdCreate_Time" Type="DateTime" Precision="3" />
+          <Property Name="CourceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="FKHY.Models.FK_Document_Course" FromRole="Document" ToRole="Course" />
+        </EntityType>
+        <EntityType Name="Fav">
+          <Key>
+            <PropertyRef Name="FavId" />
+          </Key>
+          <Property Name="FavId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PublicCourceId" Type="Int32" />
+          <Property Name="BBSDetailId" Type="Int32" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BBSDetail" Relationship="FKHY.Models.FK_Fav_BBSDetail" FromRole="Fav" ToRole="BBSDetail" />
+          <NavigationProperty Name="PublicCource" Relationship="FKHY.Models.FK_Fav_PublicCource" FromRole="Fav" ToRole="PublicCource" />
+          <NavigationProperty Name="Student" Relationship="FKHY.Models.FK_Fav_Student" FromRole="Fav" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="HomeBanner">
+          <Key>
+            <PropertyRef Name="HomeBannerId" />
+          </Key>
+          <Property Name="HomeBannerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HomeMedia">
+          <Key>
+            <PropertyRef Name="HomeMediaId" />
+          </Key>
+          <Property Name="HomeMediaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VedeoUrl" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HomeNew">
+          <Key>
+            <PropertyRef Name="HomeNewsId" />
+          </Key>
+          <Property Name="HomeNewsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cotent" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DataChange_LastTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SenderId" Type="Int32" Nullable="false" />
+          <Property Name="SenderUserType" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourcePkgId" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="Pay_Time" Type="DateTime" Precision="3" />
+          <Property Name="Expired_Time" Type="DateTime" Precision="3" />
+          <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CourcePkg" Relationship="FKHY.Models.FK_Order_CourcePkg" FromRole="Order" ToRole="CourcePkg" />
+          <NavigationProperty Name="Student" Relationship="FKHY.Models.FK_Order_Student" FromRole="Order" ToRole="Student" />
+          <NavigationProperty Name="StudentClassCources" Relationship="FKHY.Models.FK_StudentClassCource_Order" FromRole="Order" ToRole="StudentClassCource" />
+        </EntityType>
+        <EntityType Name="PublicCource">
+          <Key>
+            <PropertyRef Name="PublicCourceId" />
+          </Key>
+          <Property Name="PublicCourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TeacherName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TeacherImg" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Create_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="VedeoUrl" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CoverImage" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Favs" Relationship="FKHY.Models.FK_Fav_PublicCource" FromRole="PublicCource" ToRole="Fav" />
+        </EntityType>
+        <EntityType Name="StudentClassCource">
+          <Key>
+            <PropertyRef Name="StudentClassCourceId" />
+          </Key>
+          <Property Name="StudentClassCourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassCourceId" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="StudentClassId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentJoin_Time" Type="DateTime" Precision="3" />
+          <Property Name="StudentClassAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="StudentPlayBackAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TeacherComment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="StudentComment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TeacherComment_Time" Type="DateTime" Precision="3" />
+          <Property Name="StudentCommentDate" Type="DateTime" Precision="3" />
+          <Property Name="IsShowHome" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ClassCource" Relationship="FKHY.Models.FK_StudentClassCource_ClassCource" FromRole="StudentClassCource" ToRole="ClassCource" />
+          <NavigationProperty Name="Order" Relationship="FKHY.Models.FK_StudentClassCource_Order" FromRole="StudentClassCource" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="TeacherDaily">
+          <Key>
+            <PropertyRef Name="TeacherDailyId" />
+          </Key>
+          <Property Name="TeacherDailyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YearMonth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AM_Start" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="AM_End" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="PM_Start" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="PM_End" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Weekend_Start" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Weekend_End" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="TeacherId" Type="Int32" Nullable="false" />
+          <Property Name="DataChange_LastTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DataCreate_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Teacher" Relationship="FKHY.Models.FK_TeacherDaily_Teacher" FromRole="TeacherDaily" ToRole="Teacher" />
+        </EntityType>
+        <Association Name="FK_BBSDetail_BBS">
+          <End Type="FKHY.Models.BB" Role="BB" Multiplicity="1" />
+          <End Type="FKHY.Models.BBSDetail" Role="BBSDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BB">
+              <PropertyRef Name="BBSId" />
+            </Principal>
+            <Dependent Role="BBSDetail">
+              <PropertyRef Name="BBSId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fav_BBSDetail">
+          <End Type="FKHY.Models.BBSDetail" Role="BBSDetail" Multiplicity="0..1" />
+          <End Type="FKHY.Models.Fav" Role="Fav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BBSDetail">
+              <PropertyRef Name="BBSDetailId" />
+            </Principal>
+            <Dependent Role="Fav">
+              <PropertyRef Name="BBSDetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassCource_Teacher">
+          <End Type="FKHY.Models.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="FKHY.Models.ClassCource" Role="ClassCource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="ClassCource">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentClassCource_ClassCource">
+          <End Type="FKHY.Models.ClassCource" Role="ClassCource" Multiplicity="1" />
+          <End Type="FKHY.Models.StudentClassCource" Role="StudentClassCource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassCource">
+              <PropertyRef Name="ClassCourceId" />
+            </Principal>
+            <Dependent Role="StudentClassCource">
+              <PropertyRef Name="ClassCourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourcePkgDetail_CourcePkg">
+          <End Type="FKHY.Models.CourcePkg" Role="CourcePkg" Multiplicity="1" />
+          <End Type="FKHY.Models.CourcePkgDetail" Role="CourcePkgDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourcePkg">
+              <PropertyRef Name="CourcePkgId" />
+            </Principal>
+            <Dependent Role="CourcePkgDetail">
+              <PropertyRef Name="CourcePkgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_CourcePkg">
+          <End Type="FKHY.Models.CourcePkg" Role="CourcePkg" Multiplicity="1" />
+          <End Type="FKHY.Models.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourcePkg">
+              <PropertyRef Name="CourcePkgId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CourcePkgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourcePkgDetail_Course">
+          <End Type="FKHY.Models.Course" Role="Course" Multiplicity="1" />
+          <End Type="FKHY.Models.CourcePkgDetail" Role="CourcePkgDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourceId" />
+            </Principal>
+            <Dependent Role="CourcePkgDetail">
+              <PropertyRef Name="CourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Document_Course">
+          <End Type="FKHY.Models.Course" Role="Course" Multiplicity="1" />
+          <End Type="FKHY.Models.Document" Role="Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourceId" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="CourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fav_PublicCource">
+          <End Type="FKHY.Models.PublicCource" Role="PublicCource" Multiplicity="0..1" />
+          <End Type="FKHY.Models.Fav" Role="Fav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PublicCource">
+              <PropertyRef Name="PublicCourceId" />
+            </Principal>
+            <Dependent Role="Fav">
+              <PropertyRef Name="PublicCourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fav_Student">
+          <End Type="FKHY.Models.Student" Role="Student" Multiplicity="1" />
+          <End Type="FKHY.Models.Fav" Role="Fav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Fav">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Student">
+          <End Type="FKHY.Models.Student" Role="Student" Multiplicity="1" />
+          <End Type="FKHY.Models.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentClassCource_Order">
+          <End Type="FKHY.Models.Order" Role="Order" Multiplicity="1" />
+          <End Type="FKHY.Models.StudentClassCource" Role="StudentClassCource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="StudentClassCource">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeacherDaily_Teacher">
+          <End Type="FKHY.Models.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="FKHY.Models.TeacherDaily" Role="TeacherDaily" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="TeacherDaily">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1140,6 +2003,217 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="BBS">
+            <EntityTypeMapping TypeName="FKHY.Models.BB">
+              <MappingFragment StoreEntitySet="BBS">
+                <ScalarProperty Name="BBSIndex" ColumnName="BBSIndex" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="BBSId" ColumnName="BBSId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BBSDetails">
+            <EntityTypeMapping TypeName="FKHY.Models.BBSDetail">
+              <MappingFragment StoreEntitySet="BBSDetail">
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Datachenge_LastTime" ColumnName="Datachenge_LastTime" />
+                <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="BBSId" ColumnName="BBSId" />
+                <ScalarProperty Name="BBSDetailId" ColumnName="BBSDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassCources">
+            <EntityTypeMapping TypeName="FKHY.Models.ClassCource">
+              <MappingFragment StoreEntitySet="ClassCource">
+                <ScalarProperty Name="TeacherPlayBackAddress" ColumnName="TeacherPlayBackAddress" />
+                <ScalarProperty Name="File_Ids" ColumnName="File_Ids" />
+                <ScalarProperty Name="TeacherClassUrl" ColumnName="TeacherClassUrl" />
+                <ScalarProperty Name="TeacherJoinTime" ColumnName="TeacherJoinTime" />
+                <ScalarProperty Name="TeacherClassId" ColumnName="TeacherClassId" />
+                <ScalarProperty Name="StudentPassword" ColumnName="StudentPassword" />
+                <ScalarProperty Name="TeacherPassword" ColumnName="TeacherPassword" />
+                <ScalarProperty Name="End_Time" ColumnName="End_Time" />
+                <ScalarProperty Name="Start_Time" ColumnName="Start_Time" />
+                <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="ClassCourceId" ColumnName="ClassCourceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactUs">
+            <EntityTypeMapping TypeName="FKHY.Models.ContactU">
+              <MappingFragment StoreEntitySet="ContactUs">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactUsId" ColumnName="ContactUsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourcePkgs">
+            <EntityTypeMapping TypeName="FKHY.Models.CourcePkg">
+              <MappingFragment StoreEntitySet="CourcePkg">
+                <ScalarProperty Name="Range" ColumnName="Range" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="PerCost" ColumnName="PerCost" />
+                <ScalarProperty Name="PkgName" ColumnName="PkgName" />
+                <ScalarProperty Name="CourcePkgId" ColumnName="CourcePkgId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourcePkgDetails">
+            <EntityTypeMapping TypeName="FKHY.Models.CourcePkgDetail">
+              <MappingFragment StoreEntitySet="CourcePkgDetail">
+                <ScalarProperty Name="CourceId" ColumnName="CourceId" />
+                <ScalarProperty Name="CourcePkgId" ColumnName="CourcePkgId" />
+                <ScalarProperty Name="CourcePkgDetailId" ColumnName="CourcePkgDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="FKHY.Models.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="CourceType" ColumnName="CourceType" />
+                <ScalarProperty Name="CourceName" ColumnName="CourceName" />
+                <ScalarProperty Name="CourceId" ColumnName="CourceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="FKHY.Models.Document">
+              <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="CourceId" ColumnName="CourceId" />
+                <ScalarProperty Name="ThirdCreate_Time" ColumnName="ThirdCreate_Time" />
+                <ScalarProperty Name="File_Id" ColumnName="File_Id" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="WebCreate_Time" ColumnName="WebCreate_Time" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="DocumentIndex" ColumnName="DocumentIndex" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Favs">
+            <EntityTypeMapping TypeName="FKHY.Models.Fav">
+              <MappingFragment StoreEntitySet="Fav">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="BBSDetailId" ColumnName="BBSDetailId" />
+                <ScalarProperty Name="PublicCourceId" ColumnName="PublicCourceId" />
+                <ScalarProperty Name="FavId" ColumnName="FavId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HomeBanners">
+            <EntityTypeMapping TypeName="FKHY.Models.HomeBanner">
+              <MappingFragment StoreEntitySet="HomeBanner">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="HomeBannerId" ColumnName="HomeBannerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HomeMedias">
+            <EntityTypeMapping TypeName="FKHY.Models.HomeMedia">
+              <MappingFragment StoreEntitySet="HomeMedia">
+                <ScalarProperty Name="VedeoUrl" ColumnName="VedeoUrl" />
+                <ScalarProperty Name="HomeMediaId" ColumnName="HomeMediaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HomeNews">
+            <EntityTypeMapping TypeName="FKHY.Models.HomeNew">
+              <MappingFragment StoreEntitySet="HomeNews">
+                <ScalarProperty Name="DataChange_LastTime" ColumnName="DataChange_LastTime" />
+                <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Cotent" ColumnName="Cotent" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="HomeNewsId" ColumnName="HomeNewsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="FKHY.Models.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="SenderUserType" ColumnName="SenderUserType" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="FKHY.Models.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+                <ScalarProperty Name="Expired_Time" ColumnName="Expired_Time" />
+                <ScalarProperty Name="Pay_Time" ColumnName="Pay_Time" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="CourcePkgId" ColumnName="CourcePkgId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PublicCources">
+            <EntityTypeMapping TypeName="FKHY.Models.PublicCource">
+              <MappingFragment StoreEntitySet="PublicCource">
+                <ScalarProperty Name="CoverImage" ColumnName="CoverImage" />
+                <ScalarProperty Name="VedeoUrl" ColumnName="VedeoUrl" />
+                <ScalarProperty Name="Create_Time" ColumnName="Create_Time" />
+                <ScalarProperty Name="TeacherImg" ColumnName="TeacherImg" />
+                <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PublicCourceId" ColumnName="PublicCourceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentClassCources">
+            <EntityTypeMapping TypeName="FKHY.Models.StudentClassCource">
+              <MappingFragment StoreEntitySet="StudentClassCource">
+                <ScalarProperty Name="IsShowHome" ColumnName="IsShowHome" />
+                <ScalarProperty Name="StudentCommentDate" ColumnName="StudentCommentDate" />
+                <ScalarProperty Name="TeacherComment_Time" ColumnName="TeacherComment_Time" />
+                <ScalarProperty Name="StudentComment" ColumnName="StudentComment" />
+                <ScalarProperty Name="TeacherComment" ColumnName="TeacherComment" />
+                <ScalarProperty Name="StudentPlayBackAddress" ColumnName="StudentPlayBackAddress" />
+                <ScalarProperty Name="StudentClassAddress" ColumnName="StudentClassAddress" />
+                <ScalarProperty Name="StudentJoin_Time" ColumnName="StudentJoin_Time" />
+                <ScalarProperty Name="StudentClassId" ColumnName="StudentClassId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ClassCourceId" ColumnName="ClassCourceId" />
+                <ScalarProperty Name="StudentClassCourceId" ColumnName="StudentClassCourceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeacherDailies">
+            <EntityTypeMapping TypeName="FKHY.Models.TeacherDaily">
+              <MappingFragment StoreEntitySet="TeacherDaily">
+                <ScalarProperty Name="DataCreate_Time" ColumnName="DataCreate_Time" />
+                <ScalarProperty Name="DataChange_LastTime" ColumnName="DataChange_LastTime" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="Weekend_End" ColumnName="Weekend_End" />
+                <ScalarProperty Name="Weekend_Start" ColumnName="Weekend_Start" />
+                <ScalarProperty Name="PM_End" ColumnName="PM_End" />
+                <ScalarProperty Name="PM_Start" ColumnName="PM_Start" />
+                <ScalarProperty Name="AM_End" ColumnName="AM_End" />
+                <ScalarProperty Name="AM_Start" ColumnName="AM_Start" />
+                <ScalarProperty Name="YearMonth" ColumnName="YearMonth" />
+                <ScalarProperty Name="TeacherDailyId" ColumnName="TeacherDailyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

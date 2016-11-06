@@ -12,34 +12,23 @@ namespace FKHY.Models.DBModels
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class CourcePkg
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Student()
+        public CourcePkg()
         {
-            this.Favs = new HashSet<Fav>();
+            this.CourcePkgDetails = new HashSet<CourcePkgDetail>();
             this.Orders = new HashSet<Order>();
         }
     
-        public int UserId { get; set; }
-        public string UserName { get; set; }
-        public string Address { get; set; }
-        public string Image { get; set; }
-        public string QQ { get; set; }
-        public string RealName { get; set; }
-        public System.DateTime BirthDate { get; set; }
-        public bool Sex { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string Salt { get; set; }
-        public string Password { get; set; }
-        public string Code { get; set; }
-        public System.DateTime CodeSendTime { get; set; }
-        public System.DateTime DataChange_LastTime { get; set; }
-        public System.DateTime Data_CreateTime { get; set; }
+        public int CourcePkgId { get; set; }
+        public string PkgName { get; set; }
+        public decimal PerCost { get; set; }
+        public decimal TotalCost { get; set; }
+        public int Range { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Fav> Favs { get; set; }
+        public virtual ICollection<CourcePkgDetail> CourcePkgDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
     }

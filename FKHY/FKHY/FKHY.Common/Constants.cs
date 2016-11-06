@@ -15,7 +15,7 @@ namespace FKHY.Common
         public static string WebCheckCodeUrl = WebUrl + "/account/checkcode";
 
         public static int 老师 = 1;
-        public static int 学生 = 2;
+        public static int 学生 = 0;
 
         public static string TempFolder = "/upload/temp/";
         public const string StudentFolder = "/Students/";

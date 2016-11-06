@@ -41,6 +41,23 @@ namespace FKHY.Models.DBModels
         public virtual DbSet<UserBalance> UserBalances { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
         public virtual DbSet<WebLogon> WebLogons { get; set; }
+        public virtual DbSet<BB> BBS { get; set; }
+        public virtual DbSet<BBSDetail> BBSDetails { get; set; }
+        public virtual DbSet<ClassCource> ClassCources { get; set; }
+        public virtual DbSet<ContactU> ContactUs { get; set; }
+        public virtual DbSet<CourcePkg> CourcePkgs { get; set; }
+        public virtual DbSet<CourcePkgDetail> CourcePkgDetails { get; set; }
+        public virtual DbSet<Course> Courses { get; set; }
+        public virtual DbSet<Document> Documents { get; set; }
+        public virtual DbSet<Fav> Favs { get; set; }
+        public virtual DbSet<HomeBanner> HomeBanners { get; set; }
+        public virtual DbSet<HomeMedia> HomeMedias { get; set; }
+        public virtual DbSet<HomeNew> HomeNews { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<PublicCource> PublicCources { get; set; }
+        public virtual DbSet<StudentClassCource> StudentClassCources { get; set; }
+        public virtual DbSet<TeacherDaily> TeacherDailies { get; set; }
     
         public virtual int alipay_trade_confirmed(Nullable<long> tradeId)
         {

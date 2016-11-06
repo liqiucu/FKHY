@@ -8,7 +8,7 @@ using System.Text;
 using System.Web.Script.Serialization;
 
 
-namespace FKHY.Web.Convert
+namespace FKHY.Common
 {
     public sealed class DynamicJsonConverter : JavaScriptConverter
     {
