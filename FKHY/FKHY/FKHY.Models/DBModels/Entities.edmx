@@ -1,0 +1,1166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FKHY.Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AliPayIPN">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="notify_time" Type="nvarchar" MaxLength="50" />
+          <Property Name="notify_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="notify_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="sign_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="sign" Type="nvarchar" MaxLength="512" />
+          <Property Name="out_trade_no" Type="nvarchar" MaxLength="255" />
+          <Property Name="subject" Type="nvarchar" MaxLength="255" />
+          <Property Name="payment_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="trade_no" Type="nvarchar" MaxLength="255" />
+          <Property Name="trade_status" Type="nvarchar" MaxLength="50" />
+          <Property Name="seller_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="seller_email" Type="nvarchar" MaxLength="255" />
+          <Property Name="buyer_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="buyer_email" Type="nvarchar" MaxLength="255" />
+          <Property Name="total_fee" Type="nvarchar" MaxLength="50" />
+          <Property Name="quantity" Type="nvarchar" MaxLength="50" />
+          <Property Name="price" Type="nvarchar" MaxLength="50" />
+          <Property Name="body" Type="nvarchar" MaxLength="512" />
+          <Property Name="gmt_create" Type="nvarchar" MaxLength="50" />
+          <Property Name="gmt_payment" Type="nvarchar" MaxLength="50" />
+          <Property Name="is_total_fee_adjust" Type="nvarchar" MaxLength="50" />
+          <Property Name="use_coupon" Type="nvarchar" MaxLength="50" />
+          <Property Name="discount" Type="nvarchar" MaxLength="50" />
+          <Property Name="refund_status" Type="nvarchar" MaxLength="50" />
+          <Property Name="gmt_refund" Type="nvarchar" MaxLength="50" />
+          <Property Name="gmt_close" Type="nvarchar" MaxLength="50" />
+          <Property Name="extra_common_param" Type="nvarchar" MaxLength="50" />
+          <Property Name="out_channel_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="out_channel_amount" Type="nvarchar" MaxLength="50" />
+          <Property Name="out_channel_inst" Type="nvarchar" MaxLength="50" />
+          <Property Name="business_scene" Type="nvarchar" MaxLength="50" />
+          <Property Name="note" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_created" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="BankId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name_CN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sequence" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CashFlow">
+          <Key>
+            <PropertyRef Name="CashFlowId" />
+          </Key>
+          <Property Name="CashFlowId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="UserTypeId" Type="bigint" Nullable="false" />
+          <Property Name="TradeTypeId" Type="int" Nullable="false" />
+          <Property Name="CashFlowNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExternalCashFlowNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TradeId" Type="bigint" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="Balance" Type="money" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="50" />
+          <Property Name="CashFlowStatusId" Type="int" />
+          <Property Name="DateReviewed" Type="datetime" />
+          <Property Name="ReviewNote" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CashFlowStatus">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rate" Type="money" Nullable="false" />
+          <Property Name="AccessToken" Type="nvarchar" MaxLength="255" />
+          <Property Name="DateExpired" Type="datetime" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Image" Type="nvarchar" MaxLength="500" />
+          <Property Name="QQ" Type="nvarchar" MaxLength="50" />
+          <Property Name="RealName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BirthDate" Type="datetime" Nullable="false" />
+          <Property Name="Sex" Type="bit" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Salt" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="CodeSendTime" Type="datetime" Nullable="false" />
+          <Property Name="DataChange_LastTime" Type="datetime" Nullable="false" />
+          <Property Name="Data_CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="TeacherId" />
+          </Key>
+          <Property Name="TeacherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeacherName" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="RealName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="Sex" Type="bit" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="11" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Salt" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="50" />
+          <Property Name="DataChange_LastTime" Type="datetime" Nullable="false" />
+          <Property Name="Data_CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trade">
+          <Key>
+            <PropertyRef Name="TradeId" />
+          </Key>
+          <Property Name="TradeId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TradeTypeId" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="bigint" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="Topup" Type="money" Nullable="false" />
+          <Property Name="Payment" Type="money" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="255" />
+          <Property Name="PaymentTypeId" Type="int" />
+          <Property Name="DatePaid" Type="datetime" />
+          <Property Name="DatePaymentConfirmed" Type="datetime" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TradeType">
+          <Key>
+            <PropertyRef Name="TradeTypeId" />
+          </Key>
+          <Property Name="TradeTypeId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TradeTypeGroup">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="BankId" Type="int" Nullable="false" />
+          <Property Name="AccountNo" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Default" Type="bit" Nullable="false" />
+          <Property Name="DateDeleted" Type="datetime" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserBalance">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="PaymentPassword" Type="nvarchar" MaxLength="255" />
+          <Property Name="PaymentSalt" Type="nvarchar" MaxLength="50" />
+          <Property Name="Balance" Type="money" Nullable="false" />
+          <Property Name="FrozenBalance" Type="money" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WebLogon">
+          <Key>
+            <PropertyRef Name="LogonId" />
+          </Key>
+          <Property Name="LogonId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="SchoolId" Type="int" Nullable="false" />
+          <Property Name="Token" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TokenExpiryDate" Type="datetime" Nullable="false" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateLogon" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CashFlow_CashFlowStatus">
+          <End Role="CashFlowStatus" Type="Self.CashFlowStatus" Multiplicity="0..1" />
+          <End Role="CashFlow" Type="Self.CashFlow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CashFlowStatus">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="CashFlow">
+              <PropertyRef Name="CashFlowStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CashFlow_Trade">
+          <End Role="Trade" Type="Self.Trade" Multiplicity="0..1" />
+          <End Role="CashFlow" Type="Self.CashFlow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trade">
+              <PropertyRef Name="TradeId" />
+            </Principal>
+            <Dependent Role="CashFlow">
+              <PropertyRef Name="TradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trade_TradeType">
+          <End Role="TradeType" Type="Self.TradeType" Multiplicity="1" />
+          <End Role="Trade" Type="Self.Trade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TradeType">
+              <PropertyRef Name="TradeTypeId" />
+            </Principal>
+            <Dependent Role="Trade">
+              <PropertyRef Name="TradeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TradeType_TradeTypeGroup">
+          <End Role="TradeTypeGroup" Type="Self.TradeTypeGroup" Multiplicity="1" />
+          <End Role="TradeType" Type="Self.TradeType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TradeTypeGroup">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="TradeType">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="alipay_trade_confirmed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TradeId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="sp_clear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_text" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="text" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="txn_bind_bank_account" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
+          <Parameter Name="AccountName" Type="nvarchar" Mode="In" />
+          <Parameter Name="AccountNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="BankId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="txn_cash_out" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+          <Parameter Name="AccountId" Type="bigint" Mode="In" />
+          <Parameter Name="Amount" Type="money" Mode="In" />
+        </Function>
+        <Function Name="txn_cash_out_confirmed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CashFlowId" Type="bigint" Mode="In" />
+          <Parameter Name="ExternalCashFlowNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="Note" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="txn_cash_out_rejected" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CashFlowId" Type="bigint" Mode="In" />
+          <Parameter Name="Note" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="txn_deposit_unfreeze" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TradeId" Type="bigint" Mode="In" />
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="txn_get_bill_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+        </Function>
+        <Function Name="txn_get_user_account_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="txn_remove_user_account" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+          <Parameter Name="AccountId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="txn_trade_balance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
+          <Parameter Name="TradeTypeId" Type="int" Mode="In" />
+          <Parameter Name="OrderId" Type="bigint" Mode="In" />
+          <Parameter Name="Payment" Type="money" Mode="In" />
+          <Parameter Name="Note" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Pasword" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="txn_trade_cash_paid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
+          <Parameter Name="TradeTypeId" Type="int" Mode="In" />
+          <Parameter Name="OrderId" Type="bigint" Mode="In" />
+          <Parameter Name="Payment" Type="money" Mode="In" />
+          <Parameter Name="Note" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="txn_trade_paid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
+          <Parameter Name="TradeId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="txn_trade_pay_user" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TradeId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="txn_trade_payment_received" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TradeId" Type="bigint" Mode="In" />
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
+          <Parameter Name="Amount" Type="money" Mode="In" />
+          <Parameter Name="Note" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="txn_trade_payment_received_frozen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TradeId" Type="bigint" Mode="In" />
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
+          <Parameter Name="Amount" Type="money" Mode="In" />
+          <Parameter Name="Note" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="txn_trade_payment_refund" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CashFlowId" Type="bigint" Mode="In" />
+          <Parameter Name="RefundUserId" Type="bigint" Mode="In" />
+          <Parameter Name="RefundUserTypeId" Type="int" Mode="In" />
+          <Parameter Name="Note" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="txn_trade_payment_unfreeze" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CashFlowId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="txn_trade_third_party" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
+          <Parameter Name="TradeTypeId" Type="int" Mode="In" />
+          <Parameter Name="OrderId" Type="bigint" Mode="In" />
+          <Parameter Name="PaymentTypeId" Type="int" Mode="In" />
+          <Parameter Name="Payment" Type="money" Mode="In" />
+          <Parameter Name="Note" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Pasword" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="txn_trade_topup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
+          <Parameter Name="TopupAmount" Type="money" Mode="In" />
+          <Parameter Name="Note" Type="nvarchar" Mode="In" />
+          <Parameter Name="PaymentTypeId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="FKHYModelsStoreContainer">
+          <EntitySet Name="AliPayIPN" EntityType="Self.AliPayIPN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CashFlow" EntityType="Self.CashFlow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CashFlowStatus" EntityType="Self.CashFlowStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentType" EntityType="Self.PaymentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trade" EntityType="Self.Trade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TradeType" EntityType="Self.TradeType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TradeTypeGroup" EntityType="Self.TradeTypeGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserBalance" EntityType="Self.UserBalance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebLogon" EntityType="Self.WebLogon" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CashFlow_CashFlowStatus" Association="Self.FK_CashFlow_CashFlowStatus">
+            <End Role="CashFlowStatus" EntitySet="CashFlowStatus" />
+            <End Role="CashFlow" EntitySet="CashFlow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CashFlow_Trade" Association="Self.FK_CashFlow_Trade">
+            <End Role="Trade" EntitySet="Trade" />
+            <End Role="CashFlow" EntitySet="CashFlow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trade_TradeType" Association="Self.FK_Trade_TradeType">
+            <End Role="TradeType" EntitySet="TradeType" />
+            <End Role="Trade" EntitySet="Trade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TradeType_TradeTypeGroup" Association="Self.FK_TradeType_TradeTypeGroup">
+            <End Role="TradeTypeGroup" EntitySet="TradeTypeGroup" />
+            <End Role="TradeType" EntitySet="TradeType" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FKHY.Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AliPayIPN">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="notify_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notify_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notify_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sign_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sign" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="out_trade_no" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="subject" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="payment_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="trade_no" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="trade_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="seller_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="seller_email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="buyer_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="buyer_email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="total_fee" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="body" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="gmt_create" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gmt_payment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="is_total_fee_adjust" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="use_coupon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="discount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="refund_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gmt_refund" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gmt_close" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="extra_common_param" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="out_channel_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="out_channel_amount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="out_channel_inst" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="business_scene" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="date_created" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="BankId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name_CN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sequence" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="CashFlow">
+          <Key>
+            <PropertyRef Name="CashFlowId" />
+          </Key>
+          <Property Name="CashFlowId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="UserTypeId" Type="Int64" Nullable="false" />
+          <Property Name="TradeTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CashFlowNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExternalCashFlowNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TradeId" Type="Int64" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Balance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CashFlowStatusId" Type="Int32" />
+          <Property Name="DateReviewed" Type="DateTime" Precision="3" />
+          <Property Name="ReviewNote" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CashFlowStatu" Relationship="Self.FK_CashFlow_CashFlowStatus" FromRole="CashFlow" ToRole="CashFlowStatus" />
+          <NavigationProperty Name="Trade" Relationship="Self.FK_CashFlow_Trade" FromRole="CashFlow" ToRole="Trade" />
+        </EntityType>
+        <EntityType Name="CashFlowStatu">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CashFlows" Relationship="Self.FK_CashFlow_CashFlowStatus" FromRole="CashFlowStatus" ToRole="CashFlow" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rate" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="AccessToken" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DateExpired" Type="DateTime" Precision="3" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QQ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sex" Type="Boolean" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Salt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CodeSendTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DataChange_LastTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Data_CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="TeacherId" />
+          </Key>
+          <Property Name="TeacherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeacherName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="Sex" Type="Boolean" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Salt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DataChange_LastTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Data_CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Trade">
+          <Key>
+            <PropertyRef Name="TradeId" />
+          </Key>
+          <Property Name="TradeId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TradeTypeId" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Topup" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Payment" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentTypeId" Type="Int32" />
+          <Property Name="DatePaid" Type="DateTime" Precision="3" />
+          <Property Name="DatePaymentConfirmed" Type="DateTime" Precision="3" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CashFlows" Relationship="Self.FK_CashFlow_Trade" FromRole="Trade" ToRole="CashFlow" />
+          <NavigationProperty Name="TradeType" Relationship="Self.FK_Trade_TradeType" FromRole="Trade" ToRole="TradeType" />
+        </EntityType>
+        <EntityType Name="TradeType">
+          <Key>
+            <PropertyRef Name="TradeTypeId" />
+          </Key>
+          <Property Name="TradeTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Trades" Relationship="Self.FK_Trade_TradeType" FromRole="TradeType" ToRole="Trade" />
+          <NavigationProperty Name="TradeTypeGroup" Relationship="Self.FK_TradeType_TradeTypeGroup" FromRole="TradeType" ToRole="TradeTypeGroup" />
+        </EntityType>
+        <EntityType Name="TradeTypeGroup">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TradeTypes" Relationship="Self.FK_TradeType_TradeTypeGroup" FromRole="TradeTypeGroup" ToRole="TradeType" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="BankId" Type="Int32" Nullable="false" />
+          <Property Name="AccountNo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Default" Type="Boolean" Nullable="false" />
+          <Property Name="DateDeleted" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="UserBalance">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Balance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="FrozenBalance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="WebLogon">
+          <Key>
+            <PropertyRef Name="LogonId" />
+          </Key>
+          <Property Name="LogonId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="SchoolId" Type="Int32" Nullable="false" />
+          <Property Name="Token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TokenExpiryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateLogon" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_CashFlow_CashFlowStatus">
+          <End Role="CashFlowStatus" Type="Self.CashFlowStatu" Multiplicity="0..1" />
+          <End Role="CashFlow" Type="Self.CashFlow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CashFlowStatus">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="CashFlow">
+              <PropertyRef Name="CashFlowStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CashFlow_Trade">
+          <End Role="Trade" Type="Self.Trade" Multiplicity="0..1" />
+          <End Role="CashFlow" Type="Self.CashFlow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trade">
+              <PropertyRef Name="TradeId" />
+            </Principal>
+            <Dependent Role="CashFlow">
+              <PropertyRef Name="TradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trade_TradeType">
+          <End Role="TradeType" Type="Self.TradeType" Multiplicity="1" />
+          <End Role="Trade" Type="Self.Trade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TradeType">
+              <PropertyRef Name="TradeTypeId" />
+            </Principal>
+            <Dependent Role="Trade">
+              <PropertyRef Name="TradeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TradeType_TradeTypeGroup">
+          <End Role="TradeTypeGroup" Type="Self.TradeTypeGroup" Multiplicity="1" />
+          <End Role="TradeType" Type="Self.TradeType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TradeTypeGroup">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="TradeType">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DataAccess" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AliPayIPNs" EntityType="Self.AliPayIPN" />
+          <EntitySet Name="Banks" EntityType="Self.Bank" />
+          <EntitySet Name="CashFlows" EntityType="Self.CashFlow" />
+          <EntitySet Name="CashFlowStatus" EntityType="Self.CashFlowStatu" />
+          <EntitySet Name="PaymentTypes" EntityType="Self.PaymentType" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+          <EntitySet Name="Trades" EntityType="Self.Trade" />
+          <EntitySet Name="TradeTypes" EntityType="Self.TradeType" />
+          <EntitySet Name="TradeTypeGroups" EntityType="Self.TradeTypeGroup" />
+          <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
+          <EntitySet Name="UserBalances" EntityType="Self.UserBalance" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+          <EntitySet Name="WebLogons" EntityType="Self.WebLogon" />
+          <AssociationSet Name="FK_CashFlow_CashFlowStatus" Association="Self.FK_CashFlow_CashFlowStatus">
+            <End Role="CashFlowStatus" EntitySet="CashFlowStatus" />
+            <End Role="CashFlow" EntitySet="CashFlows" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CashFlow_Trade" Association="Self.FK_CashFlow_Trade">
+            <End Role="Trade" EntitySet="Trades" />
+            <End Role="CashFlow" EntitySet="CashFlows" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trade_TradeType" Association="Self.FK_Trade_TradeType">
+            <End Role="TradeType" EntitySet="TradeTypes" />
+            <End Role="Trade" EntitySet="Trades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TradeType_TradeTypeGroup" Association="Self.FK_TradeType_TradeTypeGroup">
+            <End Role="TradeTypeGroup" EntitySet="TradeTypeGroups" />
+            <End Role="TradeType" EntitySet="TradeTypes" />
+          </AssociationSet>
+          <FunctionImport Name="alipay_trade_confirmed">
+            <Parameter Name="TradeId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="sp_clear" />
+          <FunctionImport Name="sp_text" ReturnType="Collection(FKHY.Models.sp_text_Result)">
+            <Parameter Name="text" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="txn_bind_bank_account">
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="AccountName" Mode="In" Type="String" />
+            <Parameter Name="AccountNo" Mode="In" Type="String" />
+            <Parameter Name="BankId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="txn_cash_out" ReturnType="Collection(FKHY.Models.txn_cash_out_Result)">
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+            <Parameter Name="AccountId" Mode="In" Type="Int64" />
+            <Parameter Name="Amount" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="txn_cash_out_confirmed">
+            <Parameter Name="CashFlowId" Mode="In" Type="Int64" />
+            <Parameter Name="ExternalCashFlowNumber" Mode="In" Type="String" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="txn_cash_out_rejected">
+            <Parameter Name="CashFlowId" Mode="In" Type="Int64" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="txn_deposit_unfreeze">
+            <Parameter Name="TradeId" Mode="In" Type="Int64" />
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="txn_get_bill_list">
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="txn_get_user_account_list" ReturnType="Collection(FKHY.Models.txn_get_user_account_list_Result)">
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="txn_remove_user_account">
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+            <Parameter Name="AccountId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="txn_trade_balance">
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="TradeTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="OrderId" Mode="In" Type="Int64" />
+            <Parameter Name="Payment" Mode="In" Type="Decimal" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+            <Parameter Name="Pasword" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="txn_trade_cash_paid">
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="TradeTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="OrderId" Mode="In" Type="Int64" />
+            <Parameter Name="Payment" Mode="In" Type="Decimal" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="txn_trade_paid">
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="TradeId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="txn_trade_pay_user">
+            <Parameter Name="TradeId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="txn_trade_payment_received" ReturnType="Collection(Int32)">
+            <Parameter Name="TradeId" Mode="In" Type="Int64" />
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="Amount" Mode="In" Type="Decimal" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="txn_trade_payment_received_frozen">
+            <Parameter Name="TradeId" Mode="In" Type="Int64" />
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="Amount" Mode="In" Type="Decimal" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="txn_trade_payment_refund">
+            <Parameter Name="CashFlowId" Mode="In" Type="Int64" />
+            <Parameter Name="RefundUserId" Mode="In" Type="Int64" />
+            <Parameter Name="RefundUserTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="txn_trade_payment_unfreeze">
+            <Parameter Name="CashFlowId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="txn_trade_third_party">
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="TradeTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="OrderId" Mode="In" Type="Int64" />
+            <Parameter Name="PaymentTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="Payment" Mode="In" Type="Decimal" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+            <Parameter Name="Pasword" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="txn_trade_topup" ReturnType="Collection(FKHY.Models.txn_trade_topup_Result)">
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="TopupAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+            <Parameter Name="PaymentTypeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_text_Result">
+          <Property Type="String" Name="Object_Name" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="type_desc" Nullable="true" MaxLength="60" />
+        </ComplexType>
+        <ComplexType Name="txn_cash_out_Result">
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="String" Name="AlertMessage" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="txn_get_user_account_list_Result">
+          <Property Type="Int64" Name="AccountId" Nullable="false" />
+          <Property Type="Int32" Name="BankId" Nullable="false" />
+          <Property Type="String" Name="BankName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="AccountName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="AccountNo" Nullable="false" MaxLength="255" />
+          <Property Type="Boolean" Name="Default" Nullable="true" />
+          <Property Type="Decimal" Name="Balance" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="FrozenBalance" Nullable="false" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="txn_trade_topup_Result">
+          <Property Type="Int64" Name="TradeId" Nullable="true" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="TopupAmount" Nullable="true" Precision="19" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FKHYModelsStoreContainer" CdmEntityContainer="DataAccess">
+          <EntitySetMapping Name="AliPayIPNs">
+            <EntityTypeMapping TypeName="FKHY.Models.AliPayIPN">
+              <MappingFragment StoreEntitySet="AliPayIPN">
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="notify_time" ColumnName="notify_time" />
+                <ScalarProperty Name="notify_type" ColumnName="notify_type" />
+                <ScalarProperty Name="notify_id" ColumnName="notify_id" />
+                <ScalarProperty Name="sign_type" ColumnName="sign_type" />
+                <ScalarProperty Name="sign" ColumnName="sign" />
+                <ScalarProperty Name="out_trade_no" ColumnName="out_trade_no" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="payment_type" ColumnName="payment_type" />
+                <ScalarProperty Name="trade_no" ColumnName="trade_no" />
+                <ScalarProperty Name="trade_status" ColumnName="trade_status" />
+                <ScalarProperty Name="seller_id" ColumnName="seller_id" />
+                <ScalarProperty Name="seller_email" ColumnName="seller_email" />
+                <ScalarProperty Name="buyer_id" ColumnName="buyer_id" />
+                <ScalarProperty Name="buyer_email" ColumnName="buyer_email" />
+                <ScalarProperty Name="total_fee" ColumnName="total_fee" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="body" ColumnName="body" />
+                <ScalarProperty Name="gmt_create" ColumnName="gmt_create" />
+                <ScalarProperty Name="gmt_payment" ColumnName="gmt_payment" />
+                <ScalarProperty Name="is_total_fee_adjust" ColumnName="is_total_fee_adjust" />
+                <ScalarProperty Name="use_coupon" ColumnName="use_coupon" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="refund_status" ColumnName="refund_status" />
+                <ScalarProperty Name="gmt_refund" ColumnName="gmt_refund" />
+                <ScalarProperty Name="gmt_close" ColumnName="gmt_close" />
+                <ScalarProperty Name="extra_common_param" ColumnName="extra_common_param" />
+                <ScalarProperty Name="out_channel_type" ColumnName="out_channel_type" />
+                <ScalarProperty Name="out_channel_amount" ColumnName="out_channel_amount" />
+                <ScalarProperty Name="out_channel_inst" ColumnName="out_channel_inst" />
+                <ScalarProperty Name="business_scene" ColumnName="business_scene" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="FKHY.Models.Bank">
+              <MappingFragment StoreEntitySet="Bank">
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Name_CN" ColumnName="Name_CN" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CashFlows">
+            <EntityTypeMapping TypeName="FKHY.Models.CashFlow">
+              <MappingFragment StoreEntitySet="CashFlow">
+                <ScalarProperty Name="CashFlowId" ColumnName="CashFlowId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="TradeTypeId" ColumnName="TradeTypeId" />
+                <ScalarProperty Name="CashFlowNumber" ColumnName="CashFlowNumber" />
+                <ScalarProperty Name="ExternalCashFlowNumber" ColumnName="ExternalCashFlowNumber" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="TradeId" ColumnName="TradeId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="CashFlowStatusId" ColumnName="CashFlowStatusId" />
+                <ScalarProperty Name="DateReviewed" ColumnName="DateReviewed" />
+                <ScalarProperty Name="ReviewNote" ColumnName="ReviewNote" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CashFlowStatus">
+            <EntityTypeMapping TypeName="FKHY.Models.CashFlowStatu">
+              <MappingFragment StoreEntitySet="CashFlowStatus">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTypes">
+            <EntityTypeMapping TypeName="FKHY.Models.PaymentType">
+              <MappingFragment StoreEntitySet="PaymentType">
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="AccessToken" ColumnName="AccessToken" />
+                <ScalarProperty Name="DateExpired" ColumnName="DateExpired" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="FKHY.Models.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="CodeSendTime" ColumnName="CodeSendTime" />
+                <ScalarProperty Name="DataChange_LastTime" ColumnName="DataChange_LastTime" />
+                <ScalarProperty Name="Data_CreateTime" ColumnName="Data_CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="FKHY.Models.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="DataChange_LastTime" ColumnName="DataChange_LastTime" />
+                <ScalarProperty Name="Data_CreateTime" ColumnName="Data_CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trades">
+            <EntityTypeMapping TypeName="FKHY.Models.Trade">
+              <MappingFragment StoreEntitySet="Trade">
+                <ScalarProperty Name="TradeId" ColumnName="TradeId" />
+                <ScalarProperty Name="TradeTypeId" ColumnName="TradeTypeId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="Topup" ColumnName="Topup" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+                <ScalarProperty Name="DatePaid" ColumnName="DatePaid" />
+                <ScalarProperty Name="DatePaymentConfirmed" ColumnName="DatePaymentConfirmed" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TradeTypes">
+            <EntityTypeMapping TypeName="FKHY.Models.TradeType">
+              <MappingFragment StoreEntitySet="TradeType">
+                <ScalarProperty Name="TradeTypeId" ColumnName="TradeTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TradeTypeGroups">
+            <EntityTypeMapping TypeName="FKHY.Models.TradeTypeGroup">
+              <MappingFragment StoreEntitySet="TradeTypeGroup">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAccounts">
+            <EntityTypeMapping TypeName="FKHY.Models.UserAccount">
+              <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="Default" ColumnName="Default" />
+                <ScalarProperty Name="DateDeleted" ColumnName="DateDeleted" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserBalances">
+            <EntityTypeMapping TypeName="FKHY.Models.UserBalance">
+              <MappingFragment StoreEntitySet="UserBalance">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="PaymentPassword" ColumnName="PaymentPassword" />
+                <ScalarProperty Name="PaymentSalt" ColumnName="PaymentSalt" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="FrozenBalance" ColumnName="FrozenBalance" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="FKHY.Models.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebLogons">
+            <EntityTypeMapping TypeName="FKHY.Models.WebLogon">
+              <MappingFragment StoreEntitySet="WebLogon">
+                <ScalarProperty Name="LogonId" ColumnName="LogonId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="SchoolId" ColumnName="SchoolId" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="TokenExpiryDate" ColumnName="TokenExpiryDate" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="DateLogon" ColumnName="DateLogon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="alipay_trade_confirmed" FunctionName="FKHY.Models.Store.alipay_trade_confirmed" />
+          <FunctionImportMapping FunctionImportName="sp_clear" FunctionName="FKHY.Models.Store.sp_clear" />
+          <FunctionImportMapping FunctionImportName="sp_text" FunctionName="FKHY.Models.Store.sp_text">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FKHY.Models.sp_text_Result">
+                <ScalarProperty Name="Object_Name" ColumnName="Object_Name" />
+                <ScalarProperty Name="type_desc" ColumnName="type_desc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="txn_bind_bank_account" FunctionName="FKHY.Models.Store.txn_bind_bank_account" />
+          <FunctionImportMapping FunctionImportName="txn_cash_out" FunctionName="FKHY.Models.Store.txn_cash_out">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FKHY.Models.txn_cash_out_Result">
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AlertMessage" ColumnName="AlertMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="txn_cash_out_confirmed" FunctionName="FKHY.Models.Store.txn_cash_out_confirmed" />
+          <FunctionImportMapping FunctionImportName="txn_cash_out_rejected" FunctionName="FKHY.Models.Store.txn_cash_out_rejected" />
+          <FunctionImportMapping FunctionImportName="txn_deposit_unfreeze" FunctionName="FKHY.Models.Store.txn_deposit_unfreeze" />
+          <FunctionImportMapping FunctionImportName="txn_get_bill_list" FunctionName="FKHY.Models.Store.txn_get_bill_list" />
+          <FunctionImportMapping FunctionImportName="txn_get_user_account_list" FunctionName="FKHY.Models.Store.txn_get_user_account_list">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FKHY.Models.txn_get_user_account_list_Result">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="Default" ColumnName="Default" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="FrozenBalance" ColumnName="FrozenBalance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="txn_remove_user_account" FunctionName="FKHY.Models.Store.txn_remove_user_account" />
+          <FunctionImportMapping FunctionImportName="txn_trade_balance" FunctionName="FKHY.Models.Store.txn_trade_balance" />
+          <FunctionImportMapping FunctionImportName="txn_trade_cash_paid" FunctionName="FKHY.Models.Store.txn_trade_cash_paid" />
+          <FunctionImportMapping FunctionImportName="txn_trade_paid" FunctionName="FKHY.Models.Store.txn_trade_paid" />
+          <FunctionImportMapping FunctionImportName="txn_trade_pay_user" FunctionName="FKHY.Models.Store.txn_trade_pay_user" />
+          <FunctionImportMapping FunctionImportName="txn_trade_payment_received" FunctionName="FKHY.Models.Store.txn_trade_payment_received" />
+          <FunctionImportMapping FunctionImportName="txn_trade_payment_received_frozen" FunctionName="FKHY.Models.Store.txn_trade_payment_received_frozen" />
+          <FunctionImportMapping FunctionImportName="txn_trade_payment_refund" FunctionName="FKHY.Models.Store.txn_trade_payment_refund" />
+          <FunctionImportMapping FunctionImportName="txn_trade_payment_unfreeze" FunctionName="FKHY.Models.Store.txn_trade_payment_unfreeze" />
+          <FunctionImportMapping FunctionImportName="txn_trade_third_party" FunctionName="FKHY.Models.Store.txn_trade_third_party" />
+          <FunctionImportMapping FunctionImportName="txn_trade_topup" FunctionName="FKHY.Models.Store.txn_trade_topup">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FKHY.Models.txn_trade_topup_Result">
+                <ScalarProperty Name="TradeId" ColumnName="TradeId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="TopupAmount" ColumnName="TopupAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
