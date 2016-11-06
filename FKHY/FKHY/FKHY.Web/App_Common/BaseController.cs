@@ -9,15 +9,13 @@ using System.Web.Security;
 using System.Configuration;
 using System.IO;
 using FKHY.Common;
+using FKHY.Models.DBModels;
 
 namespace FKHY.Web
 {
     public class BaseController : Controller
     {
-        //protected AdminDataAccess dbAdmin = new AdminDataAccess();
-        //protected PaymentDataAccess dbPayment = new PaymentDataAccess();
-        //protected WebDataAccess dbWeb = new WebDataAccess();
-        //protected MessageDataAccess dbMessage = new MessageDataAccess();
+        protected DataAccess dbAdmin = new DataAccess();
         
         public long? UserId
         {

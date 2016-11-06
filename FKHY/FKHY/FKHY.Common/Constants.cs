@@ -17,6 +17,12 @@ namespace FKHY.Common
         public static int 老师 = 1;
         public static int 学生 = 2;
 
+        public static string TempFolder = "/upload/temp/";
+        public const string StudentFolder = "/Students/";
+        public const string TeacherFolder = "/Teachers/";
+        public const string AdminFolder = "/Admin/";
+        public const string TimeShortFormat = "yyyy-MM-dd";
+
         public enum ConfirmPayStatus
         {
             未确认付款 = 0,
@@ -36,12 +42,12 @@ namespace FKHY.Common
         {
             基础 = 16,
             初级 = 48,
-            中级 = 96,
-            高级 = 128,
-            套餐1 = 150,
-            套餐2 = 180,
-            套餐3 = 200,
-            套餐4 = 220
+            中级 = 48,
+            高级 = 52,
+            套餐1 = 96,
+            套餐2 = 100,
+            套餐3 = 148,
+            套餐4 = 164
         }
     }
 }

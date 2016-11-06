@@ -14,11 +14,82 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link href="~/css/style.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="~/js/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="~/js/jquery.event.drag-1.5.min.js"></script>
-    <script type="text/javascript" src="~/js/jquery.touchSlider.js"></script>
+    <link href="http://css.itplus.net.cn/css/shared.css" rel="stylesheet" type="text/css" />
+    <link href="http://css.itplus.net.cn/plugins/alert/resources/css/jquery.toastmessage.css" rel="stylesheet" />
+
+    <script src="~/js/common.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+    <script src="http://css.itplus.net.cn/js/css.js"></script>    
+    <script src="~/js/jquery-1.11.1.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+    <script src="http://css.itplus.net.cn/plugins/alert/javascript/jquery.toastmessage.js"></script>
 </head>
 <body>
+    <script type="text/javascript">
+        $(function () {
+            $(".aa .tab a").click(function () {
+                $(this).addClass('on').siblings().removeClass('on');
+                var index = $(this).index();
+                number = index;
+                $('.aa .tab_con .rsp').hide();
+                $('.aa .tab_con .rsp:eq(' + index + ')').show();
+            });
+
+            var auto = 2; //等于1则自动切换，其他任意数字则不自动切换
+            if (auto == 1) {
+                var number = 0;
+                var maxNumber = $('.aa .tab a').length;
+
+                function autotab() {
+                    number++;
+                    number == maxNumber ? number = 0 : number;
+                    $('.aa .tab a:eq(' + number + ')').addClass('on').siblings().removeClass('on');
+                    $('.aa .tab_con .rsp:eq(' + number + ')').show().siblings().hide();
+                }
+                var tabChange = setInterval(autotab, 3000);
+                //鼠标悬停暂停切换
+                $('.aa').mouseover(function () {
+                    clearInterval(tabChange);
+                });
+                $('.aa').mouseout(function () {
+                    tabChange = setInterval(autotab, 3000);
+                });
+            }
+        });
+
+        function dlLogin() {
+            var phone = $("#lphone").val();
+            if (phone=="") {
+                alertWarning("请输入手机号");
+                return;
+            }
+            var password = $("#lpassword").val();
+            if (password == "") {
+                alertWarning("请输入密码");
+                return;
+            }
+
+            var data = {
+                Phone: $('#lphone').val(),
+                Password: $('#lpassword').val(),
+                rememberMe: false
+            };
+
+            $.ajaxPost('/base/userlogin', data, function (result) {
+                if (result.status == 1) {
+                    alertSuccess("登录成功!");
+                    window.location.href = '/';
+                }
+                else if (result.status == 2) {
+                    alertWarning("账号密码错误!");
+                }
+                else if (result.status == 0) {
+                    location.reload();
+                }
+            });
+        }
+    </script>
     <div class="login">
         <div class="reg">
             <img src="~/images/da-logo.png" style="margin-top: 80px;" />
@@ -32,20 +103,20 @@
                         <div style="display:block;" class="rsp">
                             <div class="rsp_a fl">
                                 <form action="" method="post" name="dlForm" id="dlForm" enctype="multipart/form-data">
-                                    <input maxlength="20" type="text" id="nickname1" name="tel" class="tel" placeholder="邮箱 | 电话">
-                                    <input maxlength="20" type="text" id="nickname2" name="admin" class="admin" placeholder="密码">
-                                    <input maxlength="20" type="button" class="rbc-sq" onclick="dlLogin();" value="登录">
+                                    <input maxlength="11" required type="text" id="lphone" name="lphone" placeholder="手机号">
+                                    <input maxlength="20" required type="password" id="lpassword" name="lpassword" placeholder="密码">
+                                    <input type="button" class="rbc-sq" onclick="dlLogin();" value="登录">
                                 </form>
-                                <div class="wjmm">
-                                    <span class="fl"><input type="checkbox" id="kpzl" name="is_kpzl" value="1">两周内免登录</span>
+                                @*<div class="wjmm">
+                                    <span class="fl"><input type="checkbox" id="rememberme" name="rememberme">两周内免登录</span>
                                     <span class="fr"><a href="#">忘记密码？</a></span>
-                                </div>
+                                </div>*@
                             </div>
                             <div class="rsp_b fl">
                                 <img src="~/images/hz.png" />
                             </div>
                             <div class="rsp_c fr">
-                                <div class="rsp_zj">
+                                <div class="rsp_zj" onclick="alertSuccess('敬请期待！')">
                                     <a href="#" class="xl">新浪微博</a>
                                     <a href="#" class="wex">微&nbsp;&nbsp;信</a>
                                 </div>
@@ -54,13 +125,12 @@
                         <div class="rsp">
                             <div class="rsp_a fl">
                                 <form action="" method="post" name="zcForm" id="zcForm" enctype="multipart/form-data">
-                                    <input maxlength="20" type="text" id="nickname1" name="zc_tel" class="zc-tel" placeholder="邮箱 | 电话">
-                                    <input maxlength="20" type="text" id="nickname2" name="zc_admin" class="zc-admin" placeholder="密码">
+                                    <input maxlength="11" required type="tel" id="rphone" name="rphone" placeholder="手机">
+                                    <input maxlength="20" required type="password" id="rpassword" name="rpassword" placeholder="密码">
                                     <div>
                                         <input maxlength="20" type="text" id="nickname2" name="zc-yzm" class="zc-yzm" placeholder="6位数字">
-                                        <span class="dd" id="ddd" onclick="getValidCode(this)">获取验证码</span>
+                                        <span style="cursor:pointer" class="dd" id="validcode" onclick="getValidCode(this)">获取验证码</span>
                                     </div>
-                                    <p>验证码错误</p>
                                     <input maxlength="20" type="button" class="rbc-sq" onclick="zcLogin();" value="注册">
                                 </form>
                             </div>
@@ -68,7 +138,7 @@
                                 <img src="~/images/hz.png" />
                             </div>
                             <div class="rsp_c fr">
-                                <div class="rsp_zj">
+                                <div class="rsp_zj" onclick="alertSuccess('敬请期待！')">
                                     <a href="#" class="xl">新浪微博</a>
                                     <a href="#" class="wex">微&nbsp;&nbsp;信</a>
                                 </div>
@@ -77,183 +147,8 @@
                     </div>
                 </div>
             </div>
-            <script>
-            $(function() {
-                $(".aa .tab a").click(function() {
-                    $(this).addClass('on').siblings().removeClass('on');
-                    var index = $(this).index();
-                    number = index;
-                    $('.aa .tab_con .rsp').hide();
-                    $('.aa .tab_con .rsp:eq(' + index + ')').show();
-                });
-
-                var auto = 2; //等于1则自动切换，其他任意数字则不自动切换
-                if (auto == 1) {
-                    var number = 0;
-                    var maxNumber = $('.aa .tab a').length;
-
-                    function autotab() {
-                        number++;
-                        number == maxNumber ? number = 0 : number;
-                        $('.aa .tab a:eq(' + number + ')').addClass('on').siblings().removeClass('on');
-                        $('.aa .tab_con .rsp:eq(' + number + ')').show().siblings().hide();
-                    }
-                    var tabChange = setInterval(autotab, 3000);
-                    //鼠标悬停暂停切换
-                    $('.aa').mouseover(function() {
-                        clearInterval(tabChange);
-                    });
-                    $('.aa').mouseout(function() {
-                        tabChange = setInterval(autotab, 3000);
-                    });
-                }
-            });
-            </script>
         </div>
     </div>
-    <!--登录验证-->
-    <script type="text/javascript" src="~/js/common.js"></script>
-    <script type="text/javascript">
-    localStorage.setItem("jwt",null);
-    function dlLogin() {
-        var frm = document.forms['dlForm'];
-        var tel = frm.elements['tel'].value;
-        var admin = frm.elements['admin'].value;
-        var msg = '';
-        if (tel.length == 0) {
-            msg += '请输入账号\n';
-        }
-        if (admin.length == 0) {
-            msg += '请输入密码\n';
-        }
-        if (msg.length > 0) {
-            alert(msg);
-            return false;
-        } else {
-
-            var data = {
-                'user.mobile': tel,
-                'user.password': admin
-            };
-
-            $.ajax({
-                url: URLS.login,
-                data: data,
-                dataType: 'json',
-                success: function(respObj) {
-                    if (respObj.code == "0000") {
-                        alert(respObj.msg);
-                        localStorage.setItem("jwt",respObj.token);
-                        window.location = 'grzx.html';
-                    } else {
-                        alert(respObj.msg);
-                    }
-                }
-            });
-            //return true;
-        }
-    }
-    </script>
-    <!--注册验证-->
-    <script type="text/javascript">
-      var util = {
-                wait: 90,
-                hsTime: function (that) {
-                    _this = $(this);
-                    if (_this.wait == 0) {
-                        $(that).html('重发短信验证码');
-                        _this.wait = 90;
-                    } else {
-                        var _this = this;
-                        $(that).html('在' + _this.wait + '秒后点此重发');
-                        _this.wait--;
-                        setTimeout(function () {
-                            _this.hsTime(that);
-                        }, 1000)
-                    }
-                }
-            }
-
-    function getValidCode(obj){
-      //$(obj).html("重发短信验证码");
-       //alert($(obj).html());
-       var frm = document.forms['zcForm'];
-       var zc_tel = frm.elements['zc_tel'].value;
-       var msg = '';
-       if (zc_tel.length == 0) {
-            msg += '请输入账号\n';
-             //util.hsTime("#ddd");
-        }
-        if (msg.length > 0) {
-            alert(msg);
-             //util.hsTime(obj);
-            return false;
-        } else {
-            util.hsTime(obj);
-            var data = {
-                'user.mobile': zc_tel
-            };
-
-            $.ajax({
-                url: URLS.getValidCode,
-                data: data,
-                dataType: 'json',
-                success: function(respObj) {
-                    if (respObj.code == "0000") {
-
-                        alert(respObj.msg);
-                        //window.location = 'login.html';
-                    } else {
-                        alert(respObj.msg);
-                    }
-                }
-            });
-            //return true;
-        }
-    }
-
-    function zcLogin() {
-        var frm = document.forms['zcForm'];
-        var zc_tel = frm.elements['zc_tel'].value;
-        var zc_admin = frm.elements['zc_admin'].value;
-        var zc_yzm = frm.elements['zc-yzm'].value;
-        var msg = '';
-        if (zc_tel.length == 0) {
-            msg += '请输入账号\n';
-        }
-        if (zc_admin.length == 0) {
-            msg += '请输入密码\n';
-        }
-        if (zc_yzm.length == 0) {
-            msg += '请输入验证码\n';
-        }
-        if (msg.length > 0) {
-            alert(msg);
-            return false;
-        } else {
-            var data = {
-                'user.mobile': zc_tel,
-                'user.password': zc_admin,
-                'code': zc_yzm
-            };
-
-            $.ajax({
-                url: URLS.reg,
-                data: data,
-                dataType: 'json',
-                success: function(respObj) {
-                    if (respObj.code == "0000") {
-                        alert(respObj.msg);
-                        window.location = 'login.html';
-                    } else {
-                        alert(respObj.msg);
-                    }
-                }
-            });
-            //return true;
-        }
-    }
-    </script>
 </body>
 </html>
 

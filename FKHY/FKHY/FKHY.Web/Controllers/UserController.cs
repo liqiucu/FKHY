@@ -13,5 +13,15 @@ namespace FKHY.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult CheckCode()
+        {
+            //生成图片验证码
+            ValidateCode validateCode = new ValidateCode();
+            string code = validateCode.CreateValidateCode(4);
+            Session["ValidateCode"] = code;
+            byte[] bytes = validateCode.CreateValidateGraphic(code);
+            return File(bytes, @"image/jpeg");
+        }
     }
 }

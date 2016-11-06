@@ -305,6 +305,7 @@
     <Content Include="images\left-arrow.png" />
     <Content Include="images\leftarrow1.png" />
     <Content Include="images\lo.png" />
+    <Content Include="images\loading.gif" />
     <Content Include="images\logo.png" />
     <Content Include="images\logo2.png" />
     <Content Include="images\mac.png" />
@@ -392,6 +393,7 @@
     <Content Include="js\common.js" />
     <Content Include="js\fkhy.js" />
     <Content Include="js\ion.rangeSlider.js" />
+    <Content Include="js\jquery-1.11.1.js" />
     <Content Include="js\jquery-1.12.3.min.js" />
     <Content Include="js\jquery-1.7.1.min.js" />
     <Content Include="js\jquery-1.9.1.js" />
@@ -403,6 +405,7 @@
     <Content Include="js\jquery.placeholder.min.js" />
     <Content Include="js\jquery.SuperSlide.2.1.1.js" />
     <Content Include="js\jquery.touchSlider.js" />
+    <Content Include="js\jquery.validate.ext.js" />
     <Content Include="js\laydate\laydate.js" />
     <Content Include="js\laydate\need\laydate.css" />
     <Content Include="js\laydate\skins\dahong\icon.png" />
@@ -411,6 +414,7 @@
     <Content Include="js\laydate\skins\default\laydate.css" />
     <Content Include="js\laydate\skins\molv\icon.png" />
     <Content Include="js\laydate\skins\molv\laydate.css" />
+    <Content Include="js\login\code.js" />
     <Content Include="js\profile.js" />
     <Content Include="js\public.js" />
     <Content Include="js\TouchSlide.1.1.js" />

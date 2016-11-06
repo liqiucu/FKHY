@@ -13,7 +13,7 @@ namespace FKHY.Web
     public class AuthAttribute : AuthorizeAttribute
     {
         /// <summary>
-        /// 1=企业 =2猎头
+        /// 0=学生 1=老师
         /// </summary>
         public int UserType { get; set; }
 

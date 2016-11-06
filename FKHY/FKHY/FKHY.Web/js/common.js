@@ -1,14 +1,70 @@
-var host = "http://localhost/os";
-var URLS = {
-	getCoursePage:host+"/pc/api/getCoursePage.html?jwt=" + (localStorage.getItem("jwt") || ""),
-	getOrderPage:host+"/pc/api/getOrderPage.html?jwt=" + (localStorage.getItem("jwt") || ""),
-	submitOrder:host+"/pc/api/submitOrder.html?jwt=" + (localStorage.getItem("jwt") || ""),
-	getUserInfo:host+"/pc/api/getUserInfo.html?jwt=" + (localStorage.getItem("jwt") || ""),
-	modifyUser:host+"/pc/api/modifyUser.html?jwt=" + (localStorage.getItem("jwt") || ""),
-	subscribe:host+"/pc/api/subscribe.html?jwt=" + (localStorage.getItem("jwt") || ""),
-	getMessagePage:host+"/pc/api/getMessagePage.html?jwt=" + (localStorage.getItem("jwt") || ""),
-	reg:host+"/pc/api/reg.html",
-	login:host+"/pc/api/login.html",
-	getValidCode:host+"/pc/api/getValidCode.html",
-
+function alertSuccess(text, callback) {
+    $().toastmessage('showToast', {
+        inEffectDuration: 500,   // in effect duration in miliseconds
+        stayTime: 1800,   // time in miliseconds before the item has to disappear
+        text: text,
+        sticky: false,
+        position: 'middle-center',
+        type: 'success',
+        closeText: '',
+        close: callback
+    });
 }
+function alertWarning(text, callback) {
+    //var options = { text: message, type: 'warning' };
+    //return $().toastmessage('showToast', options);
+
+    $().toastmessage('showToast', {
+        inEffectDuration: 500,   // in effect duration in miliseconds
+        stayTime: 1800,   // time in miliseconds before the item has to disappear
+        text: text,
+        sticky: false,
+        position: 'middle-center',
+        type: 'warning',
+        closeText: '',
+        close: callback
+    });
+}
+function alertFailed(text, callback) {
+    $().toastmessage('showToast', {
+        inEffectDuration: 500,   // in effect duration in miliseconds
+        stayTime: 1800,   // time in miliseconds before the item has to disappear
+        text: text,
+        sticky: false,
+        position: 'middle-center',
+        type: 'error',
+        closeText: '',
+        close: callback
+    });
+}
+
+$(function () {
+
+    jQuery.ajaxPost = function (url, data, successfn) {
+        $.ajax({
+            url: url,
+            contentType: "application/json; charset=utf-8",
+            type: 'POST',
+            data: JSON.stringify(data),
+            success: function (d) {
+                //called when successful
+                successfn(d);
+            },
+            error: function (e) {
+                //called when there is an error
+                //console.log(e.message);
+            },
+            beforeSend: function (jqXHR, settings) {
+                $('#loading').show();
+                $('#loading_gif').show();
+            },
+            complete: function (jqXHR, status) {
+                $('#loading').hide();
+                $('#loading_gif').hide();
+            },
+            error: function (jqXHR, status, error) {
+                alertFailed(error);
+            }
+        });
+    };
+});

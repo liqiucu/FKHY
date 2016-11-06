@@ -7,9 +7,14 @@
     <title>@ViewBag.Title - 孚咖韩语</title>
     <link href="~/css/style.css" rel="stylesheet" type="text/css" />
     <link href="~/css/public.css" rel="stylesheet" type="text/css" />
+    <link href="http://css.itplus.net.cn/plugins/alert/resources/css/jquery.toastmessage.css" rel="stylesheet" />
+
     <script type="text/javascript" src="~/js/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="~/js/jquery.event.drag-1.5.min.js"></script>
     <script type="text/javascript" src="~/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script src="~/js/common.js"></script>
+    <script src="http://css.itplus.net.cn/Js/messages_zh.js"></script>
+    <script src="http://css.itplus.net.cn/plugins/alert/javascript/jquery.toastmessage.js"></script>
 </head>
 <body>
     <div>
@@ -92,5 +97,9 @@
             </div>
         </div>
     </footer>
+
+    <div id="loading" style="height:100%; width:100%; background:#fff; position:fixed; display:none;top:0;opacity: 0;filter: alpha(opacity=80)/*for ie*/; z-index: 2147483647; ">
+    </div>
+    <img id="loading_gif" style="height: 100px;width: 100px; display:none; position: fixed;top: 49%;z-index: 2147483647;left: 49%;" src="~/images/loading.gif" />
 </body>
 </html>
