@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FKHY.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="FKHY.Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AliPayIPN">
           <Key>
             <PropertyRef Name="PaymentId" />
@@ -96,6 +96,45 @@
           <Property Name="DateExpired" Type="datetime" />
           <Property Name="DateCreated" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Image" Type="nvarchar" MaxLength="500" />
+          <Property Name="QQ" Type="nvarchar" MaxLength="50" />
+          <Property Name="RealName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BirthDate" Type="datetime" Nullable="false" />
+          <Property Name="Sex" Type="bit" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Salt" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="CodeSendTime" Type="datetime" Nullable="false" />
+          <Property Name="DataChange_LastTime" Type="datetime" Nullable="false" />
+          <Property Name="Data_CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="TeacherId" />
+          </Key>
+          <Property Name="TeacherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeacherName" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="RealName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="Sex" Type="bit" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="11" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Salt" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="50" />
+          <Property Name="DataChange_LastTime" Type="datetime" Nullable="false" />
+          <Property Name="Data_CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Trade">
           <Key>
             <PropertyRef Name="TradeId" />
@@ -164,6 +203,19 @@
           <Property Name="UserTypeId" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WebLogon">
+          <Key>
+            <PropertyRef Name="LogonId" />
+          </Key>
+          <Property Name="LogonId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="SchoolId" Type="int" Nullable="false" />
+          <Property Name="Token" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TokenExpiryDate" Type="datetime" Nullable="false" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateLogon" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK_CashFlow_CashFlowStatus">
           <End Role="CashFlowStatus" Type="Self.CashFlowStatus" Multiplicity="0..1" />
@@ -325,18 +377,21 @@
           <Parameter Name="Note" Type="nvarchar" Mode="In" />
           <Parameter Name="PaymentTypeId" Type="int" Mode="In" />
         </Function>
-        <EntityContainer Name="FKHYModelStoreContainer">
+        <EntityContainer Name="FKHYModelsStoreContainer">
           <EntitySet Name="AliPayIPN" EntityType="Self.AliPayIPN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CashFlow" EntityType="Self.CashFlow" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CashFlowStatus" EntityType="Self.CashFlowStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentType" EntityType="Self.PaymentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trade" EntityType="Self.Trade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TradeType" EntityType="Self.TradeType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TradeTypeGroup" EntityType="Self.TradeTypeGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserBalance" EntityType="Self.UserBalance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebLogon" EntityType="Self.WebLogon" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CashFlow_CashFlowStatus" Association="Self.FK_CashFlow_CashFlowStatus">
             <End Role="CashFlowStatus" EntitySet="CashFlowStatus" />
             <End Role="CashFlow" EntitySet="CashFlow" />
@@ -358,7 +413,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="FKHY.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="FKHY.Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AliPayIPN">
           <Key>
             <PropertyRef Name="PaymentId" />
@@ -453,6 +508,45 @@
           <Property Name="DateExpired" Type="DateTime" Precision="3" />
           <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QQ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sex" Type="Boolean" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Salt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CodeSendTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DataChange_LastTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Data_CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="TeacherId" />
+          </Key>
+          <Property Name="TeacherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeacherName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="Sex" Type="Boolean" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Salt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DataChange_LastTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Data_CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         <EntityType Name="Trade">
           <Key>
             <PropertyRef Name="TradeId" />
@@ -527,6 +621,19 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="WebLogon">
+          <Key>
+            <PropertyRef Name="LogonId" />
+          </Key>
+          <Property Name="LogonId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="SchoolId" Type="Int32" Nullable="false" />
+          <Property Name="Token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TokenExpiryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateLogon" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         <Association Name="FK_CashFlow_CashFlowStatus">
           <End Role="CashFlowStatus" Type="Self.CashFlowStatu" Multiplicity="0..1" />
           <End Role="CashFlow" Type="Self.CashFlow" Multiplicity="*" />
@@ -581,12 +688,15 @@
           <EntitySet Name="CashFlows" EntityType="Self.CashFlow" />
           <EntitySet Name="CashFlowStatus" EntityType="Self.CashFlowStatu" />
           <EntitySet Name="PaymentTypes" EntityType="Self.PaymentType" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Teachers" EntityType="Self.Teacher" />
           <EntitySet Name="Trades" EntityType="Self.Trade" />
           <EntitySet Name="TradeTypes" EntityType="Self.TradeType" />
           <EntitySet Name="TradeTypeGroups" EntityType="Self.TradeTypeGroup" />
           <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
           <EntitySet Name="UserBalances" EntityType="Self.UserBalance" />
           <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+          <EntitySet Name="WebLogons" EntityType="Self.WebLogon" />
           <AssociationSet Name="FK_CashFlow_CashFlowStatus" Association="Self.FK_CashFlow_CashFlowStatus">
             <End Role="CashFlowStatus" EntitySet="CashFlowStatus" />
             <End Role="CashFlow" EntitySet="CashFlows" />
@@ -607,7 +717,7 @@
             <Parameter Name="TradeId" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="sp_clear" />
-          <FunctionImport Name="sp_text" ReturnType="Collection(FKHY.Model.sp_text_Result)">
+          <FunctionImport Name="sp_text" ReturnType="Collection(FKHY.Models.sp_text_Result)">
             <Parameter Name="text" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="txn_bind_bank_account">
@@ -617,7 +727,7 @@
             <Parameter Name="AccountNo" Mode="In" Type="String" />
             <Parameter Name="BankId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="txn_cash_out" ReturnType="Collection(FKHY.Model.txn_cash_out_Result)">
+          <FunctionImport Name="txn_cash_out" ReturnType="Collection(FKHY.Models.txn_cash_out_Result)">
             <Parameter Name="UserId" Mode="In" Type="Int64" />
             <Parameter Name="AccountId" Mode="In" Type="Int64" />
             <Parameter Name="Amount" Mode="In" Type="Decimal" />
@@ -642,7 +752,7 @@
             <Parameter Name="PageIndex" Mode="In" Type="Int32" />
             <Parameter Name="PageSize" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="txn_get_user_account_list" ReturnType="Collection(FKHY.Model.txn_get_user_account_list_Result)">
+          <FunctionImport Name="txn_get_user_account_list" ReturnType="Collection(FKHY.Models.txn_get_user_account_list_Result)">
             <Parameter Name="UserId" Mode="In" Type="Int64" />
             <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -708,7 +818,7 @@
             <Parameter Name="Note" Mode="In" Type="String" />
             <Parameter Name="Pasword" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="txn_trade_topup" ReturnType="Collection(FKHY.Model.txn_trade_topup_Result)">
+          <FunctionImport Name="txn_trade_topup" ReturnType="Collection(FKHY.Models.txn_trade_topup_Result)">
             <Parameter Name="UserId" Mode="In" Type="Int64" />
             <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
             <Parameter Name="TopupAmount" Mode="In" Type="Decimal" />
@@ -746,9 +856,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FKHYModelStoreContainer" CdmEntityContainer="DataAccess">
+        <EntityContainerMapping StorageEntityContainer="FKHYModelsStoreContainer" CdmEntityContainer="DataAccess">
           <EntitySetMapping Name="AliPayIPNs">
-            <EntityTypeMapping TypeName="FKHY.Model.AliPayIPN">
+            <EntityTypeMapping TypeName="FKHY.Models.AliPayIPN">
               <MappingFragment StoreEntitySet="AliPayIPN">
                 <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
                 <ScalarProperty Name="notify_time" ColumnName="notify_time" />
@@ -788,7 +898,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Banks">
-            <EntityTypeMapping TypeName="FKHY.Model.Bank">
+            <EntityTypeMapping TypeName="FKHY.Models.Bank">
               <MappingFragment StoreEntitySet="Bank">
                 <ScalarProperty Name="BankId" ColumnName="BankId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -799,7 +909,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CashFlows">
-            <EntityTypeMapping TypeName="FKHY.Model.CashFlow">
+            <EntityTypeMapping TypeName="FKHY.Models.CashFlow">
               <MappingFragment StoreEntitySet="CashFlow">
                 <ScalarProperty Name="CashFlowId" ColumnName="CashFlowId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -822,7 +932,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CashFlowStatus">
-            <EntityTypeMapping TypeName="FKHY.Model.CashFlowStatu">
+            <EntityTypeMapping TypeName="FKHY.Models.CashFlowStatu">
               <MappingFragment StoreEntitySet="CashFlowStatus">
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -832,7 +942,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PaymentTypes">
-            <EntityTypeMapping TypeName="FKHY.Model.PaymentType">
+            <EntityTypeMapping TypeName="FKHY.Models.PaymentType">
               <MappingFragment StoreEntitySet="PaymentType">
                 <ScalarProperty Name="TypeId" ColumnName="TypeId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -843,8 +953,49 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="FKHY.Models.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="CodeSendTime" ColumnName="CodeSendTime" />
+                <ScalarProperty Name="DataChange_LastTime" ColumnName="DataChange_LastTime" />
+                <ScalarProperty Name="Data_CreateTime" ColumnName="Data_CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="FKHY.Models.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="DataChange_LastTime" ColumnName="DataChange_LastTime" />
+                <ScalarProperty Name="Data_CreateTime" ColumnName="Data_CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Trades">
-            <EntityTypeMapping TypeName="FKHY.Model.Trade">
+            <EntityTypeMapping TypeName="FKHY.Models.Trade">
               <MappingFragment StoreEntitySet="Trade">
                 <ScalarProperty Name="TradeId" ColumnName="TradeId" />
                 <ScalarProperty Name="TradeTypeId" ColumnName="TradeTypeId" />
@@ -862,7 +1013,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TradeTypes">
-            <EntityTypeMapping TypeName="FKHY.Model.TradeType">
+            <EntityTypeMapping TypeName="FKHY.Models.TradeType">
               <MappingFragment StoreEntitySet="TradeType">
                 <ScalarProperty Name="TradeTypeId" ColumnName="TradeTypeId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -872,7 +1023,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TradeTypeGroups">
-            <EntityTypeMapping TypeName="FKHY.Model.TradeTypeGroup">
+            <EntityTypeMapping TypeName="FKHY.Models.TradeTypeGroup">
               <MappingFragment StoreEntitySet="TradeTypeGroup">
                 <ScalarProperty Name="GroupId" ColumnName="GroupId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -881,7 +1032,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserAccounts">
-            <EntityTypeMapping TypeName="FKHY.Model.UserAccount">
+            <EntityTypeMapping TypeName="FKHY.Models.UserAccount">
               <MappingFragment StoreEntitySet="UserAccount">
                 <ScalarProperty Name="AccountId" ColumnName="AccountId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -896,7 +1047,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserBalances">
-            <EntityTypeMapping TypeName="FKHY.Model.UserBalance">
+            <EntityTypeMapping TypeName="FKHY.Models.UserBalance">
               <MappingFragment StoreEntitySet="UserBalance">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
@@ -909,7 +1060,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserTypes">
-            <EntityTypeMapping TypeName="FKHY.Model.UserType">
+            <EntityTypeMapping TypeName="FKHY.Models.UserType">
               <MappingFragment StoreEntitySet="UserType">
                 <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -917,33 +1068,47 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="alipay_trade_confirmed" FunctionName="FKHY.Model.Store.alipay_trade_confirmed" />
-          <FunctionImportMapping FunctionImportName="sp_clear" FunctionName="FKHY.Model.Store.sp_clear" />
-          <FunctionImportMapping FunctionImportName="sp_text" FunctionName="FKHY.Model.Store.sp_text">
+          <EntitySetMapping Name="WebLogons">
+            <EntityTypeMapping TypeName="FKHY.Models.WebLogon">
+              <MappingFragment StoreEntitySet="WebLogon">
+                <ScalarProperty Name="LogonId" ColumnName="LogonId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="SchoolId" ColumnName="SchoolId" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="TokenExpiryDate" ColumnName="TokenExpiryDate" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="DateLogon" ColumnName="DateLogon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="alipay_trade_confirmed" FunctionName="FKHY.Models.Store.alipay_trade_confirmed" />
+          <FunctionImportMapping FunctionImportName="sp_clear" FunctionName="FKHY.Models.Store.sp_clear" />
+          <FunctionImportMapping FunctionImportName="sp_text" FunctionName="FKHY.Models.Store.sp_text">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="FKHY.Model.sp_text_Result">
+              <ComplexTypeMapping TypeName="FKHY.Models.sp_text_Result">
                 <ScalarProperty Name="Object_Name" ColumnName="Object_Name" />
                 <ScalarProperty Name="type_desc" ColumnName="type_desc" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="txn_bind_bank_account" FunctionName="FKHY.Model.Store.txn_bind_bank_account" />
-          <FunctionImportMapping FunctionImportName="txn_cash_out" FunctionName="FKHY.Model.Store.txn_cash_out">
+          <FunctionImportMapping FunctionImportName="txn_bind_bank_account" FunctionName="FKHY.Models.Store.txn_bind_bank_account" />
+          <FunctionImportMapping FunctionImportName="txn_cash_out" FunctionName="FKHY.Models.Store.txn_cash_out">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="FKHY.Model.txn_cash_out_Result">
+              <ComplexTypeMapping TypeName="FKHY.Models.txn_cash_out_Result">
                 <ScalarProperty Name="Balance" ColumnName="Balance" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="AlertMessage" ColumnName="AlertMessage" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="txn_cash_out_confirmed" FunctionName="FKHY.Model.Store.txn_cash_out_confirmed" />
-          <FunctionImportMapping FunctionImportName="txn_cash_out_rejected" FunctionName="FKHY.Model.Store.txn_cash_out_rejected" />
-          <FunctionImportMapping FunctionImportName="txn_deposit_unfreeze" FunctionName="FKHY.Model.Store.txn_deposit_unfreeze" />
-          <FunctionImportMapping FunctionImportName="txn_get_bill_list" FunctionName="FKHY.Model.Store.txn_get_bill_list" />
-          <FunctionImportMapping FunctionImportName="txn_get_user_account_list" FunctionName="FKHY.Model.Store.txn_get_user_account_list">
+          <FunctionImportMapping FunctionImportName="txn_cash_out_confirmed" FunctionName="FKHY.Models.Store.txn_cash_out_confirmed" />
+          <FunctionImportMapping FunctionImportName="txn_cash_out_rejected" FunctionName="FKHY.Models.Store.txn_cash_out_rejected" />
+          <FunctionImportMapping FunctionImportName="txn_deposit_unfreeze" FunctionName="FKHY.Models.Store.txn_deposit_unfreeze" />
+          <FunctionImportMapping FunctionImportName="txn_get_bill_list" FunctionName="FKHY.Models.Store.txn_get_bill_list" />
+          <FunctionImportMapping FunctionImportName="txn_get_user_account_list" FunctionName="FKHY.Models.Store.txn_get_user_account_list">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="FKHY.Model.txn_get_user_account_list_Result">
+              <ComplexTypeMapping TypeName="FKHY.Models.txn_get_user_account_list_Result">
                 <ScalarProperty Name="AccountId" ColumnName="AccountId" />
                 <ScalarProperty Name="BankId" ColumnName="BankId" />
                 <ScalarProperty Name="BankName" ColumnName="BankName" />
@@ -955,19 +1120,19 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="txn_remove_user_account" FunctionName="FKHY.Model.Store.txn_remove_user_account" />
-          <FunctionImportMapping FunctionImportName="txn_trade_balance" FunctionName="FKHY.Model.Store.txn_trade_balance" />
-          <FunctionImportMapping FunctionImportName="txn_trade_cash_paid" FunctionName="FKHY.Model.Store.txn_trade_cash_paid" />
-          <FunctionImportMapping FunctionImportName="txn_trade_paid" FunctionName="FKHY.Model.Store.txn_trade_paid" />
-          <FunctionImportMapping FunctionImportName="txn_trade_pay_user" FunctionName="FKHY.Model.Store.txn_trade_pay_user" />
-          <FunctionImportMapping FunctionImportName="txn_trade_payment_received" FunctionName="FKHY.Model.Store.txn_trade_payment_received" />
-          <FunctionImportMapping FunctionImportName="txn_trade_payment_received_frozen" FunctionName="FKHY.Model.Store.txn_trade_payment_received_frozen" />
-          <FunctionImportMapping FunctionImportName="txn_trade_payment_refund" FunctionName="FKHY.Model.Store.txn_trade_payment_refund" />
-          <FunctionImportMapping FunctionImportName="txn_trade_payment_unfreeze" FunctionName="FKHY.Model.Store.txn_trade_payment_unfreeze" />
-          <FunctionImportMapping FunctionImportName="txn_trade_third_party" FunctionName="FKHY.Model.Store.txn_trade_third_party" />
-          <FunctionImportMapping FunctionImportName="txn_trade_topup" FunctionName="FKHY.Model.Store.txn_trade_topup">
+          <FunctionImportMapping FunctionImportName="txn_remove_user_account" FunctionName="FKHY.Models.Store.txn_remove_user_account" />
+          <FunctionImportMapping FunctionImportName="txn_trade_balance" FunctionName="FKHY.Models.Store.txn_trade_balance" />
+          <FunctionImportMapping FunctionImportName="txn_trade_cash_paid" FunctionName="FKHY.Models.Store.txn_trade_cash_paid" />
+          <FunctionImportMapping FunctionImportName="txn_trade_paid" FunctionName="FKHY.Models.Store.txn_trade_paid" />
+          <FunctionImportMapping FunctionImportName="txn_trade_pay_user" FunctionName="FKHY.Models.Store.txn_trade_pay_user" />
+          <FunctionImportMapping FunctionImportName="txn_trade_payment_received" FunctionName="FKHY.Models.Store.txn_trade_payment_received" />
+          <FunctionImportMapping FunctionImportName="txn_trade_payment_received_frozen" FunctionName="FKHY.Models.Store.txn_trade_payment_received_frozen" />
+          <FunctionImportMapping FunctionImportName="txn_trade_payment_refund" FunctionName="FKHY.Models.Store.txn_trade_payment_refund" />
+          <FunctionImportMapping FunctionImportName="txn_trade_payment_unfreeze" FunctionName="FKHY.Models.Store.txn_trade_payment_unfreeze" />
+          <FunctionImportMapping FunctionImportName="txn_trade_third_party" FunctionName="FKHY.Models.Store.txn_trade_third_party" />
+          <FunctionImportMapping FunctionImportName="txn_trade_topup" FunctionName="FKHY.Models.Store.txn_trade_topup">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="FKHY.Model.txn_trade_topup_Result">
+              <ComplexTypeMapping TypeName="FKHY.Models.txn_trade_topup_Result">
                 <ScalarProperty Name="TradeId" ColumnName="TradeId" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Body" ColumnName="Body" />

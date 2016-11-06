@@ -4,22 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="baf318aab43a4e168f5b7249f3dea49d" Name="Diagram1">
-        <EntityTypeShape EntityType="FKHY.Model.AliPayIPN" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FKHY.Model.Bank" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FKHY.Model.CashFlow" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="FKHY.Model.CashFlowStatu" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FKHY.Model.PaymentType" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FKHY.Model.Trade" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FKHY.Model.TradeType" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="FKHY.Model.TradeTypeGroup" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FKHY.Model.UserAccount" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FKHY.Model.UserBalance" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FKHY.Model.UserType" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
-        <AssociationConnector Association="FKHY.Model.FK_CashFlow_CashFlowStatus" ManuallyRouted="false" />
-        <AssociationConnector Association="FKHY.Model.FK_CashFlow_Trade" ManuallyRouted="false" />
-        <AssociationConnector Association="FKHY.Model.FK_Trade_TradeType" ManuallyRouted="false" />
-        <AssociationConnector Association="FKHY.Model.FK_TradeType_TradeTypeGroup" ManuallyRouted="false" />
+      <Diagram DiagramId="666144f16c13470795395935568fe16f" Name="Diagram1">
+        <EntityTypeShape EntityType="FKHY.Models.AliPayIPN" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FKHY.Models.Bank" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FKHY.Models.CashFlow" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FKHY.Models.CashFlowStatu" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FKHY.Models.PaymentType" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FKHY.Models.Student" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FKHY.Models.Teacher" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FKHY.Models.Trade" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FKHY.Models.TradeType" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FKHY.Models.TradeTypeGroup" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FKHY.Models.UserAccount" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FKHY.Models.UserBalance" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FKHY.Models.UserType" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FKHY.Models.WebLogon" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="FKHY.Models.FK_CashFlow_CashFlowStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="FKHY.Models.FK_CashFlow_Trade" ManuallyRouted="false" />
+        <AssociationConnector Association="FKHY.Models.FK_Trade_TradeType" ManuallyRouted="false" />
+        <AssociationConnector Association="FKHY.Models.FK_TradeType_TradeTypeGroup" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

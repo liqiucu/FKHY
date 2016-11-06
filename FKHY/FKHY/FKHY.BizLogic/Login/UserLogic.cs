@@ -2,9 +2,11 @@
 using FKHY.Models.DBModels;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace FKHY.BizLogic.Login
 {
@@ -61,7 +63,7 @@ namespace FKHY.BizLogic.Login
         {
             loginName = loginName.Trim();
             dynamic returdynamic = new ExpandoObject();
-            using (WebDataAccess db = new WebDataAccess())
+            using (DataAccess db = new DataAccess())
             {
                 if (userTypeId == null)
                 {

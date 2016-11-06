@@ -32,12 +32,15 @@ namespace FKHY.Models.DBModels
         public virtual DbSet<CashFlow> CashFlows { get; set; }
         public virtual DbSet<CashFlowStatu> CashFlowStatus { get; set; }
         public virtual DbSet<PaymentType> PaymentTypes { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<Teacher> Teachers { get; set; }
         public virtual DbSet<Trade> Trades { get; set; }
         public virtual DbSet<TradeType> TradeTypes { get; set; }
         public virtual DbSet<TradeTypeGroup> TradeTypeGroups { get; set; }
         public virtual DbSet<UserAccount> UserAccounts { get; set; }
         public virtual DbSet<UserBalance> UserBalances { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
+        public virtual DbSet<WebLogon> WebLogons { get; set; }
     
         public virtual int alipay_trade_confirmed(Nullable<long> tradeId)
         {
