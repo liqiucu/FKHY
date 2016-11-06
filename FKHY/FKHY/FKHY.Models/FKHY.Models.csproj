@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerModels\BuyViewModel.cs" />
     <Compile Include="DBModels\AliPayIPN.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
@@ -114,7 +115,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CustomerModels\" />
+    <ProjectReference Include="..\FKHY.Common\FKHY.Common.csproj">
+      <Project>{06292f28-958c-4f63-ab02-3a9b3b001367}</Project>
+      <Name>FKHY.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DBModels\Entities.edmx">

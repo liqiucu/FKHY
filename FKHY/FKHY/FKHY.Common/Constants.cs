@@ -16,5 +16,32 @@ namespace FKHY.Common
 
         public static int 老师 = 1;
         public static int 学生 = 2;
+
+        public enum ConfirmPayStatus
+        {
+            未确认付款 = 0,
+            确认付款 = 1
+        }
+
+        /// <summary>
+        /// 交易类型
+        /// </summary>
+        public enum TradeType
+        {
+            VIP = 0,
+            购买套餐 = 1
+        }
+
+        public enum PackageType
+        {
+            基础 = 16,
+            初级 = 48,
+            中级 = 96,
+            高级 = 128,
+            套餐1 = 150,
+            套餐2 = 180,
+            套餐3 = 200,
+            套餐4 = 220
+        }
     }
 }

@@ -181,6 +181,7 @@
     <Compile Include="Controllers\CourceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OpenClassController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\OverseasController.cs" />
     <Compile Include="Controllers\StaticContentController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -197,13 +198,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="confirm_order.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="foregin_speaking.html" />
-    <Content Include="foregin_speaking_suss.html" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\1.jpg" />
@@ -418,9 +415,6 @@
     <Content Include="js\public.js" />
     <Content Include="js\TouchSlide.1.1.js" />
     <Content Include="js\touchslider.dev.js" />
-    <Content Include="open_class2.html" />
-    <Content Include="open_class3.html" />
-    <Content Include="order_suss.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\윤고딕310%281%29.ttf" />
@@ -438,10 +432,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="tjcg.html" />
-    <Content Include="tjcg2.html" />
-    <Content Include="vipconfirm_order.html" />
-    <Content Include="viporder_suss.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -469,6 +459,7 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Student\Center.cshtml" />
     <Content Include="Views\Teacher\Center.cshtml" />
+    <Content Include="Views\Order\Commit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -480,7 +471,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
