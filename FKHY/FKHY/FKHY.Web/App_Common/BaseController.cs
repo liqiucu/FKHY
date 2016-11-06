@@ -10,20 +10,45 @@ using System.Configuration;
 using System.IO;
 using FKHY.Common;
 using FKHY.Models.DBModels;
+using FKHY.BizLogic.Login;
 
 namespace FKHY.Web
 {
     public class BaseController : Controller
     {
         protected DataAccess dbAdmin = new DataAccess();
-        
-        public long? UserId
+        public bool RememberMe
+        {
+            get
+            {
+                // check cookie and assign it to session
+                HttpCookie cookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+                if (cookie != null && !string.IsNullOrEmpty(cookie.Value))
+                {
+                    FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(cookie.Value);
+                    if (!string.IsNullOrEmpty(ticket.UserData))
+                    {
+                        int? userId = ticket.Name.Split(',')[0].ToInt();
+                        int? userTypeId = ticket.Name.Split(',')[1].ToInt();
+                        Session["UserId"] = userId;
+                        Session["UserTypeId"] = userTypeId;
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+        public long UserId
         {
             get
             {
                 if (Session == null || Session["UserId"] == null)
                 {
-                    return null;
+                    if (RememberMe)
+                    {
+                        return long.Parse(Session["UserId"].ToString());
+                    }
+                    return 0;
                 }
                 return long.Parse(Session["UserId"].ToString());
             }
@@ -33,13 +58,17 @@ namespace FKHY.Web
             }
         }
 
-        public int? UserTypeId
+        public int UserTypeId
         {
             get
             {
                 if (Session == null || Session["UserTypeId"] == null)
                 {
-                    return null;
+                    if (RememberMe)
+                    {
+                        return int.Parse(Session["UserTypeId"].ToString());
+                    }
+                    return 0;
                 }
                 return int.Parse(Session["UserTypeId"].ToString());
             }
@@ -55,10 +84,26 @@ namespace FKHY.Web
             {
                 if (Session == null || Session["UserName"] == null)
                 {
-                    //string UserName = FKHY.Framework.BusinessLogic.UserLogic.GetUserName(UserId, UserTypeId.Value);
-                    //if (!string.IsNullOrEmpty(UserName))
-                    //    Session["UserName"] = UserName;
-                    return "";
+                    string UserName = "";
+                    if (UserTypeId==0 && UserId>0)
+                    {
+                        var temp = UserLogic.GetStudent(UserId);
+                        
+                        if (string.IsNullOrEmpty(temp.UserName))
+                        {
+                            UserName = temp.Phone;
+                        }
+                    }
+                    if (UserTypeId == 1 && UserId > 0)
+                    {
+                        var temp = UserLogic.GetTeacher(UserId);
+
+                        if (string.IsNullOrEmpty(temp.TeacherName))
+                        {
+                            UserName = temp.Phone;
+                        }
+                    }
+                    return UserName;
                 }
                 return Session["UserName"].ToString();
             }
@@ -72,7 +117,7 @@ namespace FKHY.Web
         {
             get
             {
-                if (Session == null || Session["ReturnUrl"] == null)
+                if (Session == null || Session["ReturnUrl"]==null)
                 {
                     return Constants.WebUrl;
                 }
@@ -101,10 +146,11 @@ namespace FKHY.Web
         {
             ViewBag.BaseController = context.RouteData.Values["controller"].ToString().ToLower();
             ViewBag.BaseReturnUrl = ReturnUrl;
-            if (UserId.HasValue)
+
+            if (UserId>0)
             {
-                ViewBag.BaseUserId = UserId;
-                ViewBag.BaseUserName = UserName;
+                ViewBag.UserId = UserId;
+                ViewBag.UserName = UserName;
             }
             base.OnActionExecuting(context);
         }
@@ -116,41 +162,19 @@ namespace FKHY.Web
 
         protected void ClearSession()
         {
-            UserId = null;
-            UserName = null;
-            UserTypeId = null;
-            ReturnUrl = null;
+            Session["ReturnUrl"] = null;
+            Session["UserId"] = null;
+            Session["UserTypeI"] = null;
+            Session["UserName"] = null;
+            ViewBag.ReturnUrl = null;
+            ViewBag.UserId = null;
+            ViewBag.UserTypeI = null;
+            ViewBag.UserName = null;
+
+            UserId = 0;
+            UserName = "";
+            UserTypeId = 0;
+            ReturnUrl = "";
         }
-
-        [HttpPost]
-        public ActionResult Logout()
-        {
-            ClearSession();
-            return Redirect(ReturnUrl);
-        }
-
-        #region 用户登录
-
-        [HttpPost]
-        public JsonResult UserLogIn(string loginName, string password, bool rememberMe)//loginName mobile or email
-        {
-            dynamic login = "";//UserLogic.Logon(loginName, password, rememberMe, null);//change
-
-            if (login.status == 0)
-            {
-                return Json(new
-                {
-                    status = 0
-                });
-            }
-            else
-            {
-                return Json(new
-                {
-                    status = login.status
-                });
-            }
-        }
-        #endregion
     }
 }

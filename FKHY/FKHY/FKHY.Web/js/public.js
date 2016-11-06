@@ -9,7 +9,6 @@ function show_menu() {
     } else {
         $('#menu').removeClass('show');
         $('#menu').addClass('hid');
-      
     }
  }
  

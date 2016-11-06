@@ -60,25 +60,28 @@ namespace FKHY.BizLogic.Login
             }
         }
 
-        public static dynamic Logon(string loginName, string password, bool rememberPassword, int userTypeId)
+        public static dynamic Logon(string phone, string password, bool rememberPassword, int userTypeId)
         {
-            loginName = loginName.Trim();
+            phone = phone.Trim();
             dynamic returdynamic = new ExpandoObject();
             using (DataAccess db = new DataAccess())
             {
                 if (userTypeId == Constants.学生)
                 {
-                    var user = db.Students.SingleOrDefault(r => r.Phone == loginName);
+                    var user = db.Students.SingleOrDefault(r => r.Phone == phone);
 
                     if (user != null)
                     {
-                        string salt = user.Salt;
-                        string hashedPswd = user.Password;
-                        if (FKHYCommon.MD5(password) == hashedPswd)//判断是否登录合法站点。
+                        //string salt = user.Salt;
+                        //string hashedPswd = user.Password;
+                        if (password == user.Password)//判断是否登录合法站点。
                         {
                             //用户手动登陆后,必须从新赋予COOKIE和TOKEN
                             RefreshLogon(user.UserId, Constants.学生, rememberPassword);
                             returdynamic.status = 0;
+                            returdynamic.userid = user.UserId;
+                            returdynamic.phone = user.Phone;
+                            returdynamic.name = user.UserName;
                             return returdynamic;
                         }
                         else
@@ -90,17 +93,18 @@ namespace FKHY.BizLogic.Login
                 }
                 else
                 {
-                    var user = db.Teachers.SingleOrDefault(r => r.Phone == loginName);
+                    var user = db.Teachers.SingleOrDefault(r => r.Phone == phone);
                     if (user != null)
                     {
-                        string salt = user.Salt;
-                        string hashedPswd = user.Password;
-                        if (FKHYCommon.MD5(password) == hashedPswd)//判断是否登录合法站点。
+                        if (password == user.Password)//判断是否登录合法站点。
                         {
                             var userLogons = db.WebLogons.Where(r => r.UserId == user.TeacherId && r.UserTypeId == userTypeId).OrderByDescending(r => r.DateLogon).FirstOrDefault();
                             //用户手动登陆后,必须从新赋予COOKIE和TOKEN
                             RefreshLogon(user.TeacherId, Constants.老师, rememberPassword);
                             returdynamic.status = 0;
+                            returdynamic.userid = user.TeacherId;
+                            returdynamic.phone = user.Phone;
+                            returdynamic.name = user.TeacherName;
                             return returdynamic;
                         }
                         else
@@ -139,6 +143,48 @@ namespace FKHY.BizLogic.Login
                 }
             }
             return null;
+        }
+
+        public static string SendValidCode(string phone)
+        {
+            using (var db = new DataAccess())
+            {
+                var model = db.Students.FirstOrDefault(a => a.Phone == phone);
+                var code = SendMessage.GenerateRandomNumber(100000, 999999).ToString();
+
+                if (model != null)
+                {
+                    model.Code = code;
+                    model.DataChange_LastTime = DateTime.Now;
+                    model.CodeSendTime = DateTime.Now;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    Student entity = new Student();
+                    entity.Phone = phone;
+                    entity.Code = code;
+                    entity.Password = "";
+                    entity.Address = "";
+                    entity.BirthDate = DateTime.Now.AddYears(-20);
+                    entity.CodeSendTime = DateTime.Now;
+                    entity.DataChange_LastTime = DateTime.Now;
+                    entity.Data_CreateTime = DateTime.Now;
+                    entity.Email = "";
+                    entity.Image = "";
+                    entity.QQ = "";
+                    entity.RealName = "";
+                    entity.Salt="";
+                    entity.Sex = false;
+                    entity.UserName = "";
+                    entity.Valid = false;
+                    db.Students.Add(entity);
+                    db.SaveChanges();
+                }
+
+                SendMessage.Send(phone, "【孚咖韩语】您本次操作的验证码是" + code + ",有效期10分钟.客服:4000707822");
+                return code;
+            }
         }
     }
 }

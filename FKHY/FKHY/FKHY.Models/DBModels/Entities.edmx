@@ -277,6 +277,7 @@
           <Property Name="CodeSendTime" Type="datetime" Nullable="false" />
           <Property Name="DataChange_LastTime" Type="datetime" Nullable="false" />
           <Property Name="Data_CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Valid" Type="bit" />
         </EntityType>
         <EntityType Name="StudentClassCource">
           <Key>
@@ -948,6 +949,7 @@
           <Property Name="Data_CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Favs" Relationship="FKHY.Models.FK_Fav_Student" FromRole="Student" ToRole="Fav" />
           <NavigationProperty Name="Orders" Relationship="FKHY.Models.FK_Order_Student" FromRole="Student" ToRole="Order" />
+          <Property Name="Valid" Type="Boolean" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -1819,6 +1821,7 @@
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="FKHY.Models.Student">
               <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="Valid" ColumnName="Valid" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Address" ColumnName="Address" />

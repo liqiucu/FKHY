@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "个人中心";
+    ViewBag.Title = "学生中心";
 }
 <link rel="stylesheet" href="~/css/profile-style.css">
 <link rel="stylesheet" href="~/css/calendar.css">
@@ -11,7 +11,6 @@
 <script type="text/javascript" src="~/js/profile.js"></script>
 <script type="text/javascript" src="~/js/laydate/laydate.js"></script>
 <script type="text/javascript" src="~/js/jquery.SuperSlide.2.1.1.js"></script>
-<script type="text/javascript" src="~/js/public.js"></script>
 
 <style>
     p {
@@ -528,12 +527,6 @@
                     <a href="vipkc.html"><li class="border-li">公开课</li></a>
                     <li id="one12" onclick="setTab('one',12,14)">收藏</li>
                 </ul>
-                <div class="progress">
-                    <div class="value">
-
-                    </div>
-
-                </div>
                 <p class="ksjd" style="text-align:center;display:none;margin-top:20px">1/40</p>
             </div>
         </div>
@@ -547,12 +540,12 @@
                 <li class="one2" onclick="setTab('one',2,15);">我要预约</li>
                 <li class="one3" onclick="setTab('one',3,15)">我的学习</li>
                 <li class="one4" onclick="setTab('one',4,15)">我的教室</li>
-                <li class="one5" onclick="setTab('one',5,15)">自习教室</li>
+                <li class="one5" onclick="setTab('one',5,15)">自习课件</li>
                 <li class="one6" onclick="setTab('one',6,15)">我的订单</li>
                 <li class="one7" onclick="setTab('one',7,15)">评价</li>
-                <li class="one8" onclick="setTab('one',8,15)">我的消息</li>
+                @*<li class="one8" onclick="setTab('one',8,15)">我的消息</li>*@
                 <li class="one9" onclick="setTab('one',9,15)">我的VIP</li>
-                <li class="one10" onclick="setTab('one',10,15)">我的优惠券</li>
+                @*<li class="one10" onclick="setTab('one',10,15)">我的优惠券</li>*@
                 <li class="one11" onclick="setTab('one',11,15)">我的客户端</li>
             </ul>
         </div><!-- 选项卡菜单 end -->
@@ -774,7 +767,7 @@
                         <ul class="clearfix">
                             <li class="a1 hover cur4 " onclick="setTab4('a',1,3)">我的课程</li>
                             <li class="a2" onclick="setTab4('a',2,3)">我的课表</li>
-                            <li class="a3" onclick="setTab4('a',3,3)">课件资料</li>
+                            <li class="a3" onclick="setTab4('a',3,3)">课后视频</li>
                         </ul>
                     </div>
                     <div class="ms-content">
@@ -2051,6 +2044,10 @@
                 $('#img,#img-c').attr('src', fr.result);
             });
         });
+
+        if (@ViewBag.ClickUpdate!=null) {
+            setTab('one',1,14);
+        }
     });
 </script>
 <script src="~/js/calendar_min.js"></script>

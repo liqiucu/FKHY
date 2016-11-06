@@ -39,8 +39,8 @@ function alertFailed(text, callback) {
 }
 
 $(function () {
-
-    jQuery.ajaxPost = function (url, data, successfn) {
+    jQuery.ajaxPost = function (url, data, successfn)
+    {
         $.ajax({
             url: url,
             contentType: "application/json; charset=utf-8",

@@ -9,8 +9,13 @@ namespace FKHY.Web.Controllers
     public class StudentController : Controller
     {
         // GET: Student
-        public ActionResult Center()
+        public ActionResult Center(string isUpdateClick="false")
         {
+            if (isUpdateClick=="true")
+            {
+                ViewBag.ClickUpdate = "true";
+            }
+
             return View();
         }
     }

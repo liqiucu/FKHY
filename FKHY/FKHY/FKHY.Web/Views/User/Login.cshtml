@@ -6,26 +6,40 @@
 
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="description" content="">
-    <meta name="author" content="Administrator">
-    <meta name="viewport" content="width=device-width; initial-scale=1.0">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="~/css/style.css" rel="stylesheet" type="text/css" />
     <link href="http://css.itplus.net.cn/css/shared.css" rel="stylesheet" type="text/css" />
     <link href="http://css.itplus.net.cn/plugins/alert/resources/css/jquery.toastmessage.css" rel="stylesheet" />
 
-    <script src="~/js/common.js"></script>
+    
     <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
     <script src="http://css.itplus.net.cn/js/css.js"></script>    
-    <script src="~/js/jquery-1.11.1.js"></script>
+    <script src="~/js/jquery-1.9.1.min.js"></script>
+    <script src="~/js/common.js"></script>
     <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
     <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
     <script src="http://css.itplus.net.cn/plugins/alert/javascript/jquery.toastmessage.js"></script>
 </head>
 <body>
+    <style>
+        .get_security_code {
+            margin-left: 140px;
+            width: 108px;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: #2CA4DE;
+            font-size: 14px;
+            display: block;
+            border: 1px solid #d0dae3;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
     <script type="text/javascript">
         $(function () {
             $(".aa .tab a").click(function () {
@@ -59,9 +73,9 @@
         });
 
         function dlLogin() {
-            var phone = $("#lphone").val();
-            if (phone=="") {
-                alertWarning("请输入手机号");
+            var myreg = /^1[\d]{10}$/;
+            if (!myreg.test($("#lphone").val())) {
+                alertWarning("请输入正确手机号!");
                 return;
             }
             var password = $("#lpassword").val();
@@ -73,21 +87,124 @@
             var data = {
                 Phone: $('#lphone').val(),
                 Password: $('#lpassword').val(),
-                rememberMe: false
+                Rem: true
             };
 
-            $.ajaxPost('/base/userlogin', data, function (result) {
-                if (result.status == 1) {
+            $.ajaxPost('/User/UserLogIn', data, function (result) {
+                if (result.status == 0) {
                     alertSuccess("登录成功!");
-                    window.location.href = '/';
+                    window.location.href = "/Student/Center";
                 }
                 else if (result.status == 2) {
                     alertWarning("账号密码错误!");
                 }
-                else if (result.status == 0) {
-                    location.reload();
+            });
+        }
+
+        function zcLogin() {
+            debugger;
+            var myreg = /^1[\d]{10}$/;
+
+            if (!myreg.test($("#rphone").val())) {
+                alertWarning("请输入正确手机号!");
+                return;
+            }
+            var password = $("#rpassword").val();
+            if (password == "") {
+                alertWarning("请输入密码");
+                return;
+            }
+
+            var code = $("#rcode").val();
+            if (code == "") {
+                alertWarning("请输入验证码");
+                return;
+            }
+
+            var data = {
+                Phone: $('#rphone').val(),
+                Password: password,
+                Code: code
+            };
+
+            $.ajaxPost("/User/Register", data, function (result) {
+                if (result == true) {
+                    alertSuccess("注册成功!");
+
+                    var data1 = {
+                        Phone: $('#lphone').val(),
+                        Password: $('#lpassword').val(),
+                        Rem: true
+                    };
+
+                    $.ajaxPost('/User/UserLogIn', data1, function (result) {
+                        if (result.status == 0) {
+                            window.location.href = "/Student/Center";
+                        }
+                    });
+                }
+                else {
+                    alertWarning("验证码错误!");
                 }
             });
+        }
+
+        function get_security_code() {
+            debugger;
+            var get_security_code = document.getElementById("get_security_code");
+            if (get_security_code.innerText == "获取验证码") {
+                var myreg = /^1[\d]{10}$/;
+                if (!myreg.test($("#rphone").val())) {
+                    alertWarning("请输入正确手机号!");
+                }
+                else {
+                    send();//发短信判断
+                }
+            }
+            function time(wait) {
+                if (wait == 0) {
+                    var get_security_code = document.getElementById("get_security_code");
+                    get_security_code.removeAttribute("disabled");
+                    get_security_code.innerText = "获取验证码";
+                    get_security_code.style.color = "#2CA4DE";
+                    // o.value="免费获取验证码";
+                    $("#get_security_code").bind("click", function () {
+                        var myreg = /^1[\d]{10}$/;
+                        if (!myreg.test($("#rphone").val())) {
+                            alertWarning("请输入正确手机号!");
+                        } else {
+                            send();//发短信判断
+                        }
+                    })
+                }
+                else {
+                    var get_security_code = document.getElementById("get_security_code");
+                    get_security_code.setAttribute("disabled", true);
+                    get_security_code.style.color = "#9A9A9A";
+                    get_security_code.innerText = "重新发送(" + wait + ")";
+                    //o.value = "重新发送(" + wait + ")";
+                    wait--;
+                    setTimeout(function () {
+                        time(wait)
+                    }, 1000)
+                    $("#get_security_code").unbind();
+                }
+            }
+            function send() {
+                var wait = 60;
+                time(wait);//开始60s计时
+                //这里写发短信的方法
+                var paramData = { Phone: $("#rphone").val() };
+
+                $.ajaxPost('/User/SendVerifyMobileCode', paramData, function (result) {
+                    if (result != "") {
+                        alertSuccess("发送成功!");
+                    }
+                    else {
+                        alertWarning("发送失败!");
+                    }
+                });
+            }
         }
     </script>
     <div class="login">
@@ -104,13 +221,13 @@
                             <div class="rsp_a fl">
                                 <form action="" method="post" name="dlForm" id="dlForm" enctype="multipart/form-data">
                                     <input maxlength="11" required type="text" id="lphone" name="lphone" placeholder="手机号">
-                                    <input maxlength="20" required type="password" id="lpassword" name="lpassword" placeholder="密码">
-                                    <input type="button" class="rbc-sq" onclick="dlLogin();" value="登录">
+                                    <input style="margin-top:10px" maxlength="20" required type="password" id="lpassword" name="lpassword" placeholder="密码">
+                                    <input style="margin-top:10px"type="button" class="rbc-sq" onclick="dlLogin();" value="登录">
                                 </form>
-                                @*<div class="wjmm">
+                                <div class="wjmm">
                                     <span class="fl"><input type="checkbox" id="rememberme" name="rememberme">两周内免登录</span>
                                     <span class="fr"><a href="#">忘记密码？</a></span>
-                                </div>*@
+                                </div>
                             </div>
                             <div class="rsp_b fl">
                                 <img src="~/images/hz.png" />
@@ -126,10 +243,11 @@
                             <div class="rsp_a fl">
                                 <form action="" method="post" name="zcForm" id="zcForm" enctype="multipart/form-data">
                                     <input maxlength="11" required type="tel" id="rphone" name="rphone" placeholder="手机">
-                                    <input maxlength="20" required type="password" id="rpassword" name="rpassword" placeholder="密码">
-                                    <div>
-                                        <input maxlength="20" type="text" id="nickname2" name="zc-yzm" class="zc-yzm" placeholder="6位数字">
-                                        <span style="cursor:pointer" class="dd" id="validcode" onclick="getValidCode(this)">获取验证码</span>
+                                    <input style="margin-top:10px" maxlength="20" required type="password" id="rpassword" name="rpassword" placeholder="密码">
+                                    <div style="margin-top:10px">
+                                        <input style="width:130px" maxlength="6" type="text" id="rcode" name="zc-yzm" class="zc-yzm" placeholder="6位数字">
+                                        @*<span style="cursor:pointer" class="dd" id="validcode" onclick="getValidCode(this)">获取验证码</span>*@
+                                        <span style="width:98px;margin-top:5px" class="get_security_code" id="get_security_code" onclick="get_security_code()">获取验证码</span>
                                     </div>
                                     <input maxlength="20" type="button" class="rbc-sq" onclick="zcLogin();" value="注册">
                                 </form>
@@ -149,7 +267,8 @@
             </div>
         </div>
     </div>
+    <div id="loading" style="height:100%; width:100%; background:#fff; position:fixed; display:none;top:0;opacity: 0;filter: alpha(opacity=80)/*for ie*/; z-index: 2147483647; ">
+    </div>
+    <img id="loading_gif" style="height: 100px;width: 100px; display:none; position: fixed;top: 49%;z-index: 2147483647;left: 49%;" src="~/images/loading.gif" />
 </body>
 </html>
-
-

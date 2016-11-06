@@ -77,15 +77,6 @@ namespace FKHY.Web.Common
             }
         }
 
-        /// <summary>
-        /// 传入临时文件名及路径名，返回新的相对路名
-        /// </summary>
-        /// <param name="file"></param>
-        /// <param name="path"></param>
-        /// <param name="userId"></param>
-        /// <param name="userTypeId"></param>
-        /// <param name="applicationId"></param>
-        /// <returns></returns>
         public static string UploadByFileAPI(string file, string path)
         {
             file = Constants.TempFolder + file;
@@ -125,12 +116,6 @@ namespace FKHY.Web.Common
             return null;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <param name="fileType">StudentFolder = "/Students/"</param>
-        /// <returns></returns>
         public static string GetNewUrl(string fileName,string fileType)
         {
             if (!string.IsNullOrEmpty(fileName) && !fileName.Contains(ConfigurationManager.AppSettings["FileServer"]))
@@ -268,11 +253,12 @@ namespace FKHY.Web.Common
 
             return excelSheetNames;
         }
+
         public static string MD5(string strText)
         {
             // return System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(strText, "MD5");
             //new
-            System.Security.Cryptography.MD5 md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            MD5 md5 = new MD5CryptoServiceProvider();
 
             //获取密文字节数组
             byte[] bytResult = md5.ComputeHash(System.Text.Encoding.UTF8.GetBytes(strText));

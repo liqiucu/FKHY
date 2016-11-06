@@ -37,6 +37,7 @@ namespace FKHY.Models.DBModels
         public System.DateTime CodeSendTime { get; set; }
         public System.DateTime DataChange_LastTime { get; set; }
         public System.DateTime Data_CreateTime { get; set; }
+        public Nullable<bool> Valid { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Fav> Favs { get; set; }
